@@ -24,7 +24,6 @@ btrfs-progs
 
 # Display Stack (Wayland)
 hyprland
-hyprland-plugin-hyprbars
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 waybar

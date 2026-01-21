@@ -53,7 +53,11 @@
 - Build 1: First successful ISO build
 - Build 2: mkinitcpio archiso hooks fix
 - Build 3: Hyprland config directory fix (`hypr/` not `hyprland/`)
-- Build 4: Beginner-friendly packages (in progress)
+- Build 4: Failed - wlogout not in repos (AUR only)
+- Build 5: Failed - Chaotic-AUR key not initialized
+- Build 6: SUCCESS - Chaotic-AUR working, Discord + wlogout included
+- Build 7: Failed - hyprland-plugin-hyprbars not in Chaotic-AUR
+- Build 8: Beginner-friendly Waybar + VS Code (no hyprbars)
 
 **Issues Discovered**:
 - Hyprland expects config at `~/.config/hypr/`, not `~/.config/hyprland/`
