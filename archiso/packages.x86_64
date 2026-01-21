@@ -1,4 +1,4 @@
-# AgentOS Package List
+# JumpDev OS Package List
 # This file lists all packages to be included in the ISO
 
 # Base System
@@ -115,7 +115,6 @@ wireplumber
 mesa
 vulkan-icd-loader
 libva-mesa-driver
-mesa-vdpau
 
 # Graphics - Intel
 vulkan-intel
@@ -123,7 +122,6 @@ intel-media-driver
 
 # Graphics - AMD
 vulkan-radeon
-libva-mesa-driver
 xf86-video-amdgpu
 
 # Graphics - NVIDIA (optional, comment if not needed)
