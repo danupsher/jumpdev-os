@@ -8,6 +8,7 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 
 **Unique Value**:
 - Zero installation - boot from USB on any machine
+- Multi-architecture support (x86_64 + ARM64 for Apple Silicon)
 - Pre-configured AI agent tooling (Claude Code, Aider, Ollama)
 - Modern, keyboard-driven workflow (Hyprland + Neovim)
 - Persistence support for projects and API keys
@@ -116,7 +117,37 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | Boots on 5+ machines | Expanded hardware testing | PENDING |
 | Boot time < 60 seconds | Measured on USB 3.0 | PENDING |
 
-**Deliverable**: `jumpdev-1.0.0.iso` + documentation
+**Deliverable**: `jumpdev-1.0.0-x86_64.iso` + documentation
+
+---
+
+### Gate 5: ARM64 Support (Apple Silicon)
+**Objective**: Native ARM64 ISO for Apple Silicon Macs
+
+**Requirements**:
+| Requirement | Verification | Status |
+|-------------|--------------|--------|
+| Arch Linux ARM base working | Boots in UTM/QEMU ARM | PENDING |
+| ARM64 package list created | `packages.aarch64` exists | PENDING |
+| Asahi Linux drivers evaluated | WiFi, GPU acceleration research | PENDING |
+| Hyprland works on ARM64 | Desktop renders | PENDING |
+| All dev tools available | Same toolset as x86_64 | PENDING |
+| GitHub Actions ARM64 build | CI builds both architectures | PENDING |
+| Tested on M1 Mac | Boot from USB | PENDING |
+| Tested on M2/M3 Mac | Boot from USB | PENDING |
+
+**Challenges**:
+- Apple Silicon requires Asahi Linux work for full hardware support
+- Some packages may not be available for ARM64
+- USB boot on Apple Silicon requires specific setup
+- GPU acceleration via Asahi drivers
+
+**Approach Options**:
+1. **Asahi Linux base** - Best hardware support, more complex
+2. **Arch Linux ARM** - Standard Arch, limited Apple hardware support
+3. **Fedora Asahi Remix** - Consider as alternative base for ARM
+
+**Deliverable**: `jumpdev-1.0.0-aarch64.iso` + Apple Silicon setup guide
 
 ---
 
@@ -285,6 +316,8 @@ nvidia-utils
 | USB 2.0 too slow | Medium - poor UX | Document USB 3.0 requirement, test minimum viable |
 | Archiso breaking changes | Medium - build fails | Pin archiso version or document working version |
 | Package repo changes | Low - missing packages | Use explicit versions where possible |
+| Apple Silicon support incomplete | High - limited M1/M2/M3 use | Track Asahi Linux progress, document limitations |
+| ARM64 package availability | Medium - missing tools | Identify alternatives or build from source |
 
 ---
 
@@ -292,11 +325,12 @@ nvidia-utils
 
 | Phase | Target |
 |-------|--------|
-| Gate 1: Foundation | End of Week 1 |
+| Gate 1: Foundation (x86_64) | End of Week 1 |
 | Gate 2: Core Experience | End of Week 2 |
 | Gate 3: Portability | End of Week 3 |
 | Gate 4: Polish | End of Week 4 |
 | Buffer / Hardware Testing | Week 5-6 |
+| Gate 5: ARM64 Support | Week 7-10 |
 
 ---
 
