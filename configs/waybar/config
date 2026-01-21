@@ -3,9 +3,9 @@
     "position": "top",
     "height": 34,
     "spacing": 4,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/terminal", "custom/files", "custom/browser", "custom/code", "custom/close"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -73,5 +73,47 @@
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/launcher": {
+        "format": " ",
+        "tooltip": "Open App Launcher",
+        "on-click": "fuzzel"
+    },
+
+    "custom/terminal": {
+        "format": " ",
+        "tooltip": "Open Terminal",
+        "on-click": "foot"
+    },
+
+    "custom/files": {
+        "format": " ",
+        "tooltip": "Open File Manager",
+        "on-click": "thunar"
+    },
+
+    "custom/browser": {
+        "format": " ",
+        "tooltip": "Open Firefox",
+        "on-click": "firefox"
+    },
+
+    "custom/code": {
+        "format": " ",
+        "tooltip": "Open VS Code",
+        "on-click": "code"
+    },
+
+    "custom/close": {
+        "format": " ",
+        "tooltip": "Close Window",
+        "on-click": "hyprctl dispatch killactive"
+    },
+
+    "custom/power": {
+        "format": " ",
+        "tooltip": "Power Menu",
+        "on-click": "wlogout"
     }
 }

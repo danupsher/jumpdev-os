@@ -63,6 +63,7 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 |-------------|--------------|--------|
 | Zsh configured with Starship | Prompt renders correctly | DONE |
 | Neovim with LSP | Code completion works | DONE |
+| VS Code | `code` command available | DONE |
 | Git + GitHub CLI + Lazygit | All three functional | DONE |
 | Docker + Docker Compose | `docker run hello-world` passes | PENDING |
 | Node.js + npm | `npm --version` works | DONE |
@@ -74,6 +75,7 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | CLI tools (fzf, rg, fd, bat, eza, zoxide) | All commands available | DONE |
 | Yazi file manager | `yazi` launches | DONE |
 | Catppuccin theme applied | Visual consistency across apps | DONE |
+| `jumpdev` helper command | `jumpdev help` works | PENDING |
 
 **Beginner-Friendly UI Requirements**:
 | Requirement | Verification | Status |
@@ -100,6 +102,32 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | VLC | DONE |
 | imv (image viewer) | DONE |
 
+**`jumpdev` Helper Command** (inspired by Bluefin's `ujust`):
+Simple CLI tool for common tasks - makes setup easy for beginners.
+
+| Command | Action |
+|---------|--------|
+| `jumpdev help` | Show all available commands |
+| `jumpdev setup` | Run first-time setup wizard |
+| `jumpdev install-claude` | Install/update Claude Code |
+| `jumpdev install-aider` | Install/update Aider |
+| `jumpdev install-ollama` | Install Ollama + pull common models |
+| `jumpdev set-api-key` | Configure API keys (Anthropic, OpenAI) |
+| `jumpdev update` | Update system + all dev tools |
+| `jumpdev doctor` | Check system health, report issues |
+| `jumpdev reset` | Reset to defaults (keeps persistence) |
+
+**Editor Choice**:
+| Editor | Use Case | Launch |
+|--------|----------|--------|
+| VS Code | GUI, beginners, devcontainers | `code .` or Super+C |
+| Neovim | Terminal, keyboard purists | `nvim` or Super+N |
+
+**Devcontainer Support**:
+- VS Code devcontainers extension pre-installed
+- Docker ready for container-based development
+- Clone repo → open in VS Code → "Reopen in Container" just works
+
 **Deliverable**: `out/jumpdev-core-*.iso`
 
 ---
@@ -122,40 +150,217 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | USB 3.0 performance acceptable | Subjective but usable | PENDING |
 
 **Persistence Approach**:
-Ship two formats for different use cases:
+Standard ISO with first-boot wizard - familiar for users, easy setup.
 
-| Format | Size | Use Case |
-|--------|------|----------|
-| `jumpdev-x.x.x-x86_64.iso` | ~4GB | Trying it out, no persistence |
-| `jumpdev-x.x.x-x86_64-persistent.img` | ~12GB | Daily driver, persistence built-in |
+**First-boot wizard flow**:
+1. User flashes ISO to USB (Etcher, Rufus, dd - normal process)
+2. First boot → Welcome wizard appears automatically
+3. Wizard asks: "Save files and stay logged in between reboots?"
+   - **Yes** → Creates `persistence.img` file on USB free space (~8GB)
+   - **No** → Runs in demo mode, wizard won't ask again
+4. If yes → Quick reboot to activate persistence
+5. Second boot → "Setup complete!", optional API key configuration
+6. Done → Wizard never appears again (flag in persistence)
 
-**IMG format benefits**:
-- Zero setup for users - flash and boot, persistence just works
-- Same flashing tools (Balena Etcher, Rufus, dd)
-- No hardware compatibility difference vs ISO
-- App logins (Discord, Firefox), API keys, files all persist across reboots
+**Why file-based persistence (not partition)**:
+- No risky repartitioning while booted from USB
+- Works regardless of how user flashed the ISO
+- Simpler and safer than resizing partitions
 
 **Technical implementation**:
-- IMG contains two partitions: boot (squashfs) + persistence (ext4)
-- Boot scripts detect persistence partition by label `JUMPDEV_PERSIST`
-- Overlay filesystem merges read-only base with writable persistence
-- Home directory lives on persistence partition
+- First-boot script detects if persistence exists
+- If not, shows wizard (GTK dialog via zenity or custom app)
+- Creates `persistence.img` file (ext4 formatted) on USB free space
+- Boot scripts mount `persistence.img` as loop device
+- Overlayfs merges: read-only squashfs + writable persistence.img
+- Home directory and select system paths live on overlay
 
-**Deliverable**: `jumpdev-x.x.x-x86_64.iso` + `jumpdev-x.x.x-x86_64-persistent.img`
+**What persists**:
+- Home folder (~/.config, app logins, API keys, files)
+- Installed packages (pacman database + cache)
+- System settings changes
+
+**Deliverable**: `jumpdev-x.x.x-x86_64.iso` (~4GB) + first-boot wizard
 
 ---
 
 ### Gate 4: Polish
-**Objective**: Release-ready distribution
+**Objective**: Release-ready distribution with strong brand identity
 
 **Requirements**:
 | Requirement | Verification | Status |
 |-------------|--------------|--------|
-| Custom boot splash | Plymouth theme or GRUB splash | PENDING |
+| Logo + favicon | SVG + PNG assets created | PENDING |
 | Custom wallpaper | Branded desktop background | PENDING |
-| Custom Neofetch/Fastfetch | Shows JumpDev OS branding | PENDING |
+| Custom boot splash | Plymouth theme or GRUB splash | PENDING |
+| Custom Fastfetch | Shows JumpDev OS branding | PENDING |
+| Landing page | Live at projectjumpdev.io or similar | PENDING |
 | README.md complete | Installation, usage, troubleshooting | PENDING |
-| USB drive recommendations | Document in README | PENDING |
+| Demo video | 2-min YouTube video | PENDING |
+| Social assets | Screenshots, banners for socials | PENDING |
+| Hardware compatibility doc | Tested machines list | PENDING |
+| Secure Boot documentation | Clear disable instructions | PENDING |
+| ISO published | Available for download | PENDING |
+| SHA256 checksum provided | Verification possible | PENDING |
+| Boots on 5+ machines | Expanded hardware testing | PENDING |
+| Boot time < 60 seconds | Measured on USB 3.0 | PENDING |
+
+---
+
+## Brand Guidelines
+
+**Brand Personality**: Bold. Playful but productive. Developer-first.
+
+| ✓ We Are | ✗ We're Not |
+|----------|-------------|
+| Confident, energetic | Corporate, boring |
+| Fun but capable | Childish, meme-heavy |
+| Modern, fresh | Retro, nostalgic |
+| Opinionated | Generic "another Linux distro" |
+
+**Tagline**: "Boot. Code. Ship."
+
+**Alternative taglines**:
+- "Code anywhere. Setup nowhere."
+- "Your AI dev team, pocket-sized."
+- "Just plug in and build."
+
+**Color Palette** (Catppuccin Mocha):
+| Color | Hex | Use |
+|-------|-----|-----|
+| Mauve (Primary) | `#cba6f7` | Accents, CTAs, logo |
+| Blue | `#89b4fa` | Links, secondary accents |
+| Base | `#1e1e2e` | Backgrounds |
+| Text | `#cdd6f4` | Body text |
+| Surface | `#313244` | Cards, panels |
+
+**Logo Direction**:
+- Bold geometric shapes
+- Purple/blue gradient from palette
+- Works at favicon size (16px) and large (512px+)
+- Concepts: rocket, terminal cursor, "J" lettermark, abstract jump/leap
+
+**Typography**:
+- Headings: Bold, modern sans-serif (Inter, Manrope)
+- Body: Clean, readable (Inter, system fonts)
+- Code: JetBrains Mono (already in distro)
+
+**Voice & Tone**:
+| Context | Example |
+|---------|---------|
+| Website hero | "Plug in a USB. Boot up. Start shipping." |
+| Feature description | "Claude Code, Aider, and Ollama. Pre-installed." |
+| Error messages | "Something broke. Here's what happened:" |
+| First-boot wizard | "Let's get you coding in 60 seconds." |
+| Success states | "You're all set. Go build something." |
+
+**Photography/Imagery**:
+- Abstract gradients with subtle grid/code texture
+- Developer workspaces (clean, modern)
+- No stock photos of people pointing at screens
+- Screenshots should show actual UI, Catppuccin themed
+
+---
+
+## Landing Page Structure
+
+**URL**: jumpdev.dev or projectjumpdev.io (TBD)
+
+**Hero Section**:
+```
+[Logo]
+
+Boot. Code. Ship.
+
+Your portable AI coding environment.
+Claude Code + VS Code + modern CLI tools.
+Just plug in and build.
+
+[Download ISO - 4GB]  [View on GitHub]
+```
+
+**Section 2 - What's Inside** (3-column grid):
+```
+[Icon] AI-First Development
+Claude Code, Aider, and Ollama pre-configured.
+Start vibe coding immediately.
+
+[Icon] Modern Dev Stack
+VS Code, Neovim, Docker, Node, Python, Rust.
+Everything you need, nothing you don't.
+
+[Icon] Runs Anywhere
+Boot from USB on any PC. Your environment
+travels with you. Works offline.
+```
+
+**Section 3 - Screenshot/Demo**:
+```
+[Large screenshot of Hyprland desktop]
+or
+[Embedded 2-min YouTube demo]
+```
+
+**Section 4 - How It Works** (3 steps):
+```
+1. Download & Flash
+   Grab the ISO. Flash to USB with Etcher or Rufus.
+
+2. Boot & Setup
+   Plug into any PC. One-time 60-second setup.
+
+3. Code Anywhere
+   Your files, logins, and tools persist across reboots.
+```
+
+**Section 5 - What's Included** (expandable list):
+```
+▸ AI Tools: Claude Code, Aider, Ollama
+▸ Editors: VS Code, Neovim (LSP configured)
+▸ Languages: Node.js, Python, Rust
+▸ Containers: Docker, Docker Compose
+▸ CLI: fzf, ripgrep, bat, eza, zoxide, yazi
+▸ Desktop: Hyprland, Waybar, Fuzzel
+▸ Apps: Firefox, Discord, VLC, Thunar
+```
+
+**Section 6 - Requirements**:
+```
+Minimum:
+- 8GB USB 3.0 drive
+- 8GB RAM
+- x86_64 processor
+
+Recommended:
+- 16GB+ fast USB (Samsung FIT Plus)
+- 16GB+ RAM
+- Disable Secure Boot
+```
+
+**Section 7 - FAQ** (collapsible):
+```
+▸ Does it work on Mac?
+  Intel Macs: Yes. Apple Silicon: Coming soon (Gate 5).
+
+▸ Will my files be saved?
+  Yes! First-boot wizard sets up persistence automatically.
+
+▸ Can I install it to my hard drive?
+  It's designed for USB, but you can install Arch normally.
+
+▸ Is it free?
+  Yes, MIT licensed. Free forever.
+```
+
+**Footer**:
+```
+[GitHub] [Discord] [Twitter]
+
+Made with 🧡 by developers, for developers.
+MIT License | v1.0.0
+```
+
+---
 
 **USB Drive Recommendations (for README)**:
 | Tier | Drive | Price | Experience |
@@ -168,14 +373,96 @@ Ship two formats for different use cases:
 - USB 3.0 port required (USB 2.0 = painful)
 - 16GB+ RAM recommended for smooth experience
 - Cheap USB drives have slow random I/O - worth spending $20 on a good one
-| Hardware compatibility doc | Tested machines list | PENDING |
-| Secure Boot documentation | Clear disable instructions | PENDING |
-| ISO published | Available for download | PENDING |
-| SHA256 checksum provided | Verification possible | PENDING |
-| Boots on 5+ machines | Expanded hardware testing | PENDING |
-| Boot time < 60 seconds | Measured on USB 3.0 | PENDING |
 
-**Deliverable**: `jumpdev-1.0.0-x86_64.iso` + documentation
+---
+
+## YouTuber / Influencer Outreach
+
+**Why JumpDev OS is content-friendly:**
+- Boots in 30 seconds (no dead air on camera)
+- Visually stunning (Hyprland + Catppuccin = eye candy)
+- Clear hook: "AI coding environment on a USB stick"
+- Free & open source (audience can try immediately)
+- Controversial angle: "Do you even need an installed OS?"
+
+**Target Creators:**
+
+| Creator | Platform | Angle | Priority |
+|---------|----------|-------|----------|
+| Fireship | YouTube (3M+) | "JumpDev in 100 seconds" format | HIGH |
+| ThePrimeagen | YouTube/Twitch (1M+) | CLI tools, vim, dev productivity | HIGH |
+| NetworkChuck | YouTube (4M+) | "Hacker USB stick" / portable lab | HIGH |
+| Chris Titus Tech | YouTube (1M+) | Linux distro review | HIGH |
+| Theo (t3.gg) | YouTube (400K+) | AI dev tools, modern stack | MEDIUM |
+| The Linux Experiment | YouTube (300K+) | Beginner-friendly Linux | MEDIUM |
+| DistroTube | YouTube (200K+) | Tiling WM, Hyprland focus | MEDIUM |
+| TechHut | YouTube (200K+) | Linux reviews | MEDIUM |
+| Michael Horn | YouTube (100K+) | Hyprland content | MEDIUM |
+| Level1Techs | YouTube (500K+) | Technical deep-dive | LOW |
+
+**Outreach Strategy:**
+
+1. **Before reaching out:**
+   - Have polished ISO ready (Gate 4 complete)
+   - Landing page live with clear messaging
+   - 2-min demo video showing the highlights
+   - Screenshots / b-roll footage ready to share
+
+2. **Outreach message template:**
+   ```
+   Subject: JumpDev OS - Portable AI coding environment (review/content idea)
+
+   Hey [Name],
+
+   Built something your audience might dig - JumpDev OS is a portable
+   Linux distro designed for AI-assisted coding. Boot from USB, get
+   Claude Code + VS Code + modern CLI tools instantly.
+
+   Think: "dev environment in your pocket" for the vibe coding era.
+
+   - 30-second boot to Hyprland desktop
+   - Claude Code, Aider, Ollama pre-installed
+   - Runs on any PC, persistence built-in
+   - Free, MIT licensed
+
+   Happy to send a USB stick or answer any questions.
+
+   [Link to landing page]
+   [Link to demo video]
+   ```
+
+3. **Content angles to suggest:**
+   - "I coded for a week using only a USB stick"
+   - "The Linux distro built for AI coding"
+   - "Can you replace your dev machine with a USB drive?"
+   - "Hyprland rice review + productivity test"
+   - "Best portable Linux for developers 2026"
+
+4. **Timing:**
+   - Reach out Tuesday-Thursday (best engagement)
+   - Follow up once after 1 week if no response
+   - Don't spam - quality over quantity
+
+**Community Seeding:**
+
+| Platform | Subreddit/Community | Post Angle |
+|----------|---------------------|------------|
+| Reddit | r/linux | "Show r/linux: JumpDev OS" |
+| Reddit | r/unixporn | Screenshot post with dotfiles |
+| Reddit | r/hyprland | Config showcase |
+| Reddit | r/ClaudeAI | "Portable Claude Code environment" |
+| Reddit | r/LocalLLaMA | Ollama pre-installed angle |
+| Hacker News | Show HN | Technical + "why I built this" |
+| Twitter/X | Dev community | Demo video + thread |
+| Discord | Claude/Anthropic servers | Soft launch, gather feedback |
+
+**Success Metrics:**
+- 1 YouTuber with 100K+ covers it → success
+- 500+ GitHub stars in first month → healthy
+- Front page of r/linux or HN → viral potential
+- 1000+ ISO downloads first week → strong launch
+
+**Deliverable**: `jumpdev-1.0.0-x86_64.iso` + documentation + landing page + demo video
 
 ---
 
