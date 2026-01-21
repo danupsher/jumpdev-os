@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           pacman -Syu --noconfirm
-          pacman -S --noconfirm archiso git
+          pacman -S --noconfirm archiso git grub mtools dosfstools squashfs-tools
 
       - name: Checkout repository
         uses: actions/checkout@v4
