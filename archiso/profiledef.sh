@@ -20,6 +20,4 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/etc/gshadow"]="0:0:400"
   ["/etc/sudoers.d/wheel"]="0:0:440"
-  ["/root"]="0:0:750"
-  ["/home/jump"]="1000:1000:750"
 )
