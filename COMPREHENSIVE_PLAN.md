@@ -155,6 +155,19 @@ Ship two formats for different use cases:
 | Custom wallpaper | Branded desktop background | PENDING |
 | Custom Neofetch/Fastfetch | Shows JumpDev OS branding | PENDING |
 | README.md complete | Installation, usage, troubleshooting | PENDING |
+| USB drive recommendations | Document in README | PENDING |
+
+**USB Drive Recommendations (for README)**:
+| Tier | Drive | Price | Experience |
+|------|-------|-------|------------|
+| Minimum | Any USB 3.0 drive | ~$10 | Usable, 60-90s boot |
+| Recommended | SanDisk Extreme Pro / Samsung FIT Plus | ~$20-30 | Good, 30-60s boot |
+| Best | Samsung T7 portable SSD | ~$60 | Excellent, 15-20s boot |
+
+**Key points for docs**:
+- USB 3.0 port required (USB 2.0 = painful)
+- 16GB+ RAM recommended for smooth experience
+- Cheap USB drives have slow random I/O - worth spending $20 on a good one
 | Hardware compatibility doc | Tested machines list | PENDING |
 | Secure Boot documentation | Clear disable instructions | PENDING |
 | ISO published | Available for download | PENDING |
