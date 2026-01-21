@@ -1,0 +1,145 @@
+# AgentOS Package List
+# This file lists all packages to be included in the ISO
+
+# Base System
+base
+base-devel
+linux-zen
+linux-zen-headers
+linux-firmware
+intel-ucode
+amd-ucode
+efibootmgr
+grub
+mkinitcpio
+mkinitcpio-archiso
+syslinux
+
+# Filesystem
+dosfstools
+e2fsprogs
+exfatprogs
+ntfs-3g
+btrfs-progs
+
+# Display Stack (Wayland)
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+waybar
+fuzzel
+mako
+grim
+slurp
+wl-clipboard
+xorg-xwayland
+qt5-wayland
+qt6-wayland
+
+# Terminal & Shell
+foot
+zsh
+starship
+
+# Editors
+neovim
+
+# Development - Version Control
+git
+github-cli
+lazygit
+
+# Development - Containers
+docker
+docker-compose
+docker-buildx
+
+# Development - Languages
+nodejs
+npm
+python
+python-pip
+python-pipx
+rustup
+go
+
+# CLI Utilities
+fzf
+ripgrep
+fd
+bat
+eza
+zoxide
+yazi
+btop
+jq
+yq
+curl
+wget
+unzip
+zip
+p7zip
+tree
+man-db
+man-pages
+tmux
+less
+
+# Fonts
+ttf-jetbrains-mono-nerd
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+
+# Network
+networkmanager
+iwd
+wireless-regdb
+wpa_supplicant
+openssh
+openvpn
+wireguard-tools
+
+# Bluetooth
+bluez
+bluez-utils
+
+# Audio
+pipewire
+pipewire-alsa
+pipewire-pulse
+pipewire-jack
+wireplumber
+
+# Graphics - Common
+mesa
+vulkan-icd-loader
+libva-mesa-driver
+mesa-vdpau
+
+# Graphics - Intel
+vulkan-intel
+intel-media-driver
+
+# Graphics - AMD
+vulkan-radeon
+libva-mesa-driver
+xf86-video-amdgpu
+
+# Graphics - NVIDIA (optional, comment if not needed)
+nvidia-open-dkms
+nvidia-utils
+nvidia-settings
+
+# Hardware Support
+acpi
+acpid
+tlp
+upower
+
+# Misc Utilities
+polkit
+polkit-gnome
+gnome-keyring
+xdg-user-dirs
+xdg-utils

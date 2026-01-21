@@ -1,0 +1,43 @@
+# Build outputs
+out/
+*.iso
+*.img
+
+# Archiso work directory
+work/
+/tmp/archiso-tmp/
+
+# Secrets and API keys
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Python (if any scripts)
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node (if any scripts)
+node_modules/
+
+# Testing artifacts
+test-results/
