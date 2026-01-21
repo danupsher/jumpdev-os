@@ -1,0 +1,92 @@
+name: Build ISO
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
+      options: --privileged
+
+    steps:
+      - name: Install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm archiso git
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare build environment
+        run: |
+          # Copy configs to airootfs skel
+          mkdir -p archiso/airootfs/etc/skel/.config
+
+          # Copy application configs
+          cp -r configs/hyprland archiso/airootfs/etc/skel/.config/
+          cp -r configs/waybar archiso/airootfs/etc/skel/.config/
+          cp -r configs/foot archiso/airootfs/etc/skel/.config/
+          cp -r configs/nvim archiso/airootfs/etc/skel/.config/
+          cp -r configs/fuzzel archiso/airootfs/etc/skel/.config/
+          cp -r configs/yazi archiso/airootfs/etc/skel/.config/ 2>/dev/null || true
+          cp -r configs/btop archiso/airootfs/etc/skel/.config/ 2>/dev/null || true
+          cp -r configs/lazygit archiso/airootfs/etc/skel/.config/ 2>/dev/null || true
+
+          # Starship config
+          mkdir -p archiso/airootfs/etc/skel/.config
+          cp configs/starship/starship.toml archiso/airootfs/etc/skel/.config/
+
+          # Zsh configs
+          cp configs/zsh/.zshrc archiso/airootfs/etc/skel/
+          cp configs/zsh/.zshenv archiso/airootfs/etc/skel/
+
+      - name: Build ISO
+        run: |
+          mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
+
+      - name: Generate checksums
+        run: |
+          cd out
+          sha256sum *.iso > SHA256SUMS
+          cat SHA256SUMS
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jumpdev-os-iso
+          path: |
+            out/*.iso
+            out/SHA256SUMS
+          retention-days: 7
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Download ISO artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: jumpdev-os-iso
+          path: out/
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            out/*.iso
+            out/SHA256SUMS
+          generate_release_notes: true
+          draft: false
+          prerelease: ${{ contains(github.ref, '-rc') || contains(github.ref, '-beta') || contains(github.ref, '-alpha') }}

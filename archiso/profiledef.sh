@@ -21,6 +21,7 @@ airootfs_image_tool_options=('-comp' 'xz' '-Xbcj' 'x86' '-b' '1M' '-Xdict-size' 
 file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/etc/gshadow"]="0:0:400"
+  ["/etc/sudoers.d/wheel"]="0:0:440"
   ["/root"]="0:0:750"
-  ["/usr/local/bin/jumpdev-first-boot"]="0:0:755"
+  ["/home/jump"]="1000:1000:750"
 )
