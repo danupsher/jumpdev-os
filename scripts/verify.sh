@@ -78,7 +78,7 @@ echo "Gate 2: Core Experience"
 echo "-----------------------"
 
 # Check config directories
-for config in hyprland waybar foot nvim zsh starship fuzzel; do
+for config in hypr waybar foot nvim zsh starship fuzzel; do
     if [[ -d "$PROJECT_DIR/configs/$config" ]] && [[ -n "$(ls -A "$PROJECT_DIR/configs/$config" 2>/dev/null)" ]]; then
         pass "$config config exists"
         inc GATE2_PASS

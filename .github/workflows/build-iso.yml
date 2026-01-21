@@ -30,7 +30,7 @@ jobs:
           mkdir -p archiso/airootfs/etc/skel/.config
 
           # Copy application configs
-          cp -r configs/hyprland archiso/airootfs/etc/skel/.config/
+          cp -r configs/hypr archiso/airootfs/etc/skel/.config/
           cp -r configs/waybar archiso/airootfs/etc/skel/.config/
           cp -r configs/foot archiso/airootfs/etc/skel/.config/
           cp -r configs/nvim archiso/airootfs/etc/skel/.config/
