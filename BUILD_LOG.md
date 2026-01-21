@@ -58,6 +58,12 @@
 - Build 6: SUCCESS - Chaotic-AUR working, Discord + wlogout included
 - Build 7: Failed - hyprland-plugin-hyprbars not in Chaotic-AUR
 - Build 8: Beginner-friendly Waybar + VS Code (no hyprbars)
+- Build 9: IN PROGRESS - Build hyprbars from source in CI
+
+**Next Steps**:
+1. Test build 9 - verify hyprbars window buttons + Waybar GUI
+2. Build 10 - Pre-install AI tools (Claude Code, Aider, Ollama)
+3. Gate 3 - Persistence wizard
 
 **Issues Discovered**:
 - Hyprland expects config at `~/.config/hypr/`, not `~/.config/hyprland/`

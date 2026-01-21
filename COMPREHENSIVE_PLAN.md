@@ -69,9 +69,9 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | Node.js + npm | `npm --version` works | DONE |
 | Python + pip/pipx | `pip --version` works | DONE |
 | Rust + Cargo | `cargo --version` works (via rustup) | DONE |
-| Claude Code installed | `claude` command available | PENDING |
-| Aider installed | `aider --version` works | PENDING |
-| Ollama installed | `ollama --version` works | PENDING |
+| Claude Code installed | `claude` command available | PENDING (Build 10) |
+| Aider installed | `aider --version` works | PENDING (Build 10) |
+| Ollama installed | `ollama --version` works | PENDING (Build 10) |
 | CLI tools (fzf, rg, fd, bat, eza, zoxide) | All commands available | DONE |
 | Yazi file manager | `yazi` launches | DONE |
 | Catppuccin theme applied | Visual consistency across apps | DONE |
@@ -127,6 +127,17 @@ Simple CLI tool for common tasks - makes setup easy for beginners.
 - VS Code devcontainers extension pre-installed
 - Docker ready for container-based development
 - Clone repo → open in VS Code → "Reopen in Container" just works
+
+**AI Tools Installation (Build 10)**:
+Pre-install during CI so users have everything out of the box:
+
+| Tool | Install Method | Size |
+|------|----------------|------|
+| Claude Code | `npm install -g @anthropic-ai/claude-code` | ~50MB |
+| Aider | `pipx install aider-chat` | ~100MB |
+| Ollama | Binary install + base model | ~300MB |
+
+All three will be ready at first boot. User just needs to add API keys via `jumpdev set-api-key`.
 
 **Deliverable**: `out/jumpdev-core-*.iso`
 
