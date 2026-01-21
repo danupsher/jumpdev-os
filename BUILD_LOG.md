@@ -16,14 +16,57 @@
 
 | Gate | Status | Notes |
 |------|--------|-------|
-| Gate 1: Foundation | COMPLETE | ISO builds, needs QEMU/hardware testing |
-| Gate 2: Core Experience | IN PROGRESS | Configs done, AI tools need testing |
+| Gate 1: Foundation | COMPLETE | Boots to Hyprland on real hardware |
+| Gate 2: Core Experience | IN PROGRESS | Packages added, testing keybinds |
 | Gate 3: Portability | NOT STARTED | Persistence + hardware testing |
 | Gate 4: Polish | NOT STARTED | Branding + release |
+| Gate 5: ARM64 | NOT STARTED | Apple Silicon support |
 
 ---
 
 ## Session Log
+
+### Session 3 - 2026-01-21
+
+**Completed**:
+- **First successful boot on real hardware** - Boots to Hyprland desktop
+- Fixed mkinitcpio configuration with archiso hooks (was causing "failed to switch root")
+- Fixed Hyprland config directory name: `hyprland/` → `hypr/` (Hyprland expects `~/.config/hypr/`)
+- Added Gate 5: ARM64/Apple Silicon support to comprehensive plan
+- Major package additions for beginner-friendly experience:
+  - **Browsers**: Firefox, Chromium
+  - **File Manager**: Thunar with plugins, gvfs, tumbler
+  - **Communication**: Discord, Telegram (Slack via AUR)
+  - **Media**: VLC, mpv, imv
+  - **Screenshots**: grim, slurp, swappy, flameshot
+  - **GUI Settings**: pavucontrol, blueman, nm-connection-editor, wlogout
+  - **WiFi Support**: broadcom-wl-dkms, linux-firmware-marvell, modemmanager, usb_modeswitch
+- Added Hyprland keybinds for new apps:
+  - `Super + B` → Firefox
+  - `Super + E` → Thunar
+  - `Print` → Screenshot region
+  - `Shift + Print` → Screenshot full screen
+- Updated COMPREHENSIVE_PLAN.md with all new packages and GUI requirements
+- Documented AUR packages for first-boot install: nwg-dock-hyprland, nwg-drawer, nwg-look, swayosd, slack-desktop
+
+**Build History**:
+- Build 1: First successful ISO build
+- Build 2: mkinitcpio archiso hooks fix
+- Build 3: Hyprland config directory fix (`hypr/` not `hyprland/`)
+- Build 4: Beginner-friendly packages (in progress)
+
+**Issues Discovered**:
+- Hyprland expects config at `~/.config/hypr/`, not `~/.config/hyprland/`
+- Keybinds not working until config directory fix (build 3)
+
+**Next**:
+1. Push build 4 with all new packages
+2. Test keybinds on real hardware (Super+Return, Super+D, Super+B, Super+E)
+3. Create first-boot script for AUR package installation
+4. Configure Waybar to show system tray applets
+5. Test WiFi on various hardware
+
+---
 
 ### Session 2 - 2026-01-21
 
@@ -99,7 +142,10 @@
 
 | Date | Version | Size | Gate | Result | Notes |
 |------|---------|------|------|--------|-------|
-| 2026-01-21 | 2026.01.21 | ~3GB | Gate 1 | SUCCESS | First build via GitHub Actions |
+| 2026-01-21 | Build 1 | ~3GB | Gate 1 | SUCCESS | First build via GitHub Actions |
+| 2026-01-21 | Build 2 | ~3GB | Gate 1 | SUCCESS | mkinitcpio archiso hooks fix |
+| 2026-01-21 | Build 3 | ~3GB | Gate 1 | SUCCESS | Hyprland config dir fix (hypr/) |
+| 2026-01-21 | Build 4 | ~4GB | Gate 2 | PENDING | Beginner-friendly packages |
 
 ---
 

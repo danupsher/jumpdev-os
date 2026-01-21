@@ -41,39 +41,67 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 **Requirements**:
 | Requirement | Verification | Status |
 |-------------|--------------|--------|
-| Archiso profile configured | `profiledef.sh` exists and valid | PENDING |
-| Package list complete (base) | `packages.x86_64` includes all deps | PENDING |
-| ISO builds without errors | `build-iso.sh` exits 0 | PENDING |
-| Boots in QEMU (UEFI) | Manual test | PENDING |
+| Archiso profile configured | `profiledef.sh` exists and valid | DONE |
+| Package list complete (base) | `packages.x86_64` includes all deps | DONE |
+| ISO builds without errors | `build-iso.sh` exits 0 | DONE |
+| Boots in QEMU (UEFI) | Manual test | DONE |
 | Boots in QEMU (BIOS) | Manual test | PENDING |
-| Hyprland starts | Desktop visible | PENDING |
-| Waybar visible | Status bar renders | PENDING |
-| Foot terminal opens | Super+Return launches terminal | PENDING |
-| Fuzzel launcher works | Super+D opens launcher | PENDING |
+| Hyprland starts | Desktop visible | DONE |
+| Waybar visible | Status bar renders | DONE |
+| Foot terminal opens | Super+Return launches terminal | TESTING |
+| Fuzzel launcher works | Super+D opens launcher | TESTING |
 
 **Deliverable**: `out/jumpdev-foundation-*.iso`
 
 ---
 
 ### Gate 2: Core Experience
-**Objective**: Fully functional development environment
+**Objective**: Fully functional development environment with beginner-friendly UI
 
 **Requirements**:
 | Requirement | Verification | Status |
 |-------------|--------------|--------|
-| Zsh configured with Starship | Prompt renders correctly | PENDING |
-| Neovim with LSP | Code completion works | PENDING |
-| Git + GitHub CLI + Lazygit | All three functional | PENDING |
+| Zsh configured with Starship | Prompt renders correctly | DONE |
+| Neovim with LSP | Code completion works | DONE |
+| Git + GitHub CLI + Lazygit | All three functional | DONE |
 | Docker + Docker Compose | `docker run hello-world` passes | PENDING |
-| Node.js + pnpm | `pnpm --version` works | PENDING |
-| Python + uv | `uv --version` works | PENDING |
-| Rust + Cargo | `cargo --version` works | PENDING |
+| Node.js + npm | `npm --version` works | DONE |
+| Python + pip/pipx | `pip --version` works | DONE |
+| Rust + Cargo | `cargo --version` works (via rustup) | DONE |
 | Claude Code installed | `claude` command available | PENDING |
 | Aider installed | `aider --version` works | PENDING |
 | Ollama installed | `ollama --version` works | PENDING |
-| CLI tools (fzf, rg, fd, bat, eza, zoxide) | All commands available | PENDING |
-| Yazi file manager | `yazi` launches | PENDING |
-| Catppuccin theme applied | Visual consistency across apps | PENDING |
+| CLI tools (fzf, rg, fd, bat, eza, zoxide) | All commands available | DONE |
+| Yazi file manager | `yazi` launches | DONE |
+| Catppuccin theme applied | Visual consistency across apps | DONE |
+
+**Beginner-Friendly UI Requirements**:
+| Requirement | Verification | Status |
+|-------------|--------------|--------|
+| Web browser | Firefox launches with Super+B | DONE |
+| File manager (GUI) | Thunar launches with Super+E | DONE |
+| App launcher | Fuzzel opens with Super+D | TESTING |
+| Logout menu | wlogout installed | DONE |
+| Volume control GUI | pavucontrol installed | DONE |
+| Bluetooth GUI | blueman installed | DONE |
+| Network manager applet | nm-applet available | DONE |
+| Screenshot tool | grim/slurp/flameshot installed | DONE |
+| Dock bar | nwg-dock-hyprland (AUR, first-boot) | PENDING |
+| App grid launcher | nwg-drawer (AUR, first-boot) | PENDING |
+
+**Communication Apps**:
+| App | Status |
+|-----|--------|
+| Discord | DONE |
+| Telegram | DONE |
+| Slack | PENDING (AUR, first-boot) |
+
+**Media Apps**:
+| App | Status |
+|-----|--------|
+| VLC | DONE |
+| mpv | DONE |
+| imv (image viewer) | DONE |
 
 **Deliverable**: `out/jumpdev-core-*.iso`
 
@@ -172,13 +200,54 @@ mkinitcpio-archiso
 ```
 hyprland
 xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
 waybar
 fuzzel
 mako
 grim
 slurp
+swappy
 wl-clipboard
 xorg-xwayland
+qt5-wayland
+qt6-wayland
+```
+
+### GUI Applications (Beginner-Friendly)
+```
+firefox
+chromium
+thunar
+thunar-volman
+thunar-archive-plugin
+gvfs
+gvfs-mtp
+tumbler
+ffmpegthumbnailer
+wlogout
+pavucontrol
+blueman
+brightnessctl
+playerctl
+network-manager-applet
+nm-connection-editor
+flameshot
+discord
+telegram-desktop
+vlc
+mpv
+imv
+zenity
+```
+
+### AUR Packages (First-Boot Install)
+```
+# Install via yay/paru after first boot
+nwg-dock-hyprland     # Dock bar
+nwg-drawer            # App grid launcher
+nwg-look              # GTK theme settings
+swayosd               # On-screen display for volume/brightness
+slack-desktop         # Slack
 ```
 
 ### Terminal & Shell
@@ -233,21 +302,57 @@ noto-fonts
 noto-fonts-emoji
 ```
 
-### Network & Hardware
+### Network & WiFi (Comprehensive Support)
 ```
 networkmanager
 iwd
+wireless-regdb
+wpa_supplicant
+openssh
+openvpn
+wireguard-tools
+broadcom-wl-dkms
+linux-firmware-marvell
+usb_modeswitch
+modemmanager
+```
+
+### Bluetooth
+```
 bluez
 bluez-utils
+```
+
+### Audio
+```
 pipewire
 pipewire-alsa
 pipewire-pulse
+pipewire-jack
 wireplumber
+```
+
+### Graphics
+```
 mesa
+vulkan-icd-loader
+libva-mesa-driver
 vulkan-intel
+intel-media-driver
 vulkan-radeon
+xf86-video-amdgpu
 nvidia-open-dkms
 nvidia-utils
+nvidia-settings
+```
+
+### Hardware Support
+```
+acpi
+acpid
+tlp
+upower
+power-profiles-daemon
 ```
 
 ### AI/Agent Tools (Manual Installation)
@@ -264,7 +369,7 @@ nvidia-utils
 
 | Application | Config Location | Source in Repo |
 |-------------|-----------------|----------------|
-| Hyprland | `~/.config/hypr/hyprland.conf` | `configs/hyprland/` |
+| Hyprland | `~/.config/hypr/hyprland.conf` | `configs/hypr/` |
 | Waybar | `~/.config/waybar/` | `configs/waybar/` |
 | Foot | `~/.config/foot/foot.ini` | `configs/foot/` |
 | Neovim | `~/.config/nvim/` | `configs/nvim/` |
@@ -280,7 +385,7 @@ nvidia-utils
 
 ## Keybind Reference
 
-### Hyprland (Default)
+### Hyprland - Core
 | Key | Action |
 |-----|--------|
 | `Super + Return` | Open terminal (Foot) |
@@ -288,10 +393,34 @@ nvidia-utils
 | `Super + Q` | Close window |
 | `Super + V` | Toggle floating |
 | `Super + F` | Toggle fullscreen |
+| `Super + Shift + E` | Exit Hyprland |
+
+### Hyprland - Applications
+| Key | Action |
+|-----|--------|
+| `Super + B` | Open browser (Firefox) |
+| `Super + E` | Open file manager (Thunar) |
+| `Print` | Screenshot region to clipboard |
+| `Shift + Print` | Screenshot full screen to clipboard |
+
+### Hyprland - Window Navigation
+| Key | Action |
+|-----|--------|
+| `Super + H/J/K/L` | Focus left/down/up/right |
+| `Super + Arrow` | Focus direction |
+| `Super + Shift + H/J/K/L` | Move window |
+| `Super + Shift + Arrow` | Move window |
 | `Super + 1-9` | Switch workspace |
 | `Super + Shift + 1-9` | Move window to workspace |
-| `Super + Arrow` | Focus direction |
-| `Super + Shift + Arrow` | Move window |
+
+### Hyprland - Media Keys
+| Key | Action |
+|-----|--------|
+| `XF86AudioRaiseVolume` | Volume up 5% |
+| `XF86AudioLowerVolume` | Volume down 5% |
+| `XF86AudioMute` | Toggle mute |
+| `XF86MonBrightnessUp` | Brightness up 5% |
+| `XF86MonBrightnessDown` | Brightness down 5% |
 
 ### Neovim (Custom)
 | Key | Action |

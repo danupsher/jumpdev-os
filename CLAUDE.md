@@ -68,7 +68,7 @@ jumpdev-os/
 │   ├── pacman.conf            # Pacman configuration
 │   └── profiledef.sh          # Archiso profile definition
 ├── configs/                    # Application configurations
-│   ├── hyprland/              # Hyprland compositor config
+│   ├── hypr/                  # Hyprland compositor config (MUST be 'hypr' not 'hyprland')
 │   ├── waybar/                # Status bar config
 │   ├── foot/                  # Terminal config
 │   ├── nvim/                  # Neovim configuration
@@ -102,7 +102,7 @@ jumpdev-os/
 | `archiso/packages.x86_64` | Package list for ISO | Adding/removing packages |
 | `archiso/profiledef.sh` | Archiso profile config | Changing ISO metadata |
 | `archiso/airootfs/etc/skel/` | User dotfiles | Changing default configs |
-| `configs/hyprland/hyprland.conf` | WM configuration | Keybinds, layout, appearance |
+| `configs/hypr/hyprland.conf` | WM configuration | Keybinds, layout, appearance |
 | `configs/nvim/init.lua` | Neovim configuration | Editor setup, plugins |
 | `scripts/build-iso.sh` | ISO build process | Build pipeline changes |
 | `scripts/first-boot.sh` | First boot wizard | Onboarding flow |
@@ -131,6 +131,7 @@ sudo ./scripts/build-iso.sh
 - Package list must include all dependencies; no AUR packages directly (use custom repo or build in airootfs)
 
 ### Hyprland/Wayland
+- **Config directory is `~/.config/hypr/` NOT `~/.config/hyprland/`** - this is a common mistake
 - No X11 applications without XWayland (included by default)
 - Environment variables must be set for Wayland compatibility
 - NVIDIA requires specific configuration (nvidia-drm.modeset=1)
