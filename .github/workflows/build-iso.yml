@@ -49,16 +49,16 @@ jobs:
       - name: Build hyprbars plugin
         run: |
           # Install build dependencies
-          pacman -S --noconfirm cmake meson cpio hyprland hyprland-protocols hyprlang libdisplay-info hyprcursor hyprwayland-scanner aquamarine
+          pacman -S --noconfirm make gcc cmake meson cpio hyprland hyprland-protocols hyprlang libdisplay-info hyprcursor hyprwayland-scanner aquamarine pkgconf glaze
 
-          # Clone and build hyprland-plugins
-          git clone --depth 1 https://github.com/hyprwm/hyprland-plugins.git /tmp/hyprland-plugins
-          cd /tmp/hyprland-plugins/hyprbars
-          make all
+          # Use hyprpm to add and build the plugin
+          hyprpm add https://github.com/hyprwm/hyprland-plugins
+          hyprpm enable hyprbars
 
-          # Create plugin directory in airootfs
+          # Copy built plugin to airootfs
           mkdir -p $GITHUB_WORKSPACE/archiso/airootfs/usr/lib/hyprland-plugins
-          cp /tmp/hyprland-plugins/hyprbars/hyprbars.so $GITHUB_WORKSPACE/archiso/airootfs/usr/lib/hyprland-plugins/
+          cp ~/.local/share/hyprpm/hyprbars/hyprbars.so $GITHUB_WORKSPACE/archiso/airootfs/usr/lib/hyprland-plugins/ || \
+          cp /root/.local/share/hyprpm/hyprbars/hyprbars.so $GITHUB_WORKSPACE/archiso/airootfs/usr/lib/hyprland-plugins/
 
       - name: Prepare build environment
         run: |
