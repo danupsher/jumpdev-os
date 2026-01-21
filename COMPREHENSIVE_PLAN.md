@@ -92,15 +92,12 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 **Communication Apps**:
 | App | Status |
 |-----|--------|
-| Discord | DONE |
-| Telegram | DONE |
-| Slack | PENDING (AUR, first-boot) |
+| Discord | DONE (via Chaotic-AUR) |
 
 **Media Apps**:
 | App | Status |
 |-----|--------|
 | VLC | DONE |
-| mpv | DONE |
 | imv (image viewer) | DONE |
 
 **Deliverable**: `out/jumpdev-core-*.iso`
@@ -108,7 +105,7 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 ---
 
 ### Gate 3: Portability
-**Objective**: Working live USB with persistence
+**Objective**: Working live USB with persistence - users stay logged in, files saved
 
 **Requirements**:
 | Requirement | Verification | Status |
@@ -124,7 +121,27 @@ JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted softw
 | Boots on real hardware (Machine 3) | Document specs | PENDING |
 | USB 3.0 performance acceptable | Subjective but usable | PENDING |
 
-**Deliverable**: `out/jumpdev-portable-*.iso` + tested USB image
+**Persistence Approach**:
+Ship two formats for different use cases:
+
+| Format | Size | Use Case |
+|--------|------|----------|
+| `jumpdev-x.x.x-x86_64.iso` | ~4GB | Trying it out, no persistence |
+| `jumpdev-x.x.x-x86_64-persistent.img` | ~12GB | Daily driver, persistence built-in |
+
+**IMG format benefits**:
+- Zero setup for users - flash and boot, persistence just works
+- Same flashing tools (Balena Etcher, Rufus, dd)
+- No hardware compatibility difference vs ISO
+- App logins (Discord, Firefox), API keys, files all persist across reboots
+
+**Technical implementation**:
+- IMG contains two partitions: boot (squashfs) + persistence (ext4)
+- Boot scripts detect persistence partition by label `JUMPDEV_PERSIST`
+- Overlay filesystem merges read-only base with writable persistence
+- Home directory lives on persistence partition
+
+**Deliverable**: `jumpdev-x.x.x-x86_64.iso` + `jumpdev-x.x.x-x86_64-persistent.img`
 
 ---
 

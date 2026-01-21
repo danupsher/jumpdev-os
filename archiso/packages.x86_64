@@ -31,19 +31,18 @@ fuzzel
 mako
 grim
 slurp
-swappy
 wl-clipboard
 xorg-xwayland
 qt5-wayland
 qt6-wayland
 
 # User-Friendly GUI Elements
-wlogout
 pavucontrol
 blueman
 brightnessctl
 playerctl
 network-manager-applet
+wlogout
 
 # Terminal & Shell
 foot
@@ -55,7 +54,6 @@ neovim
 
 # Browsers
 firefox
-chromium
 
 # File Manager (GUI)
 thunar
@@ -66,17 +64,13 @@ gvfs-mtp
 tumbler
 ffmpegthumbnailer
 
-# Communication
+# Communication (via Chaotic-AUR)
 discord
-telegram-desktop
 
 # Media
 vlc
-mpv
 imv
 
-# Screenshots
-flameshot
 
 # Development - Version Control
 git
@@ -95,7 +89,6 @@ python
 python-pip
 python-pipx
 rustup
-go
 
 # CLI Utilities
 fzf
@@ -123,7 +116,6 @@ fastfetch
 # Fonts
 ttf-jetbrains-mono-nerd
 noto-fonts
-noto-fonts-cjk
 noto-fonts-emoji
 ttf-font-awesome
 
@@ -177,9 +169,7 @@ upower
 power-profiles-daemon
 
 # System Settings GUIs
-pavucontrol
 nm-connection-editor
-blueman
 
 # Misc Utilities
 polkit
@@ -190,9 +180,12 @@ xdg-utils
 libnotify
 zenity
 
-# AUR packages (install post-boot via first-boot script)
+# Chaotic-AUR support (for installing more AUR packages post-boot)
+chaotic-keyring
+chaotic-mirrorlist
+
+# Additional AUR packages available via Chaotic-AUR after boot:
 # - nwg-dock-hyprland (dock bar)
 # - nwg-drawer (app grid launcher)
 # - nwg-look (GTK theme settings)
-# - swayosd (on-screen display)
-# - slack-desktop (Slack)
+# - visual-studio-code-bin
