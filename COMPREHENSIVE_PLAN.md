@@ -2,16 +2,38 @@
 
 ## Executive Summary
 
-JumpDev OS is a portable Arch Linux distribution optimised for AI-assisted software development. The system boots from USB, providing instant access to a fully configured development environment with Claude Code, modern CLI tools, and a Wayland-based tiling window manager.
+JumpDev OS is the first Linux distribution purpose-built for vibe coding and AI-assisted development. Boot from USB, get a fully configured environment with Claude Code, Aider, and modern dev tools. Use it portable, then seamlessly migrate to disk when you're ready.
 
-**Target User**: Developers who want a consistent, portable coding environment with AI tools pre-configured.
+**Target User**: Developers who want AI tools ready to go, not hours of setup.
 
-**Unique Value**:
-- Zero installation - boot from USB on any machine
-- Multi-architecture support (x86_64 + ARM64 for Apple Silicon)
-- Pre-configured AI agent tooling (Claude Code, Aider, Ollama)
-- Modern, keyboard-driven workflow (Hyprland + Neovim)
-- Persistence support for projects and API keys
+**Why JumpDev OS Exists**: The AI coding wave is here. Claude Code, Aider, Cursor, Copilot - everyone's vibe coding. But there's no operating system built for it. Until now.
+
+---
+
+## Killer Features (First-to-Market)
+
+| Feature | Why It Matters | Competition |
+|---------|----------------|-------------|
+| **First vibe coding distro** | Purpose-built for AI-assisted development | None - blue ocean |
+| **AI tools pre-installed** | Claude Code, Aider, Ollama ready at first boot | Everyone else: DIY setup |
+| **USB → Disk migration** | Use portable, graduate to permanent. All data migrates. | No distro does this well |
+| **Modern tiling WM that's usable** | Hyprland with title bars, buttons, app drawer | Most: "learn keybinds or die" |
+| **Portable dev environment** | Your whole setup travels. Same on any PC. | VMs are slow, cloud needs internet |
+
+**The Pitch**:
+> "The first Linux distro built for vibe coding. Claude Code, VS Code, and modern CLI tools. Boot from USB anywhere. Migrate to disk when you're ready. Everything just works."
+
+---
+
+## Target Users
+
+1. **Developers vibe coding with AI** - Want Claude Code / Aider without setup hassle
+2. **Developers who work on multiple machines** - Consistent environment everywhere
+3. **Windows/Mac users curious about Linux** - Low-commitment way to try it
+4. **Students/bootcampers** - Plug in at any computer lab, have your full setup
+5. **Contractors/consultants** - Client machine? Plug in your USB, code securely
+
+---
 
 ---
 
