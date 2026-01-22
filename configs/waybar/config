@@ -3,7 +3,7 @@
     "position": "top",
     "height": 34,
     "spacing": 4,
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/terminal", "custom/files", "custom/browser", "custom/code", "custom/close"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/terminal", "custom/files", "custom/browser", "custom/code"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio", "network", "battery", "custom/power"],
 
@@ -103,12 +103,6 @@
         "format": "Code",
         "tooltip": "Open VS Code",
         "on-click": "code"
-    },
-
-    "custom/close": {
-        "format": "[X]",
-        "tooltip": "Close Window",
-        "on-click": "hyprctl dispatch killactive"
     },
 
     "custom/power": {
