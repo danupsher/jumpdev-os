@@ -76,43 +76,43 @@
     },
 
     "custom/launcher": {
-        "format": " ",
+        "format": "Apps",
         "tooltip": "Open App Launcher",
         "on-click": "fuzzel"
     },
 
     "custom/terminal": {
-        "format": " ",
+        "format": "Term",
         "tooltip": "Open Terminal",
         "on-click": "foot"
     },
 
     "custom/files": {
-        "format": " ",
+        "format": "Files",
         "tooltip": "Open File Manager",
         "on-click": "thunar"
     },
 
     "custom/browser": {
-        "format": " ",
+        "format": "Web",
         "tooltip": "Open Firefox",
         "on-click": "firefox"
     },
 
     "custom/code": {
-        "format": " ",
+        "format": "Code",
         "tooltip": "Open VS Code",
         "on-click": "code"
     },
 
     "custom/close": {
-        "format": " ",
+        "format": "[X]",
         "tooltip": "Close Window",
         "on-click": "hyprctl dispatch killactive"
     },
 
     "custom/power": {
-        "format": " ",
+        "format": "Power",
         "tooltip": "Power Menu",
         "on-click": "wlogout"
     }
