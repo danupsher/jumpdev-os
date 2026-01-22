@@ -47,14 +47,14 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 │  Display Stack                                                       │
 │  ├── Wayland compositor (Hyprland)                                  │
 │  ├── Status bar (Waybar)                                            │
-│  ├── App launcher (nwg-drawer)                                      │
+│  ├── App menu (nwg-menu)                                            │
 │  └── Notifications (mako)                                           │
 ├─────────────────────────────────────────────────────────────────────┤
 │  Terminal Environment                                                │
-│  ├── Foot terminal                                                  │
+│  ├── Kitty terminal                                                 │
 │  ├── Zsh + Starship prompt                                          │
 │  ├── Neovim (primary editor)                                        │
-│  └── CLI tools (fzf, ripgrep, fd, bat, eza, zoxide, yazi)          │
+│  └── CLI tools (fzf, ripgrep, fd, bat, eza, zoxide, yazi, zellij)  │
 ├─────────────────────────────────────────────────────────────────────┤
 │  AI/Agent Tools                                                      │
 │  ├── Claude Code (primary)                                          │
@@ -62,10 +62,10 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 │  └── Ollama (local models)                                          │
 ├─────────────────────────────────────────────────────────────────────┤
 │  Development Stack                                                   │
-│  ├── Git, GitHub CLI, Lazygit                                       │
+│  ├── Git, GitHub CLI, Lazygit, Lazydocker                          │
 │  ├── Docker, Docker Compose                                         │
-│  ├── Node.js + pnpm                                                 │
-│  ├── Python + uv                                                    │
+│  ├── Node.js + npm + mise (version manager)                        │
+│  ├── Python + pip/pipx                                              │
 │  └── Rust + Cargo                                                   │
 └─────────────────────────────────────────────────────────────────────┘
 ```
@@ -88,11 +88,11 @@ jumpdev-os/
 ├── configs/                    # Application configurations
 │   ├── hypr/                  # Hyprland compositor config (MUST be 'hypr' not 'hyprland')
 │   ├── waybar/                # Status bar config
-│   ├── foot/                  # Terminal config
+│   ├── kitty/                 # Terminal config
+│   ├── nwg-menu/              # App menu config
 │   ├── nvim/                  # Neovim configuration
 │   ├── zsh/                   # Zsh configuration
 │   ├── starship/              # Prompt configuration
-│   ├── fuzzel/                # Launcher configuration
 │   ├── yazi/                  # File manager configuration
 │   ├── btop/                  # System monitor configuration
 │   ├── lazygit/               # Git UI configuration
@@ -160,8 +160,8 @@ sudo ./scripts/build-iso.sh
 - Overlay filesystem used to merge persistence with squashfs
 
 ### Hardware Compatibility
-- WiFi firmware packages: `linux-firmware`, `broadcom-wl` (if needed)
-- GPU: Mesa for AMD/Intel, nvidia-open for NVIDIA
+- WiFi firmware packages: `linux-firmware`, `broadcom-wl-dkms` (built-in for all laptops)
+- GPU: Mesa for AMD/Intel, NVIDIA drivers available via first-boot selector
 - Secure Boot must be disabled on target machines (document in README)
 
 ## Testing Checklist

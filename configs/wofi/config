@@ -1,0 +1,16 @@
+## JumpDev OS Wofi Config
+
+# Appearance
+width=300
+height=200
+location=top-right
+xoffset=-10
+yoffset=40
+
+# Behavior
+allow_markup=true
+allow_images=true
+insensitive=true
+prompt=
+hide_scroll=true
+no_actions=true

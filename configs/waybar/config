@@ -53,7 +53,11 @@
             "headphone": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-click-right": "pavucontrol",
+        "on-scroll-up": "swayosd-client --output-volume raise",
+        "on-scroll-down": "swayosd-client --output-volume lower",
+        "tooltip": "Scroll to adjust, click to mute, right-click for settings"
     },
 
     "battery": {
@@ -70,13 +74,13 @@
     "custom/launcher": {
         "format": "Apps",
         "tooltip": "Open App Launcher",
-        "on-click": "nwg-drawer -mt 40 -mb 100 -ml 100 -mr 100 -ovl"
+        "on-click": "nwg-menu -ha left -term kitty -fm thunar -cmd-logout 'hyprctl dispatch exit' -d"
     },
 
     "custom/terminal": {
         "format": "Term",
         "tooltip": "Open Terminal",
-        "on-click": "foot"
+        "on-click": "kitty"
     },
 
     "custom/files": {
@@ -93,13 +97,13 @@
 
     "custom/code": {
         "format": "Code",
-        "tooltip": "Open VS Code",
-        "on-click": "code"
+        "tooltip": "Open Neovim",
+        "on-click": "kitty -e nvim"
     },
 
     "custom/power": {
         "format": "Power",
         "tooltip": "Power Menu",
-        "on-click": "wlogout"
+        "on-click": "~/.config/scripts/power-menu.sh"
     }
 }

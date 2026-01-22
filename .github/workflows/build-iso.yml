@@ -71,10 +71,12 @@ jobs:
           # Copy application configs
           cp -r configs/hypr archiso/airootfs/etc/skel/.config/
           cp -r configs/waybar archiso/airootfs/etc/skel/.config/
-          cp -r configs/foot archiso/airootfs/etc/skel/.config/
+          cp -r configs/kitty archiso/airootfs/etc/skel/.config/
           cp -r configs/nvim archiso/airootfs/etc/skel/.config/
-          cp -r configs/fuzzel archiso/airootfs/etc/skel/.config/
-          cp -r configs/nwg-drawer archiso/airootfs/etc/skel/.config/
+          cp -r configs/nwg-menu archiso/airootfs/etc/skel/.config/
+          cp -r configs/wofi archiso/airootfs/etc/skel/.config/
+          cp -r configs/scripts archiso/airootfs/etc/skel/.config/
+          chmod +x archiso/airootfs/etc/skel/.config/scripts/*.sh
           cp -r configs/yazi archiso/airootfs/etc/skel/.config/ 2>/dev/null || true
           cp -r configs/btop archiso/airootfs/etc/skel/.config/ 2>/dev/null || true
           cp -r configs/lazygit archiso/airootfs/etc/skel/.config/ 2>/dev/null || true

@@ -84,8 +84,8 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 | Boots in QEMU (BIOS) | Manual test | PENDING |
 | Hyprland starts | Desktop visible | DONE |
 | Waybar visible | Status bar renders | DONE |
-| Foot terminal opens | Super+Return launches terminal | TESTING |
-| Fuzzel launcher works | Super+D opens launcher | TESTING |
+| Kitty terminal opens | Super+Return launches terminal | DONE |
+| nwg-menu launcher works | Super+D opens menu | DONE |
 
 **Deliverable**: `out/jumpdev-foundation-*.iso`
 
@@ -99,7 +99,7 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 |-------------|--------------|--------|
 | Zsh configured with Starship | Prompt renders correctly | DONE |
 | Neovim with LSP | Code completion works | DONE |
-| VS Code | `code` command available | DONE |
+| VS Code | Available via first-boot selector | MOVED |
 | Git + GitHub CLI + Lazygit | All three functional | DONE |
 | Docker + Docker Compose | `docker run hello-world` passes | PENDING |
 | Node.js + npm | `npm --version` works | DONE |
@@ -118,24 +118,23 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 |-------------|--------------|--------|
 | Web browser | Firefox launches with Super+B | DONE |
 | File manager (GUI) | Thunar launches with Super+E | DONE |
-| App launcher | Fuzzel opens with Super+D | TESTING |
+| App launcher | nwg-menu opens with Super+D | DONE |
 | Logout menu | wlogout installed | DONE |
 | Volume control GUI | pavucontrol installed | DONE |
 | Bluetooth GUI | blueman installed | DONE |
 | Network manager applet | nm-applet available | DONE |
 | Screenshot tool | grim/slurp/flameshot installed | DONE |
-| Dock bar | nwg-dock-hyprland (AUR, first-boot) | PENDING |
-| App grid launcher | nwg-drawer (AUR, first-boot) | PENDING |
+| Dock bar | nwg-dock-hyprland (optional, first-boot) | PENDING |
 
 **Communication Apps**:
 | App | Status |
 |-----|--------|
-| Discord | DONE (via Chaotic-AUR) |
+| Discord | Available via first-boot selector |
 
 **Media Apps**:
 | App | Status |
 |-----|--------|
-| VLC | DONE |
+| mpv | DONE |
 | imv (image viewer) | DONE |
 
 **`jumpdev` Helper Command** (inspired by Bluefin's `ujust`):
@@ -416,8 +415,8 @@ or
 ▸ Languages: Node.js, Python, Rust
 ▸ Containers: Docker, Docker Compose
 ▸ CLI: fzf, ripgrep, bat, eza, zoxide, yazi
-▸ Desktop: Hyprland, Waybar, Fuzzel
-▸ Apps: Firefox, Discord, VLC, Thunar
+▸ Desktop: Hyprland, Waybar, nwg-menu
+▸ Apps: Firefox, Thunar, mpv
 ```
 
 **Section 6 - Requirements**:
@@ -613,14 +612,14 @@ mkinitcpio-archiso
 ### Display Stack
 ```
 hyprland
+uwsm
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 waybar
-fuzzel
+nwg-menu
 mako
 grim
 slurp
-swappy
 wl-clipboard
 xorg-xwayland
 qt5-wayland
@@ -630,7 +629,6 @@ qt6-wayland
 ### GUI Applications (Beginner-Friendly)
 ```
 firefox
-chromium
 thunar
 thunar-volman
 thunar-archive-plugin
@@ -645,30 +643,31 @@ brightnessctl
 playerctl
 network-manager-applet
 nm-connection-editor
-flameshot
-discord
-telegram-desktop
-vlc
 mpv
 imv
 zenity
 ```
 
-### AUR Packages (First-Boot Install)
+### First-Boot App Selector (Requires Persistence)
 ```
-# Install via yay/paru after first boot
-nwg-dock-hyprland     # Dock bar
-nwg-drawer            # App grid launcher
-nwg-look              # GTK theme settings
-swayosd               # On-screen display for volume/brightness
-slack-desktop         # Slack
+# Optional apps users can install via first-boot wizard
+visual-studio-code-bin  # Code editor
+google-chrome           # Browser (for Windows converts)
+discord                 # Communication
+nvidia-open-dkms        # NVIDIA GPU drivers
+nvidia-utils
+nvidia-settings
+nwg-dock-hyprland       # Dock bar (optional)
+nwg-look                # GTK theme settings
 ```
 
 ### Terminal & Shell
 ```
-foot
+kitty
 zsh
 starship
+zellij
+tmux
 ```
 
 ### Editors
@@ -684,10 +683,13 @@ lazygit
 docker
 docker-compose
 docker-buildx
+lazydocker
+mise
 nodejs
 npm
 python
 python-pip
+python-pipx
 rustup
 ```
 
@@ -755,9 +757,7 @@ vulkan-intel
 intel-media-driver
 vulkan-radeon
 xf86-video-amdgpu
-nvidia-open-dkms
-nvidia-utils
-nvidia-settings
+# NVIDIA drivers available via first-boot app selector
 ```
 
 ### Hardware Support
@@ -785,15 +785,14 @@ power-profiles-daemon
 |-------------|-----------------|----------------|
 | Hyprland | `~/.config/hypr/hyprland.conf` | `configs/hypr/` |
 | Waybar | `~/.config/waybar/` | `configs/waybar/` |
-| Foot | `~/.config/foot/foot.ini` | `configs/foot/` |
+| Kitty | `~/.config/kitty/kitty.conf` | `configs/kitty/` |
+| nwg-menu | `~/.config/nwg-menu/` | `configs/nwg-menu/` |
 | Neovim | `~/.config/nvim/` | `configs/nvim/` |
 | Zsh | `~/.zshrc`, `~/.zshenv` | `configs/zsh/` |
 | Starship | `~/.config/starship.toml` | `configs/starship/` |
-| Fuzzel | `~/.config/fuzzel/fuzzel.ini` | `configs/fuzzel/` |
 | Yazi | `~/.config/yazi/` | `configs/yazi/` |
 | Btop | `~/.config/btop/` | `configs/btop/` |
 | Lazygit | `~/.config/lazygit/` | `configs/lazygit/` |
-| Git | `~/.gitconfig` | `configs/git/` |
 
 ---
 
@@ -802,8 +801,8 @@ power-profiles-daemon
 ### Hyprland - Core
 | Key | Action |
 |-----|--------|
-| `Super + Return` | Open terminal (Foot) |
-| `Super + D` | Open launcher (Fuzzel) |
+| `Super + Return` | Open terminal (Kitty) |
+| `Super + D` | Open app menu (nwg-menu) |
 | `Super + Q` | Close window |
 | `Super + V` | Toggle floating |
 | `Super + F` | Toggle fullscreen |

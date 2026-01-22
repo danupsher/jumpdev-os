@@ -26,6 +26,49 @@
 
 ## Session Log
 
+### Session 4 - 2026-01-22
+
+**Completed**:
+- **Terminal overhaul**: Replaced Foot with Kitty (better color support, SSH terminfo)
+- **Launcher consolidation**: Removed Fuzzel, kept only nwg-menu (Windows-style start menu)
+- **Added Omakub-matching terminal tools**:
+  - `lazydocker` - Docker TUI
+  - `zellij` - Modern terminal multiplexer
+  - `mise` - Version manager for node/python/ruby
+- **ISO size optimization**:
+  - Replaced VLC (40MB) with mpv (6MB)
+  - Removed Discord and VS Code from base ISO (moved to first-boot selector)
+  - Removed NVIDIA DKMS drivers (moved to first-boot selector)
+  - Removed Broadcom DKMS drivers (moved to first-boot selector)
+  - Removed linux-firmware-marvell (niche)
+- **First-boot app selector planned** - Will offer optional installs:
+  - VS Code, Discord
+  - NVIDIA drivers (nvidia-open-dkms, nvidia-utils, nvidia-settings)
+  - Broadcom WiFi (broadcom-wl-dkms)
+  - Requires persistence partition
+- **nm-applet added** to Hyprland startup (fixed WiFi showing disabled)
+- **nwg-menu** configured with Catppuccin theme, drops down from Apps button
+
+**Changes Summary**:
+- Terminal: foot → kitty
+- Launcher: fuzzel + nwg-drawer → nwg-menu only
+- Media: VLC → mpv
+- Removed from base: Discord, VS Code, NVIDIA drivers, Broadcom drivers
+- Added: lazydocker, zellij, mise
+
+**Rationale**:
+- Faster boot (no DKMS compilation)
+- Smaller ISO (~500MB+ savings from NVIDIA alone)
+- Better SSH experience (Kitty terminfo widely supported)
+- Match Omakub's terminal tooling
+
+**Next Steps**:
+1. Test build with new packages
+2. Implement first-boot app selector script
+3. Add persistence detection and warning
+
+---
+
 ### Session 3 - 2026-01-21
 
 **Completed**:
@@ -182,6 +225,9 @@
 | 2026-01-22 | Build 14 | ~2.4GB | Gate 2 | SUCCESS | uwsm startup fix |
 | 2026-01-22 | Build 15 | ~2.4GB | Gate 2 | SUCCESS | Text labels for Waybar |
 | 2026-01-22 | Build 16 | - | Gate 2 | PENDING | Remove close button |
+| 2026-01-22 | Build 17-19 | - | Gate 2 | FAILED | WiFi packages not in Chaotic-AUR |
+| 2026-01-22 | Build 20 | ~2.4GB | Gate 2 | SUCCESS | WiFi drivers fixed |
+| 2026-01-22 | Build 21 | - | Gate 2 | PENDING | Kitty, nwg-menu, mpv, no DKMS |
 
 ---
 

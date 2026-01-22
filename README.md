@@ -33,16 +33,16 @@ A portable Linux distribution for modern development. Boot from USB on any PC, g
 ### Modern Desktop
 - **Hyprland** - Tiling window manager with smooth animations
 - **Window title bars** - Close, maximize, minimize buttons on every window
-- **nwg-drawer** - App launcher with categories (like a Start menu)
+- **nwg-menu** - Traditional app menu (like Windows Start menu)
 - **Waybar** - Status bar with quick-launch buttons
 - **Catppuccin Mocha** - Easy-on-the-eyes dark theme
 
 ### Development Stack
-- **Editors**: VS Code + Neovim (LSP pre-configured)
+- **Editors**: Neovim (LSP pre-configured), VS Code available via first-boot
 - **Version Control**: Git, GitHub CLI, Lazygit
-- **Containers**: Docker, Docker Compose
-- **Languages**: Node.js, Python, Rust (rustup)
-- **CLI Tools**: fzf, ripgrep, fd, bat, eza, zoxide, yazi, btop, tmux
+- **Containers**: Docker, Docker Compose, Lazydocker
+- **Languages**: Node.js, Python, Rust (rustup) + mise version manager
+- **CLI Tools**: fzf, ripgrep, fd, bat, eza, zoxide, yazi, btop, tmux, zellij
 
 ### Portable → Permanent
 Use JumpDev OS from USB for a day, a week, or a month. When you're ready to install permanently:
@@ -101,16 +101,15 @@ Same environment. Same logins. Just faster.
 |-----------|-------------|
 | Hyprland | Tiling Wayland compositor |
 | Waybar | Status bar with quick-launch buttons |
-| nwg-drawer | App launcher with categories |
-| Fuzzel | Quick search launcher |
+| nwg-menu | Traditional app menu (like Windows Start) |
 | Mako | Notification daemon |
 | wlogout | Logout/power menu |
 
 ### Editors
 | Editor | Description |
 |--------|-------------|
-| VS Code | Full GUI editor with extensions |
 | Neovim | Terminal editor with LSP, Treesitter, Telescope |
+| VS Code | Available via first-boot app selector |
 
 ### AI & Coding Tools
 | Tool | Description |
@@ -134,17 +133,25 @@ Same environment. Same logins. Just faster.
 | Docker | Container runtime |
 | Docker Compose | Multi-container apps |
 | Docker Buildx | Extended build features |
+| Lazydocker | Docker TUI |
 
 ### Applications
 | App | Description |
 |-----|-------------|
 | Firefox | Web browser |
 | Thunar | File manager |
-| Discord | Communication |
-| VLC | Media player |
+| mpv | Media player |
 | imv | Image viewer |
 | pavucontrol | Audio settings |
 | blueman | Bluetooth manager |
+
+### First-Boot App Selector (Optional)
+| App | Description |
+|-----|-------------|
+| VS Code | Full GUI editor |
+| Google Chrome | Browser |
+| Discord | Communication |
+| NVIDIA Drivers | For NVIDIA GPUs |
 
 ### CLI Tools
 ```
@@ -158,6 +165,8 @@ yazi       - Terminal file manager
 btop       - System monitor
 jq/yq      - JSON/YAML tools
 tmux       - Terminal multiplexer
+zellij     - Modern terminal multiplexer
+mise       - Version manager (node/python/ruby)
 fastfetch  - System info
 ```
 
@@ -167,12 +176,11 @@ fastfetch  - System info
 
 | Key | Action |
 |-----|--------|
-| `Super + Return` | Terminal |
-| `Super + D` | App launcher |
+| `Super + Return` | Terminal (Kitty) |
+| `Super + D` | App menu |
 | `Super + Q` | Close window |
 | `Super + B` | Firefox |
 | `Super + E` | File manager |
-| `Super + C` | VS Code |
 | `Super + F` | Fullscreen |
 | `Super + 1-9` | Switch workspace |
 | `Print` | Screenshot |
@@ -186,7 +194,7 @@ fastfetch  - System info
 |--------|--------|--------|
 | Intel | mesa, vulkan-intel | Full support |
 | AMD | mesa, vulkan-radeon | Full support |
-| NVIDIA | nvidia-open-dkms | Supported |
+| NVIDIA | nvidia-open-dkms | Via first-boot selector |
 
 ### WiFi
 Drivers included for: Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, Ralink
@@ -206,11 +214,10 @@ PipeWire with PulseAudio and JACK compatibility.
 | Kernel | linux-zen |
 | Display | Wayland |
 | Compositor | Hyprland |
-| Terminal | Foot |
+| Terminal | Kitty |
 | Shell | Zsh + Starship |
 | Theme | Catppuccin Mocha |
 | Font | JetBrains Mono Nerd Font |
-| Icons | Papirus Dark |
 
 ---
 

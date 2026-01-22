@@ -28,8 +28,7 @@ uwsm
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 waybar
-fuzzel
-nwg-drawer
+nwg-menu
 mako
 grim
 slurp
@@ -44,16 +43,17 @@ blueman
 brightnessctl
 playerctl
 network-manager-applet
-wlogout
+wofi
+swayosd-git
+swaylock
 
 # Terminal & Shell
-foot
+kitty
 zsh
 starship
 
 # Editors
 neovim
-visual-studio-code-bin
 
 # Browsers
 firefox
@@ -67,11 +67,8 @@ gvfs-mtp
 tumbler
 ffmpegthumbnailer
 
-# Communication (via Chaotic-AUR)
-discord
-
 # Media
-vlc
+mpv
 imv
 
 
@@ -84,6 +81,10 @@ lazygit
 docker
 docker-compose
 docker-buildx
+lazydocker
+
+# Development - Version Manager
+mise
 
 # Development - Languages
 nodejs
@@ -113,6 +114,7 @@ tree
 man-db
 man-pages
 tmux
+zellij
 less
 fastfetch
 
@@ -135,7 +137,7 @@ wireguard-tools
 # Note: linux-firmware + linux-zen kernel includes drivers for most WiFi chips
 linux-firmware-marvell
 
-# Broadcom WiFi (proprietary driver for many Broadcom chips)
+# Broadcom WiFi (proprietary driver for many Broadcom chips - common in laptops)
 broadcom-wl-dkms
 
 # USB WiFi and mobile broadband
@@ -166,10 +168,8 @@ intel-media-driver
 vulkan-radeon
 xf86-video-amdgpu
 
-# Graphics - NVIDIA
-nvidia-open-dkms
-nvidia-utils
-nvidia-settings
+# Graphics - NVIDIA (available via first-boot app selector)
+# nvidia-open-dkms nvidia-utils nvidia-settings
 
 # Hardware Support
 acpi
@@ -190,12 +190,17 @@ xdg-utils
 libnotify
 zenity
 
+# Boot splash
+plymouth
+
 # Chaotic-AUR support (for installing more AUR packages post-boot)
 chaotic-keyring
 chaotic-mirrorlist
 
-# Additional AUR packages available via Chaotic-AUR after boot:
+# First-boot app selector offers (requires persistence):
+# - visual-studio-code-bin (editor)
+# - google-chrome (browser)
+# - discord (communication)
+# - nvidia-open-dkms nvidia-utils nvidia-settings (NVIDIA GPU)
 # - nwg-dock-hyprland (dock bar)
-# - nwg-drawer (app grid launcher)
 # - nwg-look (GTK theme settings)
-# - visual-studio-code-bin
