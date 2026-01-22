@@ -1,0 +1,96 @@
+/* JumpDev OS nwg-drawer - Catppuccin Mocha theme */
+
+/* Main window */
+window {
+    background-color: rgba(30, 30, 46, 0.95);
+    color: #cdd6f4;
+}
+
+/* Search entry */
+entry {
+    background-color: #313244;
+    border-radius: 8px;
+    border: 2px solid #45475a;
+    padding: 8px 12px;
+    margin: 10px;
+    color: #cdd6f4;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+entry:focus {
+    border-color: #cba6f7;
+}
+
+/* App buttons */
+button {
+    background-color: transparent;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    margin: 4px;
+    color: #cdd6f4;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11px;
+}
+
+button:hover {
+    background-color: #313244;
+}
+
+button:focus {
+    background-color: #45475a;
+    box-shadow: none;
+}
+
+/* App button labels */
+button label {
+    color: #cdd6f4;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 11px;
+}
+
+/* Category buttons */
+#category-button {
+    background-color: #313244;
+    border-radius: 6px;
+    padding: 6px 12px;
+    margin: 4px;
+    color: #cdd6f4;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 12px;
+}
+
+#category-button:hover {
+    background-color: #45475a;
+}
+
+#category-button:checked {
+    background-color: #cba6f7;
+    color: #1e1e2e;
+}
+
+/* Pinned apps section */
+#pinned-box {
+    padding: 10px;
+}
+
+/* Scrolled window */
+scrolledwindow {
+    background-color: transparent;
+}
+
+/* Scrollbar */
+scrollbar {
+    background-color: #1e1e2e;
+}
+
+scrollbar slider {
+    background-color: #45475a;
+    border-radius: 4px;
+    min-width: 8px;
+}
+
+scrollbar slider:hover {
+    background-color: #585b70;
+}

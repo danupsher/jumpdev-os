@@ -70,7 +70,7 @@
     "custom/launcher": {
         "format": "Apps",
         "tooltip": "Open App Launcher",
-        "on-click": "fuzzel"
+        "on-click": "nwg-drawer"
     },
 
     "custom/terminal": {
