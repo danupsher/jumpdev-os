@@ -129,8 +129,18 @@ wpa_supplicant
 openssh
 openvpn
 wireguard-tools
-broadcom-wl-dkms
+
+# WiFi Firmware & Drivers
+linux-firmware-bnx2x
 linux-firmware-marvell
+linux-firmware-mellanox
+linux-firmware-qlogic
+broadcom-wl-dkms
+
+# Realtek WiFi drivers (from Chaotic-AUR) - very common in laptops
+rtl8821ce-dkms-git
+
+# USB WiFi and mobile broadband
 usb_modeswitch
 modemmanager
 
