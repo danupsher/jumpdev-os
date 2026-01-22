@@ -24,6 +24,7 @@ btrfs-progs
 
 # Display Stack (Wayland)
 hyprland
+uwsm
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 waybar
