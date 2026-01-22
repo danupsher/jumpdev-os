@@ -115,6 +115,7 @@ tmux
 zellij
 less
 fastfetch
+ydotool
 
 # Fonts
 ttf-jetbrains-mono-nerd

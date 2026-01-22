@@ -272,13 +272,53 @@
 
 ---
 
+## QEMU Debugging Environment
+
+**Purpose**: Test ISOs without writing to USB. Claude can interact with the VM via SSH, click buttons, and take screenshots to debug issues autonomously.
+
+**Components**:
+- `ydotool` - Simulate mouse clicks and keyboard input on Wayland
+- `grim` - Take screenshots of the Wayland session
+- `sshd` - Enabled on boot for remote access
+
+**Scripts**:
+- `scripts/qemu-test.sh` - Boot ISO in QEMU with SSH and VNC
+- `scripts/vm-test.sh` - Interact with VM (click, screenshot, test buttons)
+
+**Usage**:
+```bash
+# Terminal 1: Start the VM
+./scripts/qemu-test.sh
+
+# Terminal 2: Wait for VM, then test
+./scripts/vm-test.sh wait
+./scripts/vm-test.sh test-all
+
+# Individual commands
+./scripts/vm-test.sh screenshot "my-test"
+./scripts/vm-test.sh click 30 17          # Click at coordinates
+./scripts/vm-test.sh key escape           # Press Escape
+./scripts/vm-test.sh cmd "wofi --show drun"  # Run command in VM
+```
+
+**Screenshots**: Saved to `test-screenshots/` directory.
+
+**SSH Access**: `ssh -p 2222 jump@localhost` (no password)
+
+**VNC Access**: `localhost:5900` (for visual debugging)
+
+---
+
 ## Useful Commands
 
 ```bash
 # Build ISO (in Arch VM)
 sudo mkarchiso -v -w /tmp/archiso-tmp -o out/ archiso/
 
-# Test in QEMU (UEFI)
+# Test in QEMU with debugging (recommended)
+./scripts/qemu-test.sh
+
+# Test in QEMU (simple UEFI)
 qemu-system-x86_64 -enable-kvm -m 4G -cdrom out/jumpdev-*.iso -bios /usr/share/ovmf/OVMF.fd
 
 # Test in QEMU (BIOS)

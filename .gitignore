@@ -41,4 +41,5 @@ node_modules/
 
 # Testing artifacts
 test-results/
+test-screenshots/
 runner/
