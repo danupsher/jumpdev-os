@@ -130,20 +130,12 @@ openssh
 openvpn
 wireguard-tools
 
-# WiFi Firmware (covers Intel, Atheros, Ralink, Mediatek, etc.)
-linux-firmware-bnx2x
+# WiFi Firmware (covers Intel, Atheros, Ralink, Mediatek, Realtek rtw88/rtw89)
+# Note: linux-firmware + linux-zen kernel includes drivers for most WiFi chips
 linux-firmware-marvell
-linux-firmware-mellanox
-linux-firmware-qlogic
 
 # Broadcom WiFi (proprietary driver for many Broadcom chips)
 broadcom-wl-dkms
-
-# Realtek WiFi (from Chaotic-AUR - very common in laptops and USB adapters)
-rtl8821ce-dkms-git
-rtw88-dkms-git
-rtl88xxau-aircrack-ng-dkms-git
-rtw89-dkms-git
 
 # USB WiFi and mobile broadband
 usb_modeswitch
