@@ -75,7 +75,6 @@ jobs:
           cp -r configs/waybar archiso/airootfs/etc/skel/.config/
           cp -r configs/kitty archiso/airootfs/etc/skel/.config/
           cp -r configs/nvim archiso/airootfs/etc/skel/.config/
-          cp -r configs/nwg-menu archiso/airootfs/etc/skel/.config/
           cp -r configs/wofi archiso/airootfs/etc/skel/.config/
           cp -r configs/scripts archiso/airootfs/etc/skel/.config/
           chmod +x archiso/airootfs/etc/skel/.config/scripts/*.sh

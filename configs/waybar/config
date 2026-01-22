@@ -53,10 +53,10 @@
             "headphone": "",
             "default": ["", "", ""]
         },
-        "on-click": "swayosd-client --output-volume mute-toggle",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pavucontrol",
-        "on-scroll-up": "swayosd-client --output-volume raise",
-        "on-scroll-down": "swayosd-client --output-volume lower",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
         "tooltip": "Scroll to adjust, click to mute, right-click for settings"
     },
 
@@ -73,8 +73,8 @@
 
     "custom/launcher": {
         "format": "Apps",
-        "tooltip": "Open App Launcher",
-        "on-click": "nwg-menu -ha left -term kitty -fm thunar -cmd-logout 'hyprctl dispatch exit' -d"
+        "tooltip": "Open App Launcher (Super+D)",
+        "on-click": "wofi --show drun --prompt 'Launch'"
     },
 
     "custom/terminal": {
@@ -104,6 +104,6 @@
     "custom/power": {
         "format": "Power",
         "tooltip": "Power Menu",
-        "on-click": "~/.config/scripts/power-menu.sh"
+        "on-click": "$HOME/.config/scripts/power-menu.sh"
     }
 }

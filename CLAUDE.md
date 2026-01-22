@@ -47,7 +47,7 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 │  Display Stack                                                       │
 │  ├── Wayland compositor (Hyprland)                                  │
 │  ├── Status bar (Waybar)                                            │
-│  ├── App menu (nwg-menu)                                            │
+│  ├── App launcher (wofi)                                            │
 │  └── Notifications (mako)                                           │
 ├─────────────────────────────────────────────────────────────────────┤
 │  Terminal Environment                                                │
@@ -89,7 +89,7 @@ jumpdev-os/
 │   ├── hypr/                  # Hyprland compositor config (MUST be 'hypr' not 'hyprland')
 │   ├── waybar/                # Status bar config
 │   ├── kitty/                 # Terminal config
-│   ├── nwg-menu/              # App menu config
+│   ├── wofi/                  # App launcher config
 │   ├── nvim/                  # Neovim configuration
 │   ├── zsh/                   # Zsh configuration
 │   ├── starship/              # Prompt configuration

@@ -28,7 +28,6 @@ uwsm
 xdg-desktop-portal-hyprland
 xdg-desktop-portal-gtk
 waybar
-nwg-menu
 mako
 grim
 slurp
@@ -44,7 +43,6 @@ brightnessctl
 playerctl
 network-manager-applet
 wofi
-swayosd-git
 swaylock
 
 # Terminal & Shell

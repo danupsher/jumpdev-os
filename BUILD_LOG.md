@@ -39,31 +39,53 @@
   - Replaced VLC (40MB) with mpv (6MB)
   - Removed Discord and VS Code from base ISO (moved to first-boot selector)
   - Removed NVIDIA DKMS drivers (moved to first-boot selector)
-  - Removed Broadcom DKMS drivers (moved to first-boot selector)
-  - Removed linux-firmware-marvell (niche)
+  - WiFi drivers (Broadcom, Marvell) kept in base - essential for setup
 - **First-boot app selector planned** - Will offer optional installs:
-  - VS Code, Discord
+  - VS Code, Google Chrome, Discord
   - NVIDIA drivers (nvidia-open-dkms, nvidia-utils, nvidia-settings)
-  - Broadcom WiFi (broadcom-wl-dkms)
   - Requires persistence partition
-- **nm-applet added** to Hyprland startup (fixed WiFi showing disabled)
-- **nwg-menu** configured with Catppuccin theme, drops down from Apps button
+- **Volume control overhaul**:
+  - Added SwayOSD for visual volume/brightness overlay
+  - Scroll on waybar icon to change volume
+  - Click to mute, right-click for pavucontrol
+- **Power menu overhaul**:
+  - Replaced wlogout (full-screen) with wofi dropdown
+  - Small menu with Lock/Logout/Restart/Shutdown
+  - Added swaylock for screen locking
+- **Plymouth boot splash**:
+  - Added plymouth for graphical boot animation
+  - No more black screen during boot
+  - Shows spinner instead of frozen-looking blank screen
+- **Update & Migration strategy documented**:
+  - USB with persistence: full pacman updates work
+  - USB → Disk migration via Calamares
+  - USB → USB migration via jumpdev backup/restore
+  - Data is never lost - every transition has migration path
+- **Self-hosted GitHub Actions runner**:
+  - Build runs on local server (faster)
+  - ISO output saved to /home/dan/projects/jumpdev-os/out/
+  - HTTP server on port 7900 for easy LAN downloads
+  - Only triggers on main branch pushes (safe from PR attacks)
 
-**Changes Summary**:
-- Terminal: foot → kitty
-- Launcher: fuzzel + nwg-drawer → nwg-menu only
-- Media: VLC → mpv
-- Removed from base: Discord, VS Code, NVIDIA drivers, Broadcom drivers
-- Added: lazydocker, zellij, mise
+**New Packages Added**:
+- kitty, wofi, swayosd-git, swaylock, plymouth
+- lazydocker, zellij, mise
 
-**Rationale**:
-- Faster boot (no DKMS compilation)
-- Smaller ISO (~500MB+ savings from NVIDIA alone)
-- Better SSH experience (Kitty terminfo widely supported)
-- Match Omakub's terminal tooling
+**Removed from Base**:
+- foot, fuzzel, wlogout
+- VLC (replaced with mpv)
+- Discord, VS Code (moved to first-boot selector)
+- NVIDIA drivers (moved to first-boot selector)
+
+**Infrastructure**:
+- Self-hosted runner at /home/dan/projects/jumpdev-os/runner/
+- ISO server at http://192.168.1.46:7900/
+- Builds happen locally, still upload to GitHub for public
+
+**Build Status**: Build 22 in progress (self-hosted runner)
 
 **Next Steps**:
-1. Test build with new packages
+1. Test build 22 with all new changes
 2. Implement first-boot app selector script
 3. Add persistence detection and warning
 
