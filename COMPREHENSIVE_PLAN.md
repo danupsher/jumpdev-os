@@ -148,8 +148,12 @@ Simple CLI tool for common tasks - makes setup easy for beginners.
 | `jumpdev install-aider` | Install/update Aider |
 | `jumpdev install-ollama` | Install Ollama + pull common models |
 | `jumpdev set-api-key` | Configure API keys (Anthropic, OpenAI) |
-| `jumpdev update` | Update system + all dev tools |
+| `jumpdev update` | Update system + all dev tools (pacman -Syu + cleanup) |
+| `jumpdev backup` | Export persistence data to archive (for USB → USB migration) |
+| `jumpdev restore` | Import from backup archive |
+| `jumpdev migrate --from <path>` | Migrate data from another JumpDev USB |
 | `jumpdev doctor` | Check system health, report issues |
+| `jumpdev cleanup` | Clean package cache to save overlay space |
 | `jumpdev reset` | Reset to defaults (keeps persistence) |
 
 **Editor Choice**:
@@ -276,6 +280,78 @@ Standard ISO with first-boot wizard - familiar for users, easy setup.
 **Note**: A small warning will inform users about system-level services. 99% of users won't be affected.
 
 **Deliverable**: Calamares installer + migration script
+
+---
+
+## Update & Migration Strategy
+
+### How Updates Work by Mode
+
+| Mode | Updates | How |
+|------|---------|-----|
+| **USB without persistence** | Not possible | Read-only squashfs, changes lost on reboot |
+| **USB with persistence** | Full updates work | `pacman -Syu` - changes stored in overlay |
+| **Installed to disk** | Normal Arch Linux | `pacman -Syu` like any Arch system |
+
+### USB with Persistence - Update Flow
+
+Updates work normally via pacman:
+```bash
+jumpdev update          # or pacman -Syu
+```
+
+- Security updates: ✓ Work immediately
+- App updates: ✓ Work immediately
+- Kernel updates: ✓ Work (overlay covers /boot)
+- JumpDev new features: Re-flash USB, then migrate data
+
+**Overlay growth**: Over months/years of updates, the overlay grows. Not a problem for most users. Can run `jumpdev cleanup` to clear package cache.
+
+### Migration Paths
+
+**Path 1: USB → Disk (recommended graduation path)**
+```
+USB with persistence → "Install to Disk" → Calamares → Migrate data → Done
+```
+- Seamless migration via Calamares installer
+- All data, configs, logins transfer automatically
+- Once on disk, it's normal Arch Linux
+
+**Path 2: USB → USB (re-flash with new JumpDev version)**
+
+Option A - Two USB drives:
+```bash
+# Flash new ISO to USB-B, boot from it
+jumpdev migrate --from /media/old-usb    # Copy data from USB-A
+```
+
+Option B - Single USB + backup:
+```bash
+jumpdev backup --to ~/Dropbox            # Or external drive
+# Re-flash USB with new ISO, boot, enable persistence
+jumpdev restore --from ~/Dropbox
+```
+
+### The User Journey
+
+```
+┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
+│  USB (demo)     │ ──► │ USB (persist)   │ ──► │  Disk install   │
+│  No updates     │     │ Updates work    │     │  Normal Arch    │
+│  Try it out     │     │ Daily driver    │     │  Full control   │
+└─────────────────┘     └─────────────────┘     └─────────────────┘
+                               │
+                               ▼
+                        Re-flash + migrate
+                        (for new JumpDev versions)
+```
+
+### Key Principle
+
+**Data is never lost** - every transition has a migration path:
+- USB demo → USB persist: First-boot wizard
+- USB persist → USB re-flash: `jumpdev backup` / `jumpdev restore`
+- USB persist → Disk: Calamares + migrate script
 
 ---
 
