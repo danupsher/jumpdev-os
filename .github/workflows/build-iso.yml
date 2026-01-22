@@ -15,7 +15,8 @@ jobs:
     runs-on: ${{ (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && 'self-hosted' || 'ubuntu-latest' }}
     container:
       image: archlinux:latest
-      options: --privileged
+      options: --privileged -v /home/dan/projects/jumpdev-os/out:/host-out
+      # Volume mount makes ISO available on host for QEMU testing
 
     steps:
       - name: Install dependencies
@@ -99,6 +100,13 @@ jobs:
           cd out
           sha256sum *.iso > SHA256SUMS
           cat SHA256SUMS
+
+      - name: Copy ISO to host (self-hosted only)
+        if: runner.name != 'GitHub Actions'
+        run: |
+          cp out/*.iso out/SHA256SUMS /host-out/
+          echo "ISO available at: /home/dan/projects/jumpdev-os/out/"
+          ls -lh /host-out/
 
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
