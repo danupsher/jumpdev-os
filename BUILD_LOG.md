@@ -30,7 +30,20 @@
 
 **Completed**:
 - **Terminal overhaul**: Replaced Foot with Kitty (better color support, SSH terminfo)
-- **Launcher consolidation**: Removed Fuzzel, kept only nwg-menu (Windows-style start menu)
+- **Launcher overhaul**: Replaced nwg-menu with wofi
+  - Clean, minimal search-based launcher
+  - Positioned top-left under waybar
+  - Single-click to launch apps
+  - **Click-outside-to-close** using slurp overlay (standard Wayland workaround)
+  - Slight dim effect when menu open (like macOS Spotlight)
+- **Power menu**: Small dropdown via wofi
+  - Positioned top-right under waybar
+  - No search bar (--hide-search)
+  - Lock/Logout/Restart/Shutdown options
+  - Click-outside-to-close works
+- **Volume control**: Waybar pulseaudio module with scroll-step
+  - Scroll on icon to adjust volume
+  - Click to mute, right-click for pavucontrol
 - **Added Omakub-matching terminal tools**:
   - `lazydocker` - Docker TUI
   - `zellij` - Modern terminal multiplexer
@@ -44,48 +57,39 @@
   - VS Code, Google Chrome, Discord
   - NVIDIA drivers (nvidia-open-dkms, nvidia-utils, nvidia-settings)
   - Requires persistence partition
-- **Volume control overhaul**:
-  - Added SwayOSD for visual volume/brightness overlay
-  - Scroll on waybar icon to change volume
-  - Click to mute, right-click for pavucontrol
-- **Power menu overhaul**:
-  - Replaced wlogout (full-screen) with wofi dropdown
-  - Small menu with Lock/Logout/Restart/Shutdown
-  - Added swaylock for screen locking
 - **Plymouth boot splash**:
   - Added plymouth for graphical boot animation
   - No more black screen during boot
-  - Shows spinner instead of frozen-looking blank screen
-- **Update & Migration strategy documented**:
-  - USB with persistence: full pacman updates work
-  - USB → Disk migration via Calamares
-  - USB → USB migration via jumpdev backup/restore
-  - Data is never lost - every transition has migration path
 - **Self-hosted GitHub Actions runner**:
   - Build runs on local server (faster)
-  - ISO output saved to /home/dan/projects/jumpdev-os/out/
+  - ISO served directly from runner work directory
   - HTTP server on port 7900 for easy LAN downloads
   - Only triggers on main branch pushes (safe from PR attacks)
 
 **New Packages Added**:
-- kitty, wofi, swayosd-git, swaylock, plymouth
+- kitty, wofi, swaylock, plymouth
 - lazydocker, zellij, mise
 
 **Removed from Base**:
-- foot, fuzzel, wlogout
+- foot, fuzzel, wlogout, nwg-menu, swayosd-git
 - VLC (replaced with mpv)
 - Discord, VS Code (moved to first-boot selector)
 - NVIDIA drivers (moved to first-boot selector)
 
+**Technical Notes**:
+- Click-outside-to-close uses slurp overlay - standard Wayland community workaround
+- Wayland doesn't have native "click outside to dismiss" like X11
+- Scripts: `app-launcher.sh` and `power-menu.sh` handle the slurp+wofi coordination
+
 **Infrastructure**:
 - Self-hosted runner at /home/dan/projects/jumpdev-os/runner/
 - ISO server at http://192.168.1.46:7900/
-- Builds happen locally, still upload to GitHub for public
+- ISOs served directly from runner/_work/ (no duplicate copies)
 
-**Build Status**: Build 22 in progress (self-hosted runner)
+**Build Status**: Build 27 - SUCCESS
 
 **Next Steps**:
-1. Test build 22 with all new changes
+1. Test build 27 with click-outside-to-close
 2. Implement first-boot app selector script
 3. Add persistence detection and warning
 
@@ -249,7 +253,13 @@
 | 2026-01-22 | Build 16 | - | Gate 2 | PENDING | Remove close button |
 | 2026-01-22 | Build 17-19 | - | Gate 2 | FAILED | WiFi packages not in Chaotic-AUR |
 | 2026-01-22 | Build 20 | ~2.4GB | Gate 2 | SUCCESS | WiFi drivers fixed |
-| 2026-01-22 | Build 21 | - | Gate 2 | PENDING | Kitty, nwg-menu, mpv, no DKMS |
+| 2026-01-22 | Build 21 | ~1.9GB | Gate 2 | SUCCESS | Kitty, nwg-menu, mpv, no DKMS |
+| 2026-01-22 | Build 22 | ~1.9GB | Gate 2 | SUCCESS | Self-hosted runner working |
+| 2026-01-22 | Build 23 | ~1.9GB | Gate 2 | SUCCESS | Wofi replaces nwg-menu |
+| 2026-01-22 | Build 24 | ~1.9GB | Gate 2 | SUCCESS | Workflow cleanup |
+| 2026-01-22 | Build 25 | ~1.9GB | Gate 2 | SUCCESS | Wofi config fixes |
+| 2026-01-22 | Build 26 | ~1.9GB | Gate 2 | SUCCESS | Volume scroll, power menu fixes |
+| 2026-01-22 | Build 27 | ~1.9GB | Gate 2 | SUCCESS | Click-outside-to-close via slurp |
 
 ---
 
