@@ -288,18 +288,16 @@
 
 ---
 
-## Beginner-Friendly Features
+## Waybar Quick-Launch Buttons
 
-**Decision**: Include clickable Waybar buttons and GUI elements.
+**Decision**: Include quick-launch buttons in Waybar for common apps.
 
 **Why**:
-- Target audience includes Windows users new to Linux
-- Reduces barrier to entry
-- Apps button, Terminal, Files, Browser, Code buttons in Waybar
-- Users can still learn keybinds over time
-- Power button for clean shutdown/logout
+- Fast access to Terminal, Files, Browser, Code, Power menu
+- Complements keyboard shortcuts
+- Clean, minimal UI that stays out of the way
+- Power button provides clean shutdown/logout options
 
 **Alternatives Considered**:
-- **Keyboard-only**: Alienates beginners
-- **Dock (nwg-dock)**: Another dependency, Waybar buttons sufficient
-- **Different DE**: Loses benefits of Hyprland tiling
+- **Dock (nwg-dock)**: Another dependency, takes up screen space
+- **No launcher buttons**: Keyboard shortcuts alone are sufficient for some, but buttons add convenience

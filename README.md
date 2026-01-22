@@ -6,32 +6,38 @@ A portable Linux distribution for vibe coding and AI-assisted development. Boot 
 
 ## What is JumpDev OS?
 
-JumpDev OS is a live USB Arch Linux distribution designed for developers who want a consistent, portable coding environment. Plug it into any PC, boot up, and you're in a fully configured workspace - no installation required.
+JumpDev OS is a live Arch Linux distribution that runs entirely from USB. No installation, no dual-boot hassle - just plug in and code. Your environment travels with you.
 
-**Perfect for:**
-- Developers who work on multiple machines
-- Windows users curious about Linux without commitment
-- Anyone who wants a portable, consistent dev environment
-- Vibe coding with AI assistants
+**Built for:**
+- Developers who work across multiple machines
+- Portable coding setups
+- Clean, consistent dev environments
+- AI-assisted development workflows
 
 ## Features
 
-### Beginner Friendly
-- **Clickable buttons** - Waybar has Apps, Terminal, Files, Browser, and Code buttons
-- **Window title bars** - Every window has close, maximize, and minimize buttons
-- **Familiar apps** - Firefox, VS Code, Thunar file manager, VLC media player
-- **Works with mouse** - No need to memorize keyboard shortcuts
+### Modern Desktop
+- **Hyprland** - Tiling Wayland compositor with smooth animations
+- **Waybar** - Clean status bar with quick-launch buttons
+- **Window decorations** - Title bars with close, maximize, minimize
+- **Fuzzel** - Fast app launcher
+- **Catppuccin Mocha** - Cohesive dark theme across all apps
 
-### Developer Ready
-- **Modern CLI tools** - fzf, ripgrep, lazygit, yazi, btop, and more
-- **Languages** - Node.js, Python, Rust toolchains pre-installed
-- **Containers** - Docker and Docker Compose ready to go
-- **Git** - GitHub CLI and Lazygit for visual git workflows
+### Development Stack
+- **VS Code** + **Neovim** - GUI and terminal editors
+- **Git** + **GitHub CLI** + **Lazygit** - Version control
+- **Docker** + **Docker Compose** - Containers
+- **Node.js**, **Python**, **Rust** - Language toolchains
 
-### Portable
-- **Live USB boot** - Runs entirely from USB, no installation
-- **Persistence** (coming soon) - Save projects, configs, and API keys between reboots
-- **Wide hardware support** - Intel, AMD, NVIDIA graphics + comprehensive WiFi drivers
+### Included Apps
+- **Firefox** - Browser
+- **Thunar** - File manager
+- **Discord** - Communication
+- **VLC** - Media player
+- **Foot** - Fast terminal
+
+### CLI Tools
+`fzf` `ripgrep` `fd` `bat` `eza` `zoxide` `yazi` `btop` `jq` `tmux` `fastfetch`
 
 ## Screenshots
 
@@ -55,56 +61,23 @@ JumpDev OS is a live USB Arch Linux distribution designed for developers who wan
    ```bash
    sudo dd if=jumpdev-*.iso of=/dev/sdX bs=4M status=progress oflag=sync
    ```
-3. Boot from USB (may need to enter BIOS and select USB boot)
-4. Start coding!
-
-## Included Software
-
-### Desktop
-| App | Description |
-|-----|-------------|
-| Hyprland | Tiling Wayland compositor |
-| Waybar | Status bar with clickable buttons |
-| Fuzzel | App launcher (Super+D or click "Apps") |
-| Thunar | File manager |
-| Foot | Terminal emulator |
-
-### Development
-| App | Description |
-|-----|-------------|
-| VS Code | Code editor |
-| Neovim | Terminal editor with LSP |
-| Git + GitHub CLI | Version control |
-| Lazygit | Visual git interface |
-| Docker | Container runtime |
-
-### Apps
-| App | Description |
-|-----|-------------|
-| Firefox | Web browser |
-| Discord | Communication |
-| VLC | Media player |
-| imv | Image viewer |
-
-### CLI Tools
-`fzf` `ripgrep` `fd` `bat` `eza` `zoxide` `yazi` `btop` `jq` `tmux` `fastfetch`
+3. Boot from USB
+4. Start coding
 
 ## Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
-| `Super + Return` | Open terminal |
-| `Super + D` | Open app launcher |
+| `Super + Return` | Terminal |
+| `Super + D` | App launcher |
 | `Super + Q` | Close window |
-| `Super + B` | Open Firefox |
-| `Super + E` | Open file manager |
-| `Super + C` | Open VS Code |
+| `Super + B` | Firefox |
+| `Super + E` | File manager |
+| `Super + C` | VS Code |
 | `Super + 1-9` | Switch workspace |
-| `Super + F` | Toggle fullscreen |
+| `Super + F` | Fullscreen |
 | `Super + V` | Toggle floating |
 | `Print` | Screenshot region |
-
-**Tip:** You can also use the buttons in the top bar instead of keyboard shortcuts!
 
 ## Hardware Support
 
@@ -114,7 +87,7 @@ JumpDev OS is a live USB Arch Linux distribution designed for developers who wan
 - **NVIDIA** - Supported (nvidia-open-dkms)
 
 ### WiFi
-Includes drivers for Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, and Ralink chipsets. Most laptops should work out of the box.
+Drivers included for Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, and Ralink chipsets.
 
 ## Tech Stack
 
@@ -130,45 +103,40 @@ Includes drivers for Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, and R
 
 ## Building from Source
 
-Requires Arch Linux (VM or container):
-
 ```bash
-# Clone the repository
 git clone https://github.com/danupsher/jumpdev-os.git
 cd jumpdev-os
 
-# Build requires archiso
+# Requires Arch Linux with archiso
 sudo pacman -S archiso
-
-# Build the ISO (runs via GitHub Actions, or locally:)
 sudo mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
 ```
 
-Or just push to main - GitHub Actions builds the ISO automatically.
+Or push to main - GitHub Actions builds automatically.
 
 ## Roadmap
 
 - [x] Gate 1: Bootable ISO with Hyprland desktop
-- [x] Gate 2: Beginner-friendly GUI with apps
-- [ ] Gate 3: Persistence wizard for saving data
-- [ ] Gate 4: Polish, branding, and release
-- [ ] Gate 5: ARM64/Apple Silicon support
+- [x] Gate 2: Apps and developer tools
+- [ ] Gate 3: Persistence for saving data between reboots
+- [ ] Gate 4: Polish and release
+- [ ] Gate 5: ARM64 / Apple Silicon
 
 ## Contributing
 
-Contributions welcome! See:
-- `CLAUDE.md` - Guide for AI-assisted development sessions
-- `COMPREHENSIVE_PLAN.md` - Full project roadmap
+See:
+- `CLAUDE.md` - AI-assisted development guide
+- `COMPREHENSIVE_PLAN.md` - Project roadmap
 - `DECISIONS.md` - Architectural decisions
-- `BUILD_LOG.md` - Build history and progress
+- `BUILD_LOG.md` - Build history
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE)
 
 ## Acknowledgements
 
-- [Arch Linux](https://archlinux.org/) and [Archiso](https://wiki.archlinux.org/title/Archiso)
-- [Hyprland](https://hyprland.org/) and [hyprbars plugin](https://github.com/hyprwm/hyprland-plugins)
-- [Catppuccin](https://github.com/catppuccin/catppuccin) theme
-- [Chaotic-AUR](https://aur.chaotic.cx/) for pre-built AUR packages
+- [Arch Linux](https://archlinux.org/) / [Archiso](https://wiki.archlinux.org/title/Archiso)
+- [Hyprland](https://hyprland.org/) / [hyprbars](https://github.com/hyprwm/hyprland-plugins)
+- [Catppuccin](https://github.com/catppuccin/catppuccin)
+- [Chaotic-AUR](https://aur.chaotic.cx/)
