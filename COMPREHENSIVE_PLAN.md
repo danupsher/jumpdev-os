@@ -14,14 +14,14 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 
 | Feature | Why It Matters | Competition |
 |---------|----------------|-------------|
-| **Approachable by design** | Mouse-friendly, buttons everywhere, no shortcuts required | Omarchy/others: "learn keybinds or die" |
 | **Portable dev environment** | Your whole setup travels. Same on any PC. | VMs are slow, cloud needs internet |
 | **USB → Disk migration** | Use portable, graduate to permanent. All data migrates. | No distro does this well |
 | **Everything pre-configured** | Editors, containers, languages, AI tools - ready at boot | Hours of setup on other distros |
 | **AI tools included** | Claude Code, Aider, Ollama out of the box | Everyone else: DIY setup |
+| **Approachable desktop** | Normal desktop experience with buttons and menus | Most dev distros assume Linux expertise |
 
 **The Pitch**:
-> "Your dev environment, on a USB stick. Built for everyone - not just Linux experts. Boot from USB, click around, start coding. Migrate to disk when you're ready."
+> "Your dev environment, on a USB stick. Boot from USB on any PC. Same tools, same configs, same projects. Migrate to disk when you're ready."
 
 ---
 
@@ -39,22 +39,11 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 - Windows/Mac users curious about Linux - low-commitment way to try it
 - Contractors - plug into client machine, code securely
 
-## Design Philosophy: Approachable First
+## Design Philosophy
 
-**We are NOT Omarchy.** Omarchy is keyboard-driven for veteran devs ditching Mac.
+**Approachable by default.** Window buttons, app launcher, status bar with quick actions. Keyboard shortcuts available for power users.
 
-JumpDev OS is **mouse-friendly by default**:
-
-| Action | Mouse Way | Keyboard Way |
-|--------|-----------|--------------|
-| Open apps | Click "Apps" button | `Super + D` |
-| Close window | Click X button | `Super + Q` |
-| Open terminal | Click "Term" button | `Super + Return` |
-| Open files | Click "Files" button | `Super + E` |
-
-**Principle**: Every action has a visible button or menu option. Shortcuts exist for power users but are never required.
-
-**Why this matters**: The vibe coding wave is bringing people who've never touched Linux. If they have to memorize shortcuts or use the terminal to do basic things, we've failed them.
+**Different from Omarchy:** Omarchy targets veteran devs switching from Mac. JumpDev OS targets the broader audience discovering coding through AI - people who expect a normal desktop experience.
 
 ---
 

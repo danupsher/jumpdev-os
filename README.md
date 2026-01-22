@@ -6,25 +6,17 @@
 
 A portable Linux distribution for modern development. Boot from USB on any PC, get a fully configured workspace with AI coding tools, and migrate to disk when you're ready.
 
-**Built for everyone** - not just Linux experts. Use the mouse, click buttons, learn shortcuts later if you want. Coming from Windows or Mac? You'll feel at home.
-
 ---
 
 ## Why JumpDev OS?
 
-**The Problem**: You want to code with AI tools. But setting up a dev environment is overwhelming. Linux guides assume you already know Linux. Most distros are built for experts.
+**The Problem**: Setting up a dev environment takes hours. Doing it on multiple machines takes days. Cloud solutions need internet. VMs are slow.
 
-**The Solution**: JumpDev OS. Plug in a USB, boot up, and everything works. Click the Apps button, open VS Code, start coding. No terminal commands required to use the desktop. No memorizing shortcuts. Just a modern workspace that makes sense.
+**The Solution**: JumpDev OS. Plug in a USB, boot up, start coding. Same tools, same configs, same projects - on any PC.
 
 ---
 
 ## Features
-
-### Works Like You Expect
-- **Click to launch apps** - Apps button in the corner, just like Windows/Mac
-- **Window buttons** - Close, maximize, minimize on every window
-- **Mouse-friendly** - Everything clickable, no commands required
-- **Keyboard shortcuts** - Available for power users, never mandatory
 
 ### Portable Development
 - Boot from USB on any x86_64 PC
@@ -171,32 +163,19 @@ fastfetch  - System info
 
 ---
 
-## Keyboard Shortcuts (Optional)
+## Keyboard Shortcuts
 
-**Everything has a button or menu option.** But if you want to go faster, these shortcuts are available:
-
-### Quick Actions
-| Key | Action | Or... |
-|-----|--------|-------|
-| `Super + Return` | Open terminal | Click "Term" in top bar |
-| `Super + D` | App launcher | Click "Apps" in top bar |
-| `Super + Q` | Close window | Click X button on window |
-| `Super + F` | Toggle fullscreen | Click maximize button |
-
-### Applications
-| Key | Action | Or... |
-|-----|--------|-------|
-| `Super + B` | Firefox | Apps → Firefox |
-| `Super + E` | File manager | Click "Files" in top bar |
-| `Super + C` | VS Code | Click "Code" in top bar |
-
-### Workspaces
 | Key | Action |
 |-----|--------|
+| `Super + Return` | Terminal |
+| `Super + D` | App launcher |
+| `Super + Q` | Close window |
+| `Super + B` | Firefox |
+| `Super + E` | File manager |
+| `Super + C` | VS Code |
+| `Super + F` | Fullscreen |
 | `Super + 1-9` | Switch workspace |
-| `Super + Shift + 1-9` | Move window to workspace |
-
-Don't want to learn shortcuts? **That's fine.** Use the mouse. The buttons are always there.
+| `Print` | Screenshot |
 
 ---
 
