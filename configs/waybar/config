@@ -5,7 +5,7 @@
     "spacing": 4,
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/terminal", "custom/files", "custom/browser", "custom/code"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "wireplumber", "battery", "custom/power"],
+    "modules-right": ["tray", "pulseaudio", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -46,15 +46,16 @@
         "spacing": 10
     },
 
-    "wireplumber": {
+    "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-muted": " muted",
-        "format-icons": ["", "", ""],
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "scroll-step": 5,
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
-        "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
-        "tooltip": "Scroll to adjust, click to mute, right-click for settings"
+        "tooltip": "Scroll to adjust volume, click to mute"
     },
 
     "battery": {
@@ -71,7 +72,7 @@
     "custom/launcher": {
         "format": "Apps",
         "tooltip": "Open App Launcher (Super+D)",
-        "on-click": "wofi --show drun --prompt 'Launch'"
+        "on-click": "pkill wofi || wofi --show drun --prompt 'Launch' --normal-window"
     },
 
     "custom/terminal": {
