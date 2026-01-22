@@ -100,14 +100,6 @@ jobs:
           sha256sum *.iso > SHA256SUMS
           cat SHA256SUMS
 
-      - name: Copy ISO to local output (self-hosted only)
-        if: runner.name != 'GitHub Actions'
-        run: |
-          mkdir -p /home/dan/projects/jumpdev-os/out
-          cp out/*.iso out/SHA256SUMS /home/dan/projects/jumpdev-os/out/
-          echo "ISO available locally at: /home/dan/projects/jumpdev-os/out/"
-          ls -lh /home/dan/projects/jumpdev-os/out/
-
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v4
         with:
