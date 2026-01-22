@@ -195,6 +195,55 @@ Standard ISO with first-boot wizard - familiar for users, easy setup.
 
 ---
 
+### Gate 3.5: Install to Disk (Migration)
+**Objective**: Users can seamlessly migrate from USB to permanent HD installation
+
+**Requirements**:
+| Requirement | Verification | Status |
+|-------------|--------------|--------|
+| Calamares installer included | Package in ISO | PENDING |
+| Calamares themed | Matches Catppuccin/JumpDev branding | PENDING |
+| Partition manager works | Can erase, dual-boot, or manual partition | PENDING |
+| Migration option appears | "Migrate from USB?" prompt post-install | PENDING |
+| Home folder migrates | All configs, projects, app data copied | PENDING |
+| Browser logins preserved | ~/.mozilla/firefox/ copied | PENDING |
+| App logins preserved | ~/.config/* copied | PENDING |
+| Extra packages reinstalled | Tracks user-installed packages, reinstalls | PENDING |
+| User systemd services migrate | ~/.config/systemd/user/ copied | PENDING |
+| System services tracked | Diff vs base ISO, re-enable on new install | PENDING |
+| Migration summary shown | "Migrated X services, Y packages, Z GB" | PENDING |
+
+**Migration Flow**:
+1. User clicks "Install to Disk" (desktop icon or Apps menu)
+2. Calamares opens with JumpDev branding
+3. User partitions drive (erase / dual-boot / manual)
+4. Base system installs
+5. Post-install prompt: "Migrate your data from USB?"
+   - **Yes** → Copies entire home folder, reinstalls extra packages, re-enables services
+   - **No** → Fresh install, user starts clean
+6. Migration summary displayed
+7. Reboot → exactly where they left off (same logins, configs, projects)
+
+**What Migrates Automatically**:
+- `/home/user/` - entire home folder (projects, dotfiles, configs)
+- `~/.mozilla/firefox/` - browser logins, bookmarks, history, extensions
+- `~/.config/discord/` - Discord session (stays logged in)
+- `~/.config/Code/` - VS Code settings, extensions, accounts
+- `~/.ssh/` - SSH keys
+- `~/.config/systemd/user/` - user-level systemd services
+- Package list diff - any packages user installed beyond base ISO
+
+**What Requires Manual Re-setup** (edge cases):
+- System-level systemd services added by user (rare)
+- Custom kernel parameters
+- System files modified outside /home
+
+**Note**: A small warning will inform users about system-level services. 99% of users won't be affected.
+
+**Deliverable**: Calamares installer + migration script
+
+---
+
 ### Gate 4: Polish
 **Objective**: Release-ready distribution with strong brand identity
 
@@ -357,7 +406,8 @@ Recommended:
   Yes! First-boot wizard sets up persistence automatically.
 
 ▸ Can I install it to my hard drive?
-  It's designed for USB, but you can install Arch normally.
+  Yes! Click "Install to Disk" and it migrates everything - logins,
+  projects, configs. Exactly where you left off, just faster.
 
 ▸ Is it free?
   Yes, MIT licensed. Free forever.
