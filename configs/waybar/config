@@ -70,7 +70,7 @@
     "custom/launcher": {
         "format": "Apps",
         "tooltip": "Open App Launcher",
-        "on-click": "nwg-drawer"
+        "on-click": "nwg-drawer -mt 40 -mb 100 -ml 100 -mr 100 -ovl"
     },
 
     "custom/terminal": {
