@@ -45,6 +45,8 @@ JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB o
 
 **Different from Omarchy:** Omarchy targets veteran devs switching from Mac. JumpDev OS targets the broader audience discovering coding through AI - people who expect a normal desktop experience.
 
+**Grow with the system:** New users start with buttons and menus. As they become serious developers, they discover shortcuts, tiling workflows, and terminal tools. The system is just as powerful as any expert distro - Hyprland, Neovim, full CLI toolkit. Users don't outgrow JumpDev OS, they grow with it.
+
 ---
 
 ---
