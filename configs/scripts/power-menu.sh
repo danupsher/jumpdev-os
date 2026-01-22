@@ -1,16 +1,21 @@
 #!/bin/bash
 # JumpDev OS Power Menu - Click outside to close
 
-# Kill any existing instances
-pkill -x wofi 2>/dev/null && exit 0
+# Toggle - if wofi is running, kill it and slurp
+if pgrep -x wofi > /dev/null; then
+    pkill -x wofi
+    pkill -x slurp
+    exit 0
+fi
+
+# Kill any lingering slurp
 pkill -x slurp 2>/dev/null
 
-# Get screen dimensions
-SCREEN=$(hyprctl monitors -j | jq -r '.[0] | "\(.width)x\(.height)"')
+# Launch slurp as click-catcher in background (semi-transparent overlay)
+(slurp -b '#00000066' -c '#00000000' -s '#00000000' -w 0 > /dev/null 2>&1; pkill -x wofi) &
 
-# Launch slurp as invisible click-catcher in background
-(slurp -b 00000066 -c 00000000 -w 0 -f "%x %y" <<< "0,0 $SCREEN" > /dev/null 2>&1; pkill -x wofi) &
-SLURP_PID=$!
+# Small delay to ensure slurp starts first
+sleep 0.05
 
 # Power menu options
 options="  Lock\n  Logout\n  Restart\n  Shutdown"
@@ -25,7 +30,7 @@ selected=$(echo -e "$options" | wofi --dmenu \
     --cache-file /dev/null)
 
 # Cleanup slurp
-kill $SLURP_PID 2>/dev/null
+pkill -x slurp 2>/dev/null
 
 # Execute selected action
 case "$selected" in

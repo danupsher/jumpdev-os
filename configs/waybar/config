@@ -72,7 +72,7 @@
     "custom/launcher": {
         "format": "Apps",
         "tooltip": "Open App Launcher (Super+D)",
-        "on-click": "~/.config/scripts/app-launcher.sh"
+        "on-click": "bash -c '~/.config/scripts/app-launcher.sh'"
     },
 
     "custom/terminal": {
@@ -102,6 +102,6 @@
     "custom/power": {
         "format": "Power",
         "tooltip": "Power Menu",
-        "on-click": "~/.config/scripts/power-menu.sh"
+        "on-click": "bash -c '~/.config/scripts/power-menu.sh'"
     }
 }
