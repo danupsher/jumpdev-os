@@ -4,19 +4,27 @@
 
 **Your dev environment, on a USB stick.**
 
-A portable Arch Linux distribution built for modern development. Boot from USB on any PC, get a fully configured workspace with AI coding tools, and migrate to disk when you're ready.
+A portable Linux distribution for modern development. Boot from USB on any PC, get a fully configured workspace with AI coding tools, and migrate to disk when you're ready.
+
+**Built for everyone** - not just Linux experts. Use the mouse, click buttons, learn shortcuts later if you want. Coming from Windows or Mac? You'll feel at home.
 
 ---
 
 ## Why JumpDev OS?
 
-**The Problem**: You work on multiple machines. Setting up a dev environment takes hours. Keeping them in sync is a nightmare. Cloud-based solutions need internet. VMs are slow.
+**The Problem**: You want to code with AI tools. But setting up a dev environment is overwhelming. Linux guides assume you already know Linux. Most distros are built for experts.
 
-**The Solution**: JumpDev OS. Plug in a USB, boot up, and you're in your fully configured environment - same tools, same configs, same projects - on any PC.
+**The Solution**: JumpDev OS. Plug in a USB, boot up, and everything works. Click the Apps button, open VS Code, start coding. No terminal commands required to use the desktop. No memorizing shortcuts. Just a modern workspace that makes sense.
 
 ---
 
 ## Features
+
+### Works Like You Expect
+- **Click to launch apps** - Apps button in the corner, just like Windows/Mac
+- **Window buttons** - Close, maximize, minimize on every window
+- **Mouse-friendly** - Everything clickable, no commands required
+- **Keyboard shortcuts** - Available for power users, never mandatory
 
 ### Portable Development
 - Boot from USB on any x86_64 PC
@@ -31,11 +39,11 @@ A portable Arch Linux distribution built for modern development. Boot from USB o
 - Ready to vibe code out of the box
 
 ### Modern Desktop
-- **Hyprland** - Tiling Wayland compositor with smooth animations
-- **Window decorations** - Title bars with close, maximize, minimize buttons
-- **nwg-drawer** - App launcher with categories
+- **Hyprland** - Tiling window manager with smooth animations
+- **Window title bars** - Close, maximize, minimize buttons on every window
+- **nwg-drawer** - App launcher with categories (like a Start menu)
 - **Waybar** - Status bar with quick-launch buttons
-- **Catppuccin Mocha** - Cohesive dark theme everywhere
+- **Catppuccin Mocha** - Easy-on-the-eyes dark theme
 
 ### Development Stack
 - **Editors**: VS Code + Neovim (LSP pre-configured)
@@ -163,36 +171,32 @@ fastfetch  - System info
 
 ---
 
-## Keyboard Shortcuts
+## Keyboard Shortcuts (Optional)
 
-### Window Management
+**Everything has a button or menu option.** But if you want to go faster, these shortcuts are available:
+
+### Quick Actions
+| Key | Action | Or... |
+|-----|--------|-------|
+| `Super + Return` | Open terminal | Click "Term" in top bar |
+| `Super + D` | App launcher | Click "Apps" in top bar |
+| `Super + Q` | Close window | Click X button on window |
+| `Super + F` | Toggle fullscreen | Click maximize button |
+
+### Applications
+| Key | Action | Or... |
+|-----|--------|-------|
+| `Super + B` | Firefox | Apps → Firefox |
+| `Super + E` | File manager | Click "Files" in top bar |
+| `Super + C` | VS Code | Click "Code" in top bar |
+
+### Workspaces
 | Key | Action |
 |-----|--------|
-| `Super + Return` | Open terminal |
-| `Super + Q` | Close window |
-| `Super + D` | App launcher |
-| `Super + V` | Toggle floating |
-| `Super + F` | Toggle fullscreen |
 | `Super + 1-9` | Switch workspace |
 | `Super + Shift + 1-9` | Move window to workspace |
 
-### Applications
-| Key | Action |
-|-----|--------|
-| `Super + B` | Firefox |
-| `Super + E` | File manager |
-| `Super + C` | VS Code |
-| `Print` | Screenshot region |
-| `Shift + Print` | Screenshot full screen |
-
-### Window Navigation
-| Key | Action |
-|-----|--------|
-| `Super + H/J/K/L` | Focus left/down/up/right |
-| `Super + Arrow` | Focus direction |
-| `Super + Shift + H/J/K/L` | Move window |
-
-Or just use the buttons in the top bar and window title bars.
+Don't want to learn shortcuts? **That's fine.** Use the mouse. The buttons are always there.
 
 ---
 
