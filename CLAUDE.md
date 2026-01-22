@@ -15,6 +15,22 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 
 **Primary Goal**: Create a distributable ISO that boots to a fully configured development environment with persistence support.
 
+## Market Position
+
+**The Opportunity**: AI-assisted coding (vibe coding) is bringing a new wave of people into development. These users are not veteran developers - they're normal people who expect a normal desktop experience.
+
+**Competitive Landscape**:
+- **Omarchy** (by DHH/37signals) targets experienced developers switching from Mac. Keyboard-driven, assumes Linux expertise.
+- **JumpDev OS** targets the broader audience discovering coding through AI. Approachable desktop with buttons and menus, plus keyboard shortcuts for power users.
+
+**Our Differentiators**:
+1. Portable USB environment (boot anywhere)
+2. Seamless USB → disk migration with all data
+3. AI tools pre-installed (Claude Code, Aider, Ollama)
+4. Approachable for newcomers, powerful for experts
+
+**The Vision**: Be the operating system people reach for when they want to build things with AI - whether they've used Linux before or not.
+
 ## Architecture
 
 ```
@@ -29,7 +45,7 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 │  Display Stack                                                       │
 │  ├── Wayland compositor (Hyprland)                                  │
 │  ├── Status bar (Waybar)                                            │
-│  ├── Launcher (Fuzzel)                                              │
+│  ├── App launcher (nwg-drawer)                                      │
 │  └── Notifications (mako)                                           │
 ├─────────────────────────────────────────────────────────────────────┤
 │  Terminal Environment                                                │
