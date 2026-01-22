@@ -1,0 +1,6 @@
+#!/bin/bash
+# Discord wrapper for Wayland with proper flags
+# Use this if Discord has display issues
+
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
+exec /usr/bin/discord --enable-features=UseOzonePlatform --ozone-platform=wayland "$@"

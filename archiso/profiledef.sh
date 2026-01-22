@@ -20,4 +20,5 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/etc/gshadow"]="0:0:400"
   ["/etc/sudoers.d/wheel"]="0:0:440"
+  ["/usr/local/bin/discord-wayland"]="0:0:755"
 )

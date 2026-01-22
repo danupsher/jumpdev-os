@@ -57,13 +57,28 @@
 - Build 5: Failed - Chaotic-AUR key not initialized
 - Build 6: SUCCESS - Chaotic-AUR working, Discord + wlogout included
 - Build 7: Failed - hyprland-plugin-hyprbars not in Chaotic-AUR
-- Build 8: Beginner-friendly Waybar + VS Code (no hyprbars)
-- Build 9: IN PROGRESS - Build hyprbars from source in CI
+- Build 8: SUCCESS - Waybar buttons + VS Code (no hyprbars)
+- Build 9: Failed - keyserver timeout
+- Build 10: Failed - keyserver timeout (added fallback keyservers)
+- Build 11: Failed - hyprpm refuses to run as root
+- Build 12: Failed - network timeout
+- Build 13: SUCCESS - hyprbars built via cmake, window title bars work!
+- Build 14: SUCCESS - uwsm fix for Hyprland startup warning
+- Build 15: SUCCESS - Text labels for Waybar buttons (font rendering workaround)
+- Build 16: IN PROGRESS - Removed redundant close button from Waybar
+
+**User Testing Feedback (Build 13-15)**:
+- Firefox works great, audio works
+- Window title bars (hyprbars) work with close/fullscreen/minimize buttons
+- Discord had "not enough space" errors (likely tmpfs limit - to debug)
+- Waybar icon fonts rendered as grey squares - fixed with text labels
+- Close button in Waybar redundant since hyprbars has X buttons - removed
 
 **Next Steps**:
-1. Test build 9 - verify hyprbars window buttons + Waybar GUI
-2. Build 10 - Pre-install AI tools (Claude Code, Aider, Ollama)
-3. Gate 3 - Persistence wizard
+1. Test build 16 - verify text labels + no close button
+2. Debug Discord "not enough space" error
+3. Add AI tools (Claude Code, Aider, Ollama)
+4. Gate 3 - Persistence wizard
 
 **Issues Discovered**:
 - Hyprland expects config at `~/.config/hypr/`, not `~/.config/hyprland/`
@@ -155,7 +170,18 @@
 | 2026-01-21 | Build 1 | ~3GB | Gate 1 | SUCCESS | First build via GitHub Actions |
 | 2026-01-21 | Build 2 | ~3GB | Gate 1 | SUCCESS | mkinitcpio archiso hooks fix |
 | 2026-01-21 | Build 3 | ~3GB | Gate 1 | SUCCESS | Hyprland config dir fix (hypr/) |
-| 2026-01-21 | Build 4 | ~4GB | Gate 2 | PENDING | Beginner-friendly packages |
+| 2026-01-21 | Build 4 | - | Gate 2 | FAILED | wlogout not in repos |
+| 2026-01-21 | Build 5 | - | Gate 2 | FAILED | Chaotic-AUR key not initialized |
+| 2026-01-21 | Build 6 | ~3GB | Gate 2 | SUCCESS | Chaotic-AUR working |
+| 2026-01-21 | Build 7 | - | Gate 2 | FAILED | hyprbars not in Chaotic-AUR |
+| 2026-01-21 | Build 8 | ~2.4GB | Gate 2 | SUCCESS | Waybar buttons, no hyprbars |
+| 2026-01-21 | Build 9-10 | - | Gate 2 | FAILED | Keyserver timeout |
+| 2026-01-21 | Build 11 | - | Gate 2 | FAILED | hyprpm refuses root |
+| 2026-01-21 | Build 12 | - | Gate 2 | FAILED | Network timeout |
+| 2026-01-22 | Build 13 | ~2.4GB | Gate 2 | SUCCESS | hyprbars via cmake! |
+| 2026-01-22 | Build 14 | ~2.4GB | Gate 2 | SUCCESS | uwsm startup fix |
+| 2026-01-22 | Build 15 | ~2.4GB | Gate 2 | SUCCESS | Text labels for Waybar |
+| 2026-01-22 | Build 16 | - | Gate 2 | PENDING | Remove close button |
 
 ---
 

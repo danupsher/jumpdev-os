@@ -102,7 +102,7 @@
     "custom/code": {
         "format": "Code",
         "tooltip": "Open VS Code",
-        "on-click": "code"
+        "on-click": "code --ozone-platform=wayland"
     },
 
     "custom/power": {
