@@ -31,6 +31,8 @@ JumpDev OS is a portable Arch Linux distribution designed for AI-assisted develo
 
 **The Vision**: Be the operating system people reach for when they want to build things with AI - whether they've used Linux before or not.
 
+**The User Journey**: New users start with the approachable UI - buttons, menus, window controls. As they grow into serious developers, they discover keyboard shortcuts, tiling workflows, terminal tools. The system is just as powerful as any expert-focused distro - Hyprland, Neovim, full CLI toolkit. Users don't outgrow JumpDev OS, they grow with it.
+
 ## Architecture
 
 ```
