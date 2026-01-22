@@ -19,5 +19,11 @@ matching=fuzzy
 image_size=24
 columns=1
 
+# Close when clicking outside
+hide_on_unfocus=true
+
+# Single click to launch (not double-click)
+single_click=true
+
 # Performance
 cache_file=/dev/null
