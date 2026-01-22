@@ -5,7 +5,7 @@
     "spacing": 4,
     "modules-left": ["custom/launcher", "hyprland/workspaces", "custom/terminal", "custom/files", "custom/browser", "custom/code"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery", "custom/power"],
+    "modules-right": ["tray", "pulseaudio", "battery", "custom/power"],
 
     "hyprland/workspaces": {
         "disable-scroll": false,
@@ -54,14 +54,6 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    },
-
-    "network": {
-        "format-wifi": " {signalStrength}%",
-        "format-ethernet": " {ipaddr}",
-        "format-disconnected": "󰖪 disconnected",
-        "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
-        "on-click": "nm-connection-editor"
     },
 
     "battery": {
