@@ -222,6 +222,17 @@
 
 ---
 
+## Pre-Release Checklist
+
+Tasks to complete before public release:
+
+- [ ] **Disable sshd auto-start** - Currently enabled for QEMU debugging. Remove symlink from `airootfs/etc/systemd/system/multi-user.target.wants/sshd.service` before release. Security risk if left enabled (passwordless user on open network).
+- [ ] Remove any debug-only packages if added
+- [ ] Final hardware testing (Gate 3)
+- [ ] Branding and polish (Gate 4)
+
+---
+
 ## Hardware Testing Log
 
 *Hardware testing begins in Gate 3.*
