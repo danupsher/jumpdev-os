@@ -2,26 +2,26 @@
 
 ## Executive Summary
 
-JumpDev OS is the first Linux distribution purpose-built for vibe coding and AI-assisted development. Boot from USB, get a fully configured environment with Claude Code, Aider, and modern dev tools. Use it portable, then seamlessly migrate to disk when you're ready.
+JumpDev OS is a portable Arch Linux distribution for developers. Boot from USB on any PC with a fully configured environment - editors, containers, languages, AI tools. Use it portable, then seamlessly migrate to disk when you're ready.
 
-**Target User**: Developers who want AI tools ready to go, not hours of setup.
+**Target User**: Developers who work on multiple machines or want a consistent, ready-to-go environment.
 
-**Why JumpDev OS Exists**: The AI coding wave is here. Claude Code, Aider, Cursor, Copilot - everyone's vibe coding. But there's no operating system built for it. Until now.
+**Why JumpDev OS Exists**: Setting up a dev environment is tedious. Doing it on every machine is worse. JumpDev OS is your environment on a USB stick - same tools, same configs, anywhere.
 
 ---
 
-## Killer Features (First-to-Market)
+## Killer Features
 
 | Feature | Why It Matters | Competition |
 |---------|----------------|-------------|
-| **First vibe coding distro** | Purpose-built for AI-assisted development | None - blue ocean |
-| **AI tools pre-installed** | Claude Code, Aider, Ollama ready at first boot | Everyone else: DIY setup |
-| **USB → Disk migration** | Use portable, graduate to permanent. All data migrates. | No distro does this well |
-| **Modern tiling WM that's usable** | Hyprland with title bars, buttons, app drawer | Most: "learn keybinds or die" |
 | **Portable dev environment** | Your whole setup travels. Same on any PC. | VMs are slow, cloud needs internet |
+| **USB → Disk migration** | Use portable, graduate to permanent. All data migrates. | No distro does this well |
+| **Everything pre-configured** | Editors, containers, languages, AI tools - ready at boot | Hours of setup on other distros |
+| **Modern desktop that's usable** | Hyprland with title bars, buttons, app drawer | Most tiling WMs: "learn keybinds or die" |
+| **AI tools included** | Claude Code, Aider, Ollama out of the box | Everyone else: DIY setup |
 
 **The Pitch**:
-> "The first Linux distro built for vibe coding. Claude Code, VS Code, and modern CLI tools. Boot from USB anywhere. Migrate to disk when you're ready. Everything just works."
+> "Your dev environment, on a USB stick. Boot from USB on any PC. Same tools, same configs, same projects. Migrate to disk when you're ready."
 
 ---
 

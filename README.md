@@ -2,51 +2,37 @@
 
 [![Build ISO](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml/badge.svg)](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml)
 
-**The first Linux distro built for vibe coding.**
+**Your dev environment, on a USB stick.**
 
-Claude Code, VS Code, and modern CLI tools. Boot from USB anywhere. Migrate to disk when you're ready. Everything just works.
+Boot from USB on any PC. Same tools, same configs, same projects. When you're ready, migrate to disk with everything intact.
 
-## Why JumpDev OS?
+## The Problem
 
-The AI coding wave is here. Everyone's using Claude Code, Aider, Cursor, Copilot. But there's no operating system built for it.
+You work on multiple machines. Or you want Linux without nuking your Windows install. Or you're tired of setting up the same dev environment over and over.
 
-**JumpDev OS is that operating system.**
+## The Solution
 
-- **AI tools pre-installed** - Claude Code, Aider, Ollama ready at first boot
-- **Boot from USB** - Plug into any PC and start coding
-- **Migrate to disk** - When you're ready, install permanently with all your data intact
-- **Modern desktop** - Hyprland tiling WM with window buttons and app drawer
-- **Everything configured** - VS Code, Neovim, Docker, Git, Node, Python, Rust
+JumpDev OS is a portable Arch Linux distribution with everything configured:
 
-No setup. No configuration. Just code.
+- **VS Code + Neovim** - Editors ready to go
+- **Docker + Git + Lazygit** - Containers and version control
+- **Node.js, Python, Rust** - Languages pre-installed
+- **Claude Code, Aider, Ollama** - AI coding tools included
+- **Modern desktop** - Hyprland with window buttons and app drawer
 
-## Features
+Plug in. Boot up. Code.
 
-### AI-First Development
-- **Claude Code** - AI pair programming in your terminal
-- **Aider** - AI coding assistant
-- **Ollama** - Local LLMs, runs offline
+## Portable → Permanent
 
-### Modern Desktop
-- **Hyprland** - Tiling Wayland compositor with smooth animations
-- **Window decorations** - Title bars with close, maximize, minimize
-- **nwg-drawer** - App launcher with categories
-- **Catppuccin Mocha** - Cohesive dark theme
+Use JumpDev OS from USB for a day, a week, or a month. Your files and logins persist between reboots.
 
-### Development Stack
-- **VS Code** + **Neovim** - GUI and terminal editors
-- **Git** + **GitHub CLI** + **Lazygit** - Version control
-- **Docker** + **Docker Compose** - Containers
-- **Node.js**, **Python**, **Rust** - Languages
-
-### Portable → Permanent
-Use JumpDev OS from USB for a day, a week, or a month. When you're ready:
+When you're ready to install permanently:
 
 1. Click "Install to Disk"
 2. Choose your drive
-3. All your logins, projects, and configs migrate automatically
+3. Everything migrates - browser sessions, app logins, projects, configs
 
-Same browser sessions. Same app logins. Same projects. Just faster.
+Same environment. Just faster.
 
 ## Screenshots
 
@@ -69,16 +55,28 @@ Same browser sessions. Same app logins. Same projects. Just faster.
 
 Secure Boot must be disabled.
 
-## Included Software
+## What's Included
 
-### Apps
-Firefox, VS Code, Thunar, Discord, VLC, Foot terminal
+### Desktop
+Hyprland (tiling WM), Waybar, nwg-drawer (app launcher), Catppuccin theme
 
-### CLI Tools
-`fzf` `ripgrep` `fd` `bat` `eza` `zoxide` `yazi` `btop` `lazygit` `tmux`
+### Editors
+VS Code, Neovim (LSP configured)
+
+### Dev Tools
+Git, GitHub CLI, Lazygit, Docker, Docker Compose
 
 ### Languages
-Node.js, Python, Rust (via rustup)
+Node.js, Python, Rust (rustup)
+
+### AI Tools
+Claude Code, Aider, Ollama
+
+### Apps
+Firefox, Thunar, Discord, VLC
+
+### CLI
+`fzf` `ripgrep` `fd` `bat` `eza` `zoxide` `yazi` `btop` `lazygit` `tmux`
 
 ## Keyboard Shortcuts
 
@@ -92,29 +90,19 @@ Node.js, Python, Rust (via rustup)
 | `Super + C` | VS Code |
 | `Super + 1-9` | Switch workspace |
 
-Or just use the buttons in the top bar.
+Or use the buttons in the top bar.
 
-## Hardware Support
+## Hardware
 
-- **Graphics**: Intel, AMD, NVIDIA (open drivers)
+- **Graphics**: Intel, AMD, NVIDIA
 - **WiFi**: Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek
-
-## Tech Stack
-
-| Component | Choice |
-|-----------|--------|
-| Base | Arch Linux (linux-zen) |
-| Display | Wayland + Hyprland |
-| Shell | Zsh + Starship |
-| Theme | Catppuccin Mocha |
-| Font | JetBrains Mono Nerd Font |
 
 ## Roadmap
 
 - [x] Bootable ISO with Hyprland desktop
 - [x] Apps and developer tools
 - [ ] Persistence (save data between reboots)
-- [ ] Install to disk with migration
+- [ ] Install to disk with seamless migration
 - [ ] AI tools pre-installed
 - [ ] ARM64 / Apple Silicon
 
@@ -127,14 +115,10 @@ sudo pacman -S archiso  # Requires Arch Linux
 sudo mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
 ```
 
-## Contributing
-
-See `CLAUDE.md`, `COMPREHENSIVE_PLAN.md`, `DECISIONS.md`
-
 ## License
 
-MIT License
+MIT
 
-## Acknowledgements
+## Links
 
 [Arch Linux](https://archlinux.org/) / [Hyprland](https://hyprland.org/) / [Catppuccin](https://github.com/catppuccin/catppuccin) / [Chaotic-AUR](https://aur.chaotic.cx/)
