@@ -1,103 +1,166 @@
 # JumpDev OS
 
-A portable Linux distribution for vibe coding and AI-assisted development. Boot from USB, jump into any machine, and start building with Claude Code.
+[![Build ISO](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml/badge.svg)](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml)
+
+A portable Linux distribution for vibe coding and AI-assisted development. Boot from USB, jump into any machine, and start building.
 
 ## What is JumpDev OS?
 
-JumpDev OS is a live USB Arch Linux distribution designed for developers who want a consistent, portable coding environment with AI tools pre-configured. Plug it into any PC, boot up, and you're in a fully configured workspace with:
+JumpDev OS is a live USB Arch Linux distribution designed for developers who want a consistent, portable coding environment. Plug it into any PC, boot up, and you're in a fully configured workspace - no installation required.
 
-- **Claude Code** - AI pair programming in your terminal
-- **Hyprland** - Modern tiling Wayland compositor
-- **Neovim** - Pre-configured with LSP and modern plugins
-- **Modern CLI tools** - fzf, ripgrep, lazygit, yazi, and more
-
-No installation required. Your environment travels with you.
+**Perfect for:**
+- Developers who work on multiple machines
+- Windows users curious about Linux without commitment
+- Anyone who wants a portable, consistent dev environment
+- Vibe coding with AI assistants
 
 ## Features
 
-- **Live USB boot** - No installation, runs entirely from USB
-- **Persistence** - Dedicated partition saves projects, configs, and API keys
-- **AI-first tooling** - Claude Code, Aider, and Ollama pre-installed
-- **Modern stack** - Wayland, Hyprland, Foot terminal, Zsh + Starship
-- **Developer ready** - Git, Docker, Node.js, Python, Rust out of the box
-- **Consistent theming** - Catppuccin Mocha across all applications
+### Beginner Friendly
+- **Clickable buttons** - Waybar has Apps, Terminal, Files, Browser, and Code buttons
+- **Window title bars** - Every window has close, maximize, and minimize buttons
+- **Familiar apps** - Firefox, VS Code, Thunar file manager, VLC media player
+- **Works with mouse** - No need to memorize keyboard shortcuts
+
+### Developer Ready
+- **Modern CLI tools** - fzf, ripgrep, lazygit, yazi, btop, and more
+- **Languages** - Node.js, Python, Rust toolchains pre-installed
+- **Containers** - Docker and Docker Compose ready to go
+- **Git** - GitHub CLI and Lazygit for visual git workflows
+
+### Portable
+- **Live USB boot** - Runs entirely from USB, no installation
+- **Persistence** (coming soon) - Save projects, configs, and API keys between reboots
+- **Wide hardware support** - Intel, AMD, NVIDIA graphics + comprehensive WiFi drivers
+
+## Screenshots
+
+*Coming soon*
 
 ## Requirements
 
-- USB 3.0 drive (16GB minimum, 32GB recommended)
-- 8GB RAM minimum (16GB recommended)
-- x86_64 system with UEFI or Legacy BIOS
-- Secure Boot must be disabled
+| Component | Minimum | Recommended |
+|-----------|---------|-------------|
+| USB Drive | 16GB USB 3.0 | 32GB+ USB 3.0/3.1 |
+| RAM | 8GB | 16GB |
+| CPU | x86_64 | - |
+| Boot | UEFI or Legacy BIOS | UEFI |
+
+**Note:** Secure Boot must be disabled.
 
 ## Quick Start
 
 1. Download the latest ISO from [Releases](https://github.com/danupsher/jumpdev-os/releases)
-2. Verify the checksum: `sha256sum -c jumpdev-*.iso.sha256`
-3. Write to USB:
+2. Write to USB using [Balena Etcher](https://etcher.balena.io/), [Rufus](https://rufus.ie/), or:
    ```bash
    sudo dd if=jumpdev-*.iso of=/dev/sdX bs=4M status=progress oflag=sync
    ```
-4. Boot from USB (may need to disable Secure Boot)
-5. Run first-boot wizard to configure API keys
+3. Boot from USB (may need to enter BIOS and select USB boot)
+4. Start coding!
 
-## Default Keybinds
+## Included Software
+
+### Desktop
+| App | Description |
+|-----|-------------|
+| Hyprland | Tiling Wayland compositor |
+| Waybar | Status bar with clickable buttons |
+| Fuzzel | App launcher (Super+D or click "Apps") |
+| Thunar | File manager |
+| Foot | Terminal emulator |
+
+### Development
+| App | Description |
+|-----|-------------|
+| VS Code | Code editor |
+| Neovim | Terminal editor with LSP |
+| Git + GitHub CLI | Version control |
+| Lazygit | Visual git interface |
+| Docker | Container runtime |
+
+### Apps
+| App | Description |
+|-----|-------------|
+| Firefox | Web browser |
+| Discord | Communication |
+| VLC | Media player |
+| imv | Image viewer |
+
+### CLI Tools
+`fzf` `ripgrep` `fd` `bat` `eza` `zoxide` `yazi` `btop` `jq` `tmux` `fastfetch`
+
+## Keyboard Shortcuts
 
 | Key | Action |
 |-----|--------|
 | `Super + Return` | Open terminal |
-| `Super + D` | Open launcher |
+| `Super + D` | Open app launcher |
 | `Super + Q` | Close window |
+| `Super + B` | Open Firefox |
+| `Super + E` | Open file manager |
+| `Super + C` | Open VS Code |
 | `Super + 1-9` | Switch workspace |
 | `Super + F` | Toggle fullscreen |
+| `Super + V` | Toggle floating |
+| `Print` | Screenshot region |
 
-## Persistence
+**Tip:** You can also use the buttons in the top bar instead of keyboard shortcuts!
 
-To enable persistence between reboots:
+## Hardware Support
 
-1. Create an ext4 partition on your USB drive
-2. Label it `JUMPDEV_PERSIST`
-3. JumpDev OS will auto-detect and mount it
+### Graphics
+- **Intel** - Full support (mesa, vulkan-intel)
+- **AMD** - Full support (mesa, vulkan-radeon)
+- **NVIDIA** - Supported (nvidia-open-dkms)
 
-Your projects, dotfiles, and API keys will survive reboots.
+### WiFi
+Includes drivers for Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, and Ralink chipsets. Most laptops should work out of the box.
+
+## Tech Stack
+
+| Component | Choice |
+|-----------|--------|
+| Base | Arch Linux (linux-zen kernel) |
+| Display | Wayland + Hyprland |
+| Terminal | Foot |
+| Shell | Zsh + Starship |
+| Editor | Neovim + VS Code |
+| Theme | Catppuccin Mocha |
+| Font | JetBrains Mono Nerd Font |
 
 ## Building from Source
 
 Requires Arch Linux (VM or container):
 
 ```bash
-# Install archiso
-sudo pacman -S archiso
-
 # Clone the repository
 git clone https://github.com/danupsher/jumpdev-os.git
 cd jumpdev-os
 
-# Build the ISO
-sudo ./scripts/build-iso.sh
+# Build requires archiso
+sudo pacman -S archiso
 
-# Test in QEMU
-./scripts/test-qemu.sh
+# Build the ISO (runs via GitHub Actions, or locally:)
+sudo mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
 ```
 
-## Tech Stack
+Or just push to main - GitHub Actions builds the ISO automatically.
 
-| Component | Choice |
-|-----------|--------|
-| Base | Arch Linux |
-| Display | Wayland + Hyprland |
-| Terminal | Foot |
-| Shell | Zsh + Starship |
-| Editor | Neovim |
-| Theme | Catppuccin Mocha |
-| Font | JetBrains Mono Nerd Font |
+## Roadmap
+
+- [x] Gate 1: Bootable ISO with Hyprland desktop
+- [x] Gate 2: Beginner-friendly GUI with apps
+- [ ] Gate 3: Persistence wizard for saving data
+- [ ] Gate 4: Polish, branding, and release
+- [ ] Gate 5: ARM64/Apple Silicon support
 
 ## Contributing
 
-Contributions welcome! Please read the existing documentation:
-
-- `CLAUDE.md` - Session guide for AI-assisted development
-- `COMPREHENSIVE_PLAN.md` - Project roadmap and gates
+Contributions welcome! See:
+- `CLAUDE.md` - Guide for AI-assisted development sessions
+- `COMPREHENSIVE_PLAN.md` - Full project roadmap
 - `DECISIONS.md` - Architectural decisions
+- `BUILD_LOG.md` - Build history and progress
 
 ## License
 
@@ -106,6 +169,6 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## Acknowledgements
 
 - [Arch Linux](https://archlinux.org/) and [Archiso](https://wiki.archlinux.org/title/Archiso)
-- [Hyprland](https://hyprland.org/)
-- [Catppuccin](https://github.com/catppuccin/catppuccin)
-- [Claude Code](https://claude.ai/code) by Anthropic
+- [Hyprland](https://hyprland.org/) and [hyprbars plugin](https://github.com/hyprwm/hyprland-plugins)
+- [Catppuccin](https://github.com/catppuccin/catppuccin) theme
+- [Chaotic-AUR](https://aur.chaotic.cx/) for pre-built AUR packages

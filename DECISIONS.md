@@ -94,22 +94,22 @@
 
 ---
 
-## Editor: Neovim (Primary), Cursor (GUI fallback)
+## Editors: Neovim + VS Code
 
-**Decision**: Neovim as primary editor, pre-configured with LSP.
+**Decision**: Include both Neovim (terminal) and VS Code (GUI).
 
 **Why**:
-- Terminal-native, fits the CLI-first philosophy
-- Modern Lua configuration
-- Built-in LSP support
-- Treesitter for modern syntax highlighting
-- Lazy.nvim for fast, lazy-loaded plugins
+- Neovim for terminal-native editing with LSP
+- VS Code for users who prefer a GUI editor
+- Both are widely used in development
+- VS Code available via Chaotic-AUR (visual-studio-code-bin)
+- Covers both CLI power users and GUI-preferring developers
 
 **Alternatives Considered**:
-- **Vim**: Neovim is the modern evolution
+- **Neovim only**: Too steep learning curve for beginners
+- **Cursor**: Not available in Chaotic-AUR
+- **VS Codium**: Less extension compatibility
 - **Helix**: Interesting but smaller ecosystem
-- **VS Code**: Too heavy for live USB, defeats CLI purpose
-- **Cursor**: Include as optional GUI fallback only
 
 ---
 
@@ -249,3 +249,57 @@
 - **Sign with shim**: Complex, requires ongoing maintenance
 - **MOK enrollment**: Requires user interaction at boot
 - **PreLoader**: Similar complexity to shim
+
+---
+
+## AUR Packages: Chaotic-AUR
+
+**Decision**: Use Chaotic-AUR repository for pre-built AUR packages.
+
+**Why**:
+- AUR packages can't be built directly in Archiso
+- Chaotic-AUR provides pre-built binaries of popular AUR packages
+- Includes Discord, wlogout, VS Code, and other essentials
+- Avoids slow first-boot compilation
+- Trusted repository with GPG-signed packages
+
+**Alternatives Considered**:
+- **Build AUR packages in CI**: Complex, time-consuming
+- **First-boot AUR compilation**: Too slow, bad user experience
+- **Flatpak**: Sandboxing issues, larger download size
+- **Skip AUR packages**: Loses important software like Discord, VS Code
+
+---
+
+## Window Title Bars: hyprbars Plugin
+
+**Decision**: Build and include hyprbars plugin for window title bars with buttons.
+
+**Why**:
+- Provides close, maximize, minimize buttons on every window
+- Essential for users coming from Windows/macOS
+- Makes Hyprland usable without memorizing keybinds
+- Plugin built from source in CI (not available pre-built)
+
+**Alternatives Considered**:
+- **No title bars**: Too unfamiliar for beginners
+- **Use GTK/Qt decorations**: Inconsistent, doesn't work for all apps
+- **Switch to Sway**: Would lose Hyprland features we want
+
+---
+
+## Beginner-Friendly Features
+
+**Decision**: Include clickable Waybar buttons and GUI elements.
+
+**Why**:
+- Target audience includes Windows users new to Linux
+- Reduces barrier to entry
+- Apps button, Terminal, Files, Browser, Code buttons in Waybar
+- Users can still learn keybinds over time
+- Power button for clean shutdown/logout
+
+**Alternatives Considered**:
+- **Keyboard-only**: Alienates beginners
+- **Dock (nwg-dock)**: Another dependency, Waybar buttons sufficient
+- **Different DE**: Loses benefits of Hyprland tiling
