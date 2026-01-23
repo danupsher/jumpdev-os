@@ -52,9 +52,7 @@ inputbar {
 }
 
 prompt {
-    enabled: true;
-    padding: 0 10px 0 0;
-    text-color: @accent;
+    enabled: false;
 }
 
 entry {

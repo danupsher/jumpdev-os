@@ -7,4 +7,4 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
-rofi -show drun -click-to-exit -me-select-entry "MousePrimary" -me-accept-entry "MouseDPrimary" -p "" -theme ~/.config/rofi/config.rasi
+rofi -show drun -click-to-exit -me-accept-entry "MousePrimary" -p "" -theme ~/.config/rofi/config.rasi
