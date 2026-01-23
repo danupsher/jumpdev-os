@@ -56,10 +56,11 @@
 - Build 76: Fix windowrule for Hyprland 0.53 (CachyOS format)
 - Build 77: Reliable click-outside-to-close with improved slurp solution
 - Build 78: Build log update
-- Build 79: Fix windowrule syntax for Hyprland 0.53+ (complete rewrite)
+- Build 79: Fix windowrule syntax for Hyprland 0.53+ (partial - float rules)
+- Build 80: Fix remaining windowrule syntax (no_anim, border_size, no_shadow)
 
 **Next Steps**:
-1. Test Build 79 - verify no Hyprland config errors on boot
+1. Test Build 80 - verify no Hyprland config errors on boot
 2. Test single-click app launching
 3. Test click-outside-to-close
 
