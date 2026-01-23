@@ -78,7 +78,6 @@ jobs:
           cp -r configs/nvim archiso/airootfs/home/jump/.config/
           cp -r configs/wofi archiso/airootfs/home/jump/.config/
           cp -r configs/scripts archiso/airootfs/home/jump/.config/
-          chmod +x archiso/airootfs/home/jump/.config/scripts/*.sh
           cp -r configs/yazi archiso/airootfs/home/jump/.config/ 2>/dev/null || true
           cp -r configs/btop archiso/airootfs/home/jump/.config/ 2>/dev/null || true
           cp -r configs/lazygit archiso/airootfs/home/jump/.config/ 2>/dev/null || true
@@ -92,6 +91,9 @@ jobs:
 
           # Set ownership (jump user is uid/gid 1000)
           chown -R 1000:1000 archiso/airootfs/home/jump/
+
+          # Make scripts executable (AFTER chown to ensure it sticks)
+          chmod +x archiso/airootfs/home/jump/.config/scripts/*.sh
 
       - name: Build ISO
         run: |
