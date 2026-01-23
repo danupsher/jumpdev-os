@@ -21,4 +21,7 @@ file_permissions=(
   ["/etc/gshadow"]="0:0:400"
   ["/etc/sudoers.d/wheel"]="0:0:440"
   ["/usr/local/bin/discord-wayland"]="0:0:755"
+  ["/home/jump/.config/scripts/power-menu.sh"]="1000:1000:755"
+  ["/home/jump/.config/scripts/volume-popup.sh"]="1000:1000:755"
+  ["/home/jump/.config/scripts/app-launcher.sh"]="1000:1000:755"
 )
