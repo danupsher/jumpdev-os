@@ -31,6 +31,7 @@
 **In Progress**:
 - **Switched from wofi to rofi** - Better click support and configuration
 - **UI polish pass** - Fixing fonts, click behavior, menus
+- **BIOS boot tested** - Confirmed working in QEMU
 
 **Issues Found & Fixes**:
 | Issue | Status | Fix |
@@ -38,21 +39,25 @@
 | Power menu text cut off ("Shutdo...") | FIXED | Increased width 120px → 150px |
 | Font too big in menus | FIXED | Changed font to monospace 10 |
 | Font too big in waybar | FIXED | Changed 13px → 11px, launcher 16px → 12px |
-| Can't click menu items | FIXED | Added `-me-select-entry` and `-me-accept-entry` flags |
+| "drun" showing in search bar | FIXED | Disabled prompt in rofi config |
 | Click outside not closing menu | FIXED | Added `-click-to-exit` flag |
 | Volume goes over 100% | FIXED | Using `wpctl -l 1.0` to cap at 100% |
 | Hyprland windowrulev2 deprecated | FIXED | Changed to windowrule |
+| Hyprland windowrule syntax v0.53 | FIXED | Use `float, ^(class)$` format |
+| Rofi MousePrimary already bound | FIXED | Removed `-me-accept-entry` flag |
 | "Dummy output" on volume | N/A | Expected in QEMU (no real audio hardware) |
 
 **Build History**:
 - Build 36: Fix rofi menu issues and volume cap
 - Build 37: Fix deprecated windowrulev2 → windowrule
-- Build 38: (pending) Font sizes, click-to-select, click-outside-to-close
+- Build 38: Font sizes, hide drun prompt, click-to-exit
+- Build 39: Fix rofi click behavior, windowrule syntax attempt
+- Build 40: Fix windowrule for Hyprland 0.53, remove rofi MousePrimary
 
 **Next Steps**:
-1. Test all fixes in QEMU
-2. Verify click behavior works
-3. Check for any remaining issues
+1. Test Build 40 - verify no errors on boot
+2. Test click-to-launch in app menu
+3. Test click-outside-to-close
 
 ---
 

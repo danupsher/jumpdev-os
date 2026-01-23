@@ -5,6 +5,9 @@ configuration {
     disable-history: true;
     hover-select: true;
     font: "monospace 10";
+    click-to-exit: true;
+    me-select-entry: "";
+    me-accept-entry: "MousePrimary";
 }
 
 * {
@@ -22,7 +25,7 @@ window {
     width: 150px;
     location: northeast;
     x-offset: -10;
-    y-offset: 44;
+    y-offset: 36;
     background-color: @bg;
     border: 2px solid;
     border-color: @accent;
