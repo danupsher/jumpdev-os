@@ -20,6 +20,7 @@ file_permissions=(
   ["/etc/shadow"]="0:0:400"
   ["/etc/gshadow"]="0:0:400"
   ["/etc/sudoers.d/wheel"]="0:0:440"
+  ["/root/customize_airootfs.sh"]="0:0:755"
   ["/usr/local/bin/discord-wayland"]="0:0:755"
   ["/home/jump/.config/scripts/power-menu.sh"]="1000:1000:755"
   ["/home/jump/.config/scripts/app-launcher.sh"]="1000:1000:755"

@@ -5,8 +5,8 @@ configuration {
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
-    drun-display-format: "{name}";
-    location: 0;
+    drun-display-format: "{name} <span size='small' style='italic'>({categories})</span>";
+    location: 1;
     disable-history: false;
     hide-scrollbar: true;
     sidebar-mode: false;
@@ -29,6 +29,8 @@ configuration {
 
 window {
     width: 500px;
+    x-offset: 10;
+    y-offset: 44;
     background-color: @bg;
     border: 2px solid;
     border-color: @accent;
@@ -61,7 +63,7 @@ entry {
 
 listview {
     columns: 1;
-    lines: 8;
+    lines: 12;
     scrollbar: false;
     fixed-height: false;
     spacing: 5px;
