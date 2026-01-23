@@ -104,6 +104,7 @@ jobs:
       - name: Copy ISO to host (self-hosted only)
         if: runner.name != 'GitHub Actions'
         run: |
+          rm -f /host-out/*.iso /host-out/SHA256SUMS
           cp out/*.iso out/SHA256SUMS /host-out/
           echo "ISO available at: /home/dan/projects/jumpdev-os/out/"
           ls -lh /host-out/
