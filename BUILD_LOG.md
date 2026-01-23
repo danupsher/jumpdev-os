@@ -37,15 +37,17 @@
 | Issue | Status | Fix |
 |-------|--------|-----|
 | Power menu text cut off ("Shutdo...") | FIXED | Increased width 120px → 150px |
-| Font too big in menus | FIXED | Changed font to monospace 10 |
+| Font too big in menus | FIXED | Changed font to JetBrainsMono 11 (matches waybar) |
 | Font too big in waybar | FIXED | Changed 13px → 11px, launcher 16px → 12px |
 | "drun" showing in search bar | FIXED | Disabled prompt in rofi config |
-| Click outside not closing menu | FIXED | Added `-click-to-exit` flag |
+| Click outside not closing menu | FIXED | Improved slurp overlay with point-selection mode |
+| Typing not working on menu reopen | FIXED | Environment vars + proper process cleanup |
 | Volume goes over 100% | FIXED | Using `wpctl -l 1.0` to cap at 100% |
 | Hyprland windowrulev2 deprecated | FIXED | Changed to windowrule |
-| Hyprland windowrule syntax v0.53 | FIXED | Use `float, ^(class)$` format |
+| Hyprland windowrule syntax v0.53 | FIXED | Use `float, class:^(name)$` format (CachyOS style) |
 | Rofi MousePrimary already bound | FIXED | Removed `-me-accept-entry` flag |
 | "Dummy output" on volume | N/A | Expected in QEMU (no real audio hardware) |
+| Missing desktop entries | FIXED | Added tmux, lazygit, lazydocker, fastfetch |
 
 **Build History**:
 - Build 36: Fix rofi menu issues and volume cap
@@ -53,11 +55,13 @@
 - Build 38: Font sizes, hide drun prompt, click-to-exit
 - Build 39: Fix rofi click behavior, windowrule syntax attempt
 - Build 40: Fix windowrule for Hyprland 0.53, remove rofi MousePrimary
+- Build 41: Menu sizing, font matching, slurp workaround attempt
+- Build 42: Reliable click-outside-to-close with improved slurp solution
 
 **Next Steps**:
-1. Test Build 40 - verify no errors on boot
-2. Test click-to-launch in app menu
-3. Test click-outside-to-close
+1. Test Build 42 - verify click-outside-to-close works reliably
+2. Test single-click app launching
+3. Verify no Hyprland errors on boot
 
 ---
 
