@@ -22,7 +22,7 @@ options="  Lock\n  Logout\n  Restart\n  Shutdown"
 
 selected=$(echo -e "$options" | wofi --dmenu \
     --width 150 \
-    --height 176 \
+    --lines 4 \
     --location top_right \
     --xoffset -10 \
     --yoffset 44 \
