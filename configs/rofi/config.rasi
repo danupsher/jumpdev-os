@@ -10,10 +10,13 @@ configuration {
     disable-history: false;
     hide-scrollbar: true;
     sidebar-mode: false;
-    font: "monospace 10";
+    font: "JetBrainsMono Nerd Font 11";
     click-to-exit: true;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
+    ml-row-up: "";
+    ml-row-down: "";
+    scroll-method: 0;
 }
 
 /* Catppuccin Mocha Colors */
@@ -34,7 +37,7 @@ configuration {
 window {
     width: 380px;
     x-offset: 10;
-    y-offset: 36;
+    y-offset: 34;
     background-color: @bg;
     border: 2px solid;
     border-color: @accent;

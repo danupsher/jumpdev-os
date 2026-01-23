@@ -4,7 +4,7 @@ configuration {
     show-icons: false;
     disable-history: true;
     hover-select: true;
-    font: "monospace 10";
+    font: "JetBrainsMono Nerd Font 11";
     click-to-exit: true;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
@@ -25,7 +25,7 @@ window {
     width: 150px;
     location: northeast;
     x-offset: -10;
-    y-offset: 36;
+    y-offset: 34;
     background-color: @bg;
     border: 2px solid;
     border-color: @accent;

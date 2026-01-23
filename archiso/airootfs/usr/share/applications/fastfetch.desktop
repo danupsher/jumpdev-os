@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Fastfetch
+Comment=System information tool
+Exec=kitty -e fastfetch
+Icon=utilities-system-monitor
+Terminal=false
+Type=Application
+Categories=System;
