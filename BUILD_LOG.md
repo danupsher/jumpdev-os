@@ -59,10 +59,19 @@
 - Build 79: Fix windowrule syntax for Hyprland 0.53+ (partial - float rules)
 - Build 80: Fix remaining windowrule syntax (no_anim, border_size, no_shadow)
 
+**Build 81**: hyprbars:no_bar rule fix for Hyprland 0.53+
+**Build 82**: Fix rofi scroll + border/corner flickering
+
+**Fixes in Build 82**:
+| Issue | Fix |
+|-------|-----|
+| Rofi mouse wheel scroll not working | Set ml-row-up/down to ScrollUp/ScrollDown |
+| Rofi keyboard focus on reopen | Launch rofi before slurp overlay |
+| Border/corner flickering artifacts | Set rounding=1, bar_precedence_over_border=false |
+
 **Next Steps**:
-1. Test Build 80 - verify no Hyprland config errors on boot
-2. Test single-click app launching
-3. Test click-outside-to-close
+1. Test Build 82 - verify scroll works in apps menu
+2. Test Build 82 - verify no border/corner flickering
 
 ---
 
