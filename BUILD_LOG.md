@@ -26,6 +26,36 @@
 
 ## Session Log
 
+### Session 5 - 2026-01-23
+
+**In Progress**:
+- **Switched from wofi to rofi** - Better click support and configuration
+- **UI polish pass** - Fixing fonts, click behavior, menus
+
+**Issues Found & Fixes**:
+| Issue | Status | Fix |
+|-------|--------|-----|
+| Power menu text cut off ("Shutdo...") | FIXED | Increased width 120px → 150px |
+| Font too big in menus | FIXED | Changed font to monospace 10 |
+| Font too big in waybar | FIXED | Changed 13px → 11px, launcher 16px → 12px |
+| Can't click menu items | FIXED | Added `-me-select-entry` and `-me-accept-entry` flags |
+| Click outside not closing menu | FIXED | Added `-click-to-exit` flag |
+| Volume goes over 100% | FIXED | Using `wpctl -l 1.0` to cap at 100% |
+| Hyprland windowrulev2 deprecated | FIXED | Changed to windowrule |
+| "Dummy output" on volume | N/A | Expected in QEMU (no real audio hardware) |
+
+**Build History**:
+- Build 36: Fix rofi menu issues and volume cap
+- Build 37: Fix deprecated windowrulev2 → windowrule
+- Build 38: (pending) Font sizes, click-to-select, click-outside-to-close
+
+**Next Steps**:
+1. Test all fixes in QEMU
+2. Verify click behavior works
+3. Check for any remaining issues
+
+---
+
 ### Session 4 - 2026-01-22
 
 **Completed**:

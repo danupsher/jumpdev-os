@@ -4,7 +4,7 @@ configuration {
     show-icons: false;
     disable-history: true;
     hover-select: true;
-    font: "monospace 11";
+    font: "monospace 10";
 }
 
 * {

@@ -10,7 +10,7 @@ configuration {
     disable-history: false;
     hide-scrollbar: true;
     sidebar-mode: false;
-    font: "monospace 11";
+    font: "monospace 10";
 }
 
 /* Catppuccin Mocha Colors */
