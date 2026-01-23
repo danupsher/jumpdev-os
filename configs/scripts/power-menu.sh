@@ -10,7 +10,7 @@ fi
 # Power menu options
 options="Lock\nLogout\nRestart\nShutdown"
 
-selected=$(echo -e "$options" | rofi -dmenu \
+selected=$(echo -e "$options" | rofi -dmenu -click-to-exit \
     -theme ~/.config/rofi/power-menu.rasi \
     -p "Power")
 

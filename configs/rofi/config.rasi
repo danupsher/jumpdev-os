@@ -5,11 +5,12 @@ configuration {
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
-    drun-display-format: "{name} <span size='small' style='italic'>({categories})</span>";
+    drun-display-format: "{name}";
     location: 1;
     disable-history: false;
     hide-scrollbar: true;
     sidebar-mode: false;
+    font: "monospace 11";
 }
 
 /* Catppuccin Mocha Colors */

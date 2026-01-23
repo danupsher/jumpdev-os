@@ -4,6 +4,7 @@ configuration {
     show-icons: false;
     disable-history: true;
     hover-select: true;
+    font: "monospace 11";
 }
 
 * {
@@ -18,7 +19,7 @@ configuration {
 }
 
 window {
-    width: 120px;
+    width: 150px;
     location: northeast;
     x-offset: -10;
     y-offset: 44;

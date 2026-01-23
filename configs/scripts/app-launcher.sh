@@ -7,4 +7,4 @@ if pgrep -x rofi > /dev/null; then
     exit 0
 fi
 
-rofi -show drun -theme ~/.config/rofi/config.rasi
+rofi -show drun -click-to-exit -theme ~/.config/rofi/config.rasi
