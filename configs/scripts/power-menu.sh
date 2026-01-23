@@ -11,7 +11,6 @@ fi
 options="Lock\nLogout\nRestart\nShutdown"
 
 selected=$(echo -e "$options" | rofi -dmenu -click-to-exit \
-    -me-accept-entry "MousePrimary" \
     -theme ~/.config/rofi/power-menu.rasi \
     -p "")
 
