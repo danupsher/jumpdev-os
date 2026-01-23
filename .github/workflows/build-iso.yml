@@ -100,13 +100,15 @@ jobs:
             cd /host-out && sha256sum *.iso > SHA256SUMS && cat SHA256SUMS
             echo "ISO available at: /home/dan/projects/jumpdev-os/out/"
             ls -lh /host-out/
+            # Copy to workspace for artifact upload (needed for releases)
+            mkdir -p $GITHUB_WORKSPACE/out
+            cp /host-out/*.iso /host-out/SHA256SUMS $GITHUB_WORKSPACE/out/
           else
             mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
             cd out && sha256sum *.iso > SHA256SUMS && cat SHA256SUMS
           fi
 
       - name: Upload ISO artifact
-        if: ${{ !contains(runner.name, 'self-hosted') }}
         uses: actions/upload-artifact@v4
         with:
           name: jumpdev-os-iso
