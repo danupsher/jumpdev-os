@@ -14,8 +14,8 @@ configuration {
     click-to-exit: true;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
-    ml-row-up: "";
-    ml-row-down: "";
+    ml-row-up: "ScrollUp";
+    ml-row-down: "ScrollDown";
     scroll-method: 0;
 }
 
