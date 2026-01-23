@@ -1,0 +1,12 @@
+# JumpDev OS SSH Configuration
+# Allows passwordless login for debugging
+
+PermitRootLogin yes
+PermitEmptyPasswords yes
+PasswordAuthentication yes
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+AcceptEnv LANG LC_*
+Subsystem sftp /usr/lib/ssh/sftp-server

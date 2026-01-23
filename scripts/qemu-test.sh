@@ -40,5 +40,5 @@ qemu-system-x86_64 \
     -device virtio-net-pci,netdev=net0 \
     -vga virtio \
     -display vnc=:0 \
-    -bios /usr/share/OVMF/OVMF_CODE.fd \
+    -bios /usr/share/qemu/OVMF.fd \
     -name "JumpDev OS Test"
