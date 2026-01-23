@@ -76,7 +76,7 @@ jobs:
           cp -r configs/waybar archiso/airootfs/home/jump/.config/
           cp -r configs/kitty archiso/airootfs/home/jump/.config/
           cp -r configs/nvim archiso/airootfs/home/jump/.config/
-          cp -r configs/wofi archiso/airootfs/home/jump/.config/
+          cp -r configs/rofi archiso/airootfs/home/jump/.config/
           cp -r configs/scripts archiso/airootfs/home/jump/.config/
           cp -r configs/yazi archiso/airootfs/home/jump/.config/ 2>/dev/null || true
           cp -r configs/btop archiso/airootfs/home/jump/.config/ 2>/dev/null || true

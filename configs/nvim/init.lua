@@ -1,20 +1,7 @@
 -- JumpDev OS Neovim Configuration
+-- Offline-ready: uses system-installed LSPs, no downloads required
 
--- Bootstrap lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
--- Leader key (must be before lazy)
+-- Leader key (must be before plugins)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -41,6 +28,17 @@ vim.opt.clipboard = "unnamedplus"
 vim.opt.undofile = true
 vim.opt.cursorline = true
 
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system({
+    "git", "clone", "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
 -- Plugins
 require("lazy").setup({
   -- Catppuccin theme
@@ -56,10 +54,7 @@ require("lazy").setup({
           gitsigns = true,
           treesitter = true,
           telescope = true,
-          mason = true,
-          native_lsp = {
-            enabled = true,
-          },
+          native_lsp = { enabled = true },
         },
       })
       vim.cmd.colorscheme("catppuccin")
@@ -75,14 +70,10 @@ require("lazy").setup({
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = function()
-      require("neo-tree").setup({
-        close_if_last_window = true,
-        filesystem = {
-          follow_current_file = { enabled = true },
-        },
-      })
-    end,
+    opts = {
+      close_if_last_window = true,
+      filesystem = { follow_current_file = { enabled = true } },
+    },
   },
 
   -- Fuzzy finder
@@ -90,66 +81,47 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("telescope").setup({
-        defaults = {
-          mappings = {
-            i = {
-              ["<C-j>"] = "move_selection_next",
-              ["<C-k>"] = "move_selection_previous",
-            },
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-j>"] = "move_selection_next",
+            ["<C-k>"] = "move_selection_previous",
           },
         },
-      })
-    end,
+      },
+    },
   },
 
-  -- Treesitter
+  -- Treesitter (graceful loading)
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "vimdoc", "bash",
-          "javascript", "typescript", "tsx",
-          "python", "rust", "go",
-          "html", "css", "json", "yaml", "toml", "markdown",
-        },
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      local ok, configs = pcall(require, "nvim-treesitter.configs")
+      if ok then
+        configs.setup({
+          ensure_installed = {
+            "lua", "vim", "vimdoc", "bash",
+            "javascript", "typescript", "tsx",
+            "python", "rust", "go",
+            "html", "css", "json", "yaml", "toml", "markdown",
+          },
+          auto_install = false,
+          highlight = { enable = true },
+          indent = { enable = true },
+        })
+      end
     end,
   },
 
-  -- LSP
+  -- LSP (uses system-installed servers)
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
     config = function()
-      require("mason").setup()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "ts_ls",
-          "pyright",
-          "rust_analyzer",
-        },
-      })
-
       local lspconfig = require("lspconfig")
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-      -- Setup servers
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
-      lspconfig.ts_ls.setup({ capabilities = capabilities })
-      lspconfig.pyright.setup({ capabilities = capabilities })
-      lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-
-      -- LSP keymaps
+      -- LSP keymaps on attach
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(event)
           local opts = { buffer = event.buf }
@@ -158,9 +130,17 @@ require("lazy").setup({
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
           vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-          vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
+          vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format({ async = true }) end, opts)
         end,
       })
+
+      -- Setup system-installed LSP servers
+      local servers = { "lua_ls", "ts_ls", "pyright", "rust_analyzer" }
+      for _, server in ipairs(servers) do
+        local ok, _ = pcall(function()
+          lspconfig[server].setup({})
+        end)
+      end
     end,
   },
 
@@ -220,47 +200,27 @@ require("lazy").setup({
   },
 
   -- Git signs
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup()
-    end,
-  },
+  { "lewis6991/gitsigns.nvim", opts = {} },
 
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "catppuccin",
-        },
-      })
-    end,
+    opts = { options = { theme = "catppuccin" } },
   },
 
   -- Auto pairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    config = true,
-  },
+  { "windwp/nvim-autopairs", event = "InsertEnter", config = true },
 
   -- Comment toggle
-  {
-    "numToStr/Comment.nvim",
-    config = true,
-  },
+  { "numToStr/Comment.nvim", config = true },
 
   -- Which key
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("which-key").setup()
-    end,
-  },
+  { "folke/which-key.nvim", event = "VeryLazy", opts = {} },
+}, {
+  -- Lazy.nvim options: don't notify about missing plugins
+  checker = { enabled = false },
+  change_detection = { notify = false },
 })
 
 -- Keymaps

@@ -1,0 +1,61 @@
+/* JumpDev OS Power Menu - Catppuccin Mocha */
+
+configuration {
+    show-icons: false;
+    disable-history: true;
+    hover-select: true;
+}
+
+* {
+    bg: #1e1e2e;
+    bg-alt: #313244;
+    fg: #cdd6f4;
+    accent: #cba6f7;
+    background-color: transparent;
+    text-color: @fg;
+    margin: 0;
+    padding: 0;
+}
+
+window {
+    width: 120px;
+    location: northeast;
+    x-offset: -10;
+    y-offset: 44;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+mainbox {
+    children: [listview];
+}
+
+listview {
+    columns: 1;
+    lines: 4;
+    scrollbar: false;
+    fixed-height: true;
+    spacing: 4px;
+}
+
+element {
+    padding: 8px 12px;
+    border-radius: 6px;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @bg-alt;
+    text-color: @accent;
+}
+
+element-text {
+    horizontal-align: 0.5;
+}

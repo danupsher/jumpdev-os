@@ -1,49 +1,30 @@
 #!/bin/bash
-# JumpDev OS Power Menu - Click outside to close
+# JumpDev OS Power Menu
 
-# Toggle - if wofi is running, kill it and slurp
-if pgrep -x wofi > /dev/null; then
-    pkill -x wofi
-    pkill -x slurp
+# Toggle - if rofi is running, kill it
+if pgrep -x rofi > /dev/null; then
+    pkill -x rofi
     exit 0
 fi
 
-# Kill any lingering slurp
-pkill -x slurp 2>/dev/null
-
-# Launch slurp as click-catcher in background (semi-transparent overlay)
-(slurp -b '#00000066' -c '#00000000' -s '#00000000' -w 0 > /dev/null 2>&1; pkill -x wofi) &
-
-# Small delay to ensure slurp starts first
-sleep 0.05
-
 # Power menu options
-options="  Lock\n  Logout\n  Restart\n  Shutdown"
+options="Lock\nLogout\nRestart\nShutdown"
 
-selected=$(echo -e "$options" | wofi --dmenu \
-    --width 150 \
-    --lines 4 \
-    --location top_right \
-    --xoffset -10 \
-    --yoffset 44 \
-    --hide-search \
-    --cache-file /dev/null)
+selected=$(echo -e "$options" | rofi -dmenu \
+    -theme ~/.config/rofi/power-menu.rasi \
+    -p "Power")
 
-# Cleanup slurp
-pkill -x slurp 2>/dev/null
-
-# Execute selected action
 case "$selected" in
-    *"Lock")
+    "Lock")
         swaylock -f -c 1e1e2e
         ;;
-    *"Logout")
+    "Logout")
         hyprctl dispatch exit
         ;;
-    *"Restart")
+    "Restart")
         systemctl reboot
         ;;
-    *"Shutdown")
+    "Shutdown")
         systemctl poweroff
         ;;
 esac

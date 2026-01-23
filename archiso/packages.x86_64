@@ -42,7 +42,7 @@ blueman
 brightnessctl
 playerctl
 network-manager-applet
-wofi
+rofi-wayland
 swaylock
 
 # Terminal & Shell
@@ -203,3 +203,9 @@ chaotic-mirrorlist
 # - nvidia-open-dkms nvidia-utils nvidia-settings (NVIDIA GPU)
 # - nwg-dock-hyprland (dock bar)
 # - nwg-look (GTK theme settings)
+
+# LSP servers (for nvim)
+lua-language-server
+rust-analyzer
+pyright
+typescript-language-server

@@ -53,11 +53,10 @@
             "default": ["", "", ""]
         },
         "scroll-step": 5,
-        "on-click": "bash -c '~/.config/scripts/volume-popup.sh'",
-        "on-click-right": "pavucontrol",
+        "on-click": "pavucontrol",
         "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
         "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
-        "tooltip": "Click for volume, scroll to adjust"
+        "tooltip": "Scroll to adjust volume, click for mixer"
     },
 
     "battery": {
