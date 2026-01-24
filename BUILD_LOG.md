@@ -65,15 +65,19 @@
 **Build 84**: Match menu font size to waybar
 **Build 85**: Restore window borders (flickering returned - rounding alone doesn't fix)
 **Build 86**: Fix flickering (no borders) + increase menu font
+**Build 87**: Add AI tools (Claude Code, Aider, Ollama)
 
-**Fixes in Build 86**:
-| Issue | Fix |
-|-------|-----|
-| Border flickering returned | Set bar_precedence_over_border=false (removes borders but stops flickering) |
-| Menu font too small | Changed rofi font from 8pt to 9pt |
+**Fixes in Build 87**:
+| Addition | Method |
+|----------|--------|
+| Claude Code | npm install -g @anthropic-ai/claude-code |
+| Aider | pipx install aider-chat |
+| Ollama | Official install script |
+| Rust toolchain | rustup default stable |
 
 **Next Steps**:
-1. Test Build 86 - verify no flickering and font size correct
+1. Test Build 87 - verify `claude`, `aider`, `ollama` commands work
+2. Gate 2 nearly complete - then move to Gate 3 (persistence)
 
 ---
 
