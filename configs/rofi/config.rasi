@@ -10,7 +10,7 @@ configuration {
     disable-history: false;
     hide-scrollbar: true;
     sidebar-mode: false;
-    font: "JetBrainsMono Nerd Font 8";
+    font: "JetBrainsMono Nerd Font 9";
     click-to-exit: true;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";
