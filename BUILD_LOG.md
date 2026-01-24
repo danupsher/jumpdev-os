@@ -61,17 +61,18 @@
 
 **Build 81**: hyprbars:no_bar rule fix for Hyprland 0.53+
 **Build 82**: Fix rofi scroll + border/corner flickering
+**Build 83**: macOS-style window buttons + fix menu scroll
 
-**Fixes in Build 82**:
+**Fixes in Build 83**:
 | Issue | Fix |
 |-------|-----|
-| Rofi mouse wheel scroll not working | Set ml-row-up/down to ScrollUp/ScrollDown |
-| Rofi keyboard focus on reopen | Launch rofi before slurp overlay |
-| Border/corner flickering artifacts | Set rounding=1, bar_precedence_over_border=false |
+| Window buttons confusing | Removed yellow, green now maximizes (macOS style: red=close, green=max) |
+| Apps menu scroll broken | Fixed script order (slurp first, then rofi) to match power menu |
+| Power menu scroll bindings | Added ml-row-up/down for consistency |
 
 **Next Steps**:
-1. Test Build 82 - verify scroll works in apps menu
-2. Test Build 82 - verify no border/corner flickering
+1. Test Build 83 - verify scroll works in both menus
+2. Test Build 83 - verify window buttons work correctly
 
 ---
 
