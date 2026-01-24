@@ -63,14 +63,15 @@
 **Build 82**: Fix rofi scroll + border/corner flickering
 **Build 83**: macOS-style window buttons + fix menu scroll
 **Build 84**: Match menu font size to waybar
+**Build 85**: Restore window borders (keep rounding=1 for flicker fix)
 
-**Fixes in Build 84**:
+**Fixes in Build 85**:
 | Issue | Fix |
 |-------|-----|
-| Menu font larger than waybar | Changed rofi font from 11pt to 8pt (matches waybar 11px) |
+| Window borders disappeared | Reverted bar_precedence_over_border to true (rounding=1 alone may fix flicker) |
 
 **Next Steps**:
-1. Test Build 84 - verify font sizes match between menus and waybar
+1. Test Build 85 - verify borders visible and no flickering
 
 ---
 
