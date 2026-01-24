@@ -4,7 +4,7 @@ configuration {
     show-icons: false;
     disable-history: true;
     hover-select: true;
-    font: "JetBrainsMono Nerd Font 11";
+    font: "JetBrainsMono Nerd Font 8";
     click-to-exit: true;
     me-select-entry: "";
     me-accept-entry: "MousePrimary";

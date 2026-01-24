@@ -62,17 +62,15 @@
 **Build 81**: hyprbars:no_bar rule fix for Hyprland 0.53+
 **Build 82**: Fix rofi scroll + border/corner flickering
 **Build 83**: macOS-style window buttons + fix menu scroll
+**Build 84**: Match menu font size to waybar
 
-**Fixes in Build 83**:
+**Fixes in Build 84**:
 | Issue | Fix |
 |-------|-----|
-| Window buttons confusing | Removed yellow, green now maximizes (macOS style: red=close, green=max) |
-| Apps menu scroll broken | Fixed script order (slurp first, then rofi) to match power menu |
-| Power menu scroll bindings | Added ml-row-up/down for consistency |
+| Menu font larger than waybar | Changed rofi font from 11pt to 8pt (matches waybar 11px) |
 
 **Next Steps**:
-1. Test Build 83 - verify scroll works in both menus
-2. Test Build 83 - verify window buttons work correctly
+1. Test Build 84 - verify font sizes match between menus and waybar
 
 ---
 
