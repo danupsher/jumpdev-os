@@ -66,18 +66,25 @@
 **Build 85**: Restore window borders (flickering returned - rounding alone doesn't fix)
 **Build 86**: Fix flickering (no borders) + increase menu font
 **Build 87**: Add AI tools (Claude Code, Aider, Ollama)
+**Build 88**: Fix Docker + fix Aider install
 
-**Fixes in Build 87**:
-| Addition | Method |
-|----------|--------|
-| Claude Code | npm install -g @anthropic-ai/claude-code |
-| Aider | pipx install aider-chat |
-| Ollama | Official install script |
-| Rust toolchain | rustup default stable |
+**Build 87 Test Results**:
+| Tool | Status |
+|------|--------|
+| Claude Code | ✅ Working (v2.1.19) |
+| Ollama | ✅ Working (v0.15.0) |
+| Aider | ❌ Failed (numpy build issue) |
+| Docker | ❌ Needed vfs storage driver |
+
+**Fixes in Build 88**:
+| Fix | Method |
+|-----|--------|
+| Docker overlay conflict | Add /etc/docker/daemon.json with vfs driver |
+| Aider numpy issue | Add python-numpy package (precompiled) |
 
 **Next Steps**:
-1. Test Build 87 - verify `claude`, `aider`, `ollama` commands work
-2. Gate 2 nearly complete - then move to Gate 3 (persistence)
+1. Test Build 88 - verify Docker and Aider work
+2. Gate 2 complete → move to Gate 3 (persistence)
 
 ---
 

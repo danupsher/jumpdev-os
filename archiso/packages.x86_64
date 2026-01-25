@@ -90,6 +90,7 @@ npm
 python
 python-pip
 python-pipx
+python-numpy
 rustup
 
 # CLI Utilities
