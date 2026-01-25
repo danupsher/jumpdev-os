@@ -17,9 +17,7 @@ npm install -g @anthropic-ai/claude-code || echo "Claude Code install failed, wi
 # Aider requires persistence (too large for live tmpfs)
 # Users can install via: jumpdev install-aider (after setting up persistence)
 
-# Install Ollama
-echo "Installing Ollama..."
-curl -fsSL https://ollama.com/install.sh | sh || echo "Ollama install failed, will retry on first boot"
+# Ollama available via: jumpdev install-ollama (optional, large download)
 
 # Initialize rustup for the jump user's skel
 echo "Initializing Rust toolchain..."

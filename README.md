@@ -1,305 +1,90 @@
 # JumpDev OS
 
-[![Build ISO](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml/badge.svg)](https://github.com/danupsher/jumpdev-os/actions/workflows/build-iso.yml)
-
-**Your dev environment, on a USB stick.**
-
-A portable Linux distribution for modern development. Boot from USB on any PC, get a fully configured workspace with AI coding tools, and migrate to disk when you're ready.
+A portable Linux development environment with AI coding tools pre-installed. Runs from USB on any x86_64 machine.
 
 ---
 
-## Why JumpDev OS?
+## What is JumpDev OS?
 
-**The Problem**: Setting up a dev environment takes hours. Doing it on multiple machines takes days. Cloud solutions need internet. VMs are slow.
+A complete development environment that runs from a USB drive. Claude Code and a modern desktop, ready to go. No installation. No configuration.
 
-**The Solution**: JumpDev OS. Plug in a USB, boot up, start coding. Same tools, same configs, same projects - on any PC.
+Equipped for serious development. Great for developers leveraging AI or vibecoders building their first project.
+
+---
+
+## Why JumpDev?
+
+### Clean & Focused
+No bloat. A modern Hyprland desktop with what you need to code.
+
+### Portable
+Runs from USB on any PC. Your environment stays consistent across machines. Install to disk anytime to make it permanent.
+
+### Persistent
+Optional persistence saves files and settings between reboots.
 
 ---
 
 ## Features
 
-### Portable Development
-- Boot from USB on any x86_64 PC
-- Your environment travels with you
-- Files and logins persist between reboots
-- Works offline - no cloud dependency
+### AI-Assisted Development
+- **Claude Code** — Anthropic's AI coding assistant
 
-### AI-Powered Coding
-- **Claude Code** - AI pair programming in your terminal
-- **Aider** - Git-aware AI coding assistant
-- **Ollama** - Run local LLMs offline
-- Ready to vibe code out of the box
+### Desktop
+- Hyprland with Catppuccin Mocha theme
+- Keyboard and mouse friendly
 
-### Modern Desktop
-- **Hyprland** - Tiling window manager with smooth animations
-- **Window title bars** - Close, maximize, minimize buttons on every window
-- **nwg-menu** - Traditional app menu (like Windows Start menu)
-- **Waybar** - Status bar with quick-launch buttons
-- **Catppuccin Mocha** - Easy-on-the-eyes dark theme
-
-### Development Stack
-- **Editors**: Neovim (LSP pre-configured), VS Code available via first-boot
-- **Version Control**: Git, GitHub CLI, Lazygit
-- **Containers**: Docker, Docker Compose, Lazydocker
-- **Languages**: Node.js, Python, Rust (rustup) + mise version manager
-- **CLI Tools**: fzf, ripgrep, fd, bat, eza, zoxide, yazi, btop, tmux, zellij
-
-### Portable → Permanent
-Use JumpDev OS from USB for a day, a week, or a month. When you're ready to install permanently:
-
-1. Click "Install to Disk"
-2. Partition your drive (erase, dual-boot, or manual)
-3. Everything migrates automatically:
-   - Browser sessions and logins
-   - App data and configurations
-   - Projects and files
-   - Installed packages
-
-Same environment. Same logins. Just faster.
-
----
-
-## Screenshots
-
-*Coming soon*
+### Tools
+- Docker, Git, Neovim, Tmux
+- Firefox
+- Standard development utilities
 
 ---
 
 ## Quick Start
 
 1. **Download** the latest ISO from [Releases](https://github.com/danupsher/jumpdev-os/releases)
-2. **Flash** to USB with [Balena Etcher](https://etcher.balena.io/) or [Rufus](https://rufus.ie/)
-3. **Boot** from USB (disable Secure Boot if needed)
-4. **Code** - everything's ready
+2. **Flash** to a USB drive using Ventoy, Rufus, or Etcher
+3. **Boot** from USB
+4. **Code** — open a terminal and type `claude`
+
+---
+
+## Commands
+
+```bash
+jumpdev help          # Show all commands
+jumpdev setup         # Run first-time setup
+jumpdev set-api-key   # Configure your Anthropic API key
+jumpdev doctor        # Check system health
+```
 
 ---
 
 ## Requirements
 
-| Component | Minimum | Recommended |
-|-----------|---------|-------------|
-| USB Drive | 16GB USB 3.0 | 32GB+ USB 3.0/3.1 |
-| RAM | 8GB | 16GB |
-| CPU | x86_64 | - |
-| Boot | UEFI or Legacy BIOS | UEFI |
-
-**Note**: Secure Boot must be disabled.
-
-**USB Recommendations**:
-| Tier | Example | Boot Time |
-|------|---------|-----------|
-| Good | Any USB 3.0 | ~60s |
-| Better | SanDisk Extreme Pro | ~30s |
-| Best | Samsung T7 SSD | ~15s |
+- **USB drive**: 16GB+ recommended, USB 3.0 or faster
+- **Machine**: x86_64 PC with USB boot support
+- **API key**: Anthropic API key for Claude Code (console.anthropic.com)
 
 ---
 
-## What's Included
+## Status
 
-### Desktop Environment
-| Component | Description |
-|-----------|-------------|
-| Hyprland | Tiling Wayland compositor |
-| Waybar | Status bar with quick-launch buttons |
-| nwg-menu | Traditional app menu (like Windows Start) |
-| Mako | Notification daemon |
-| wlogout | Logout/power menu |
+In active development.
 
-### Editors
-| Editor | Description |
-|--------|-------------|
-| Neovim | Terminal editor with LSP, Treesitter, Telescope |
-| VS Code | Available via first-boot app selector |
+- [x] Bootable live environment
+- [x] Claude Code pre-installed
+- [x] Modern desktop
+- [x] First-boot setup wizard
+- [ ] Persistence on real hardware
+- [ ] Install-to-disk option
 
-### AI & Coding Tools
-| Tool | Description |
-|------|-------------|
-| Claude Code | AI pair programming |
-| Aider | Git-aware AI assistant |
-| Ollama | Local LLM runner |
-| GitHub CLI | GitHub from the terminal |
-| Lazygit | Terminal UI for Git |
-
-### Languages & Runtimes
-| Language | Version |
-|----------|---------|
-| Node.js | Latest LTS |
-| Python | 3.x with pip/pipx |
-| Rust | Via rustup |
-
-### Containers
-| Tool | Description |
-|------|-------------|
-| Docker | Container runtime |
-| Docker Compose | Multi-container apps |
-| Docker Buildx | Extended build features |
-| Lazydocker | Docker TUI |
-
-### Applications
-| App | Description |
-|-----|-------------|
-| Firefox | Web browser |
-| Thunar | File manager |
-| mpv | Media player |
-| imv | Image viewer |
-| pavucontrol | Audio settings |
-| blueman | Bluetooth manager |
-
-### First-Boot App Selector (Optional)
-| App | Description |
-|-----|-------------|
-| VS Code | Full GUI editor |
-| Google Chrome | Browser |
-| Discord | Communication |
-| NVIDIA Drivers | For NVIDIA GPUs |
-
-### CLI Tools
-```
-fzf        - Fuzzy finder
-ripgrep    - Fast search
-fd         - Fast find
-bat        - Better cat
-eza        - Better ls
-zoxide     - Smart cd
-yazi       - Terminal file manager
-btop       - System monitor
-jq/yq      - JSON/YAML tools
-tmux       - Terminal multiplexer
-zellij     - Modern terminal multiplexer
-mise       - Version manager (node/python/ruby)
-fastfetch  - System info
-```
-
----
-
-## Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| `Super + Return` | Terminal (Kitty) |
-| `Super + D` | App menu |
-| `Super + Q` | Close window |
-| `Super + B` | Firefox |
-| `Super + E` | File manager |
-| `Super + F` | Fullscreen |
-| `Super + 1-9` | Switch workspace |
-| `Print` | Screenshot |
-
----
-
-## Hardware Support
-
-### Graphics
-| Vendor | Driver | Status |
-|--------|--------|--------|
-| Intel | mesa, vulkan-intel | Full support |
-| AMD | mesa, vulkan-radeon | Full support |
-| NVIDIA | nvidia-open-dkms | Via first-boot selector |
-
-### WiFi
-Drivers included for: Intel, Atheros, Broadcom, Realtek, Marvell, MediaTek, Ralink
-
-Most laptops work out of the box.
-
-### Audio
-PipeWire with PulseAudio and JACK compatibility.
-
----
-
-## Tech Stack
-
-| Component | Choice |
-|-----------|--------|
-| Base | Arch Linux |
-| Kernel | linux-zen |
-| Display | Wayland |
-| Compositor | Hyprland |
-| Terminal | Kitty |
-| Shell | Zsh + Starship |
-| Theme | Catppuccin Mocha |
-| Font | JetBrains Mono Nerd Font |
-
----
-
-## Roadmap
-
-- [x] Gate 1: Bootable ISO with Hyprland desktop
-- [x] Gate 2: Apps, dev tools, and polished UI
-- [ ] Gate 3: Persistence (files/logins saved between reboots)
-- [ ] Gate 3.5: Install to disk with seamless migration
-- [ ] Gate 4: Polish, branding, and v1.0 release
-- [ ] Gate 5: ARM64 / Apple Silicon support
-
----
-
-## Building from Source
-
-Requires Arch Linux (VM or container):
-
-```bash
-# Clone
-git clone https://github.com/danupsher/jumpdev-os.git
-cd jumpdev-os
-
-# Install archiso
-sudo pacman -S archiso
-
-# Build
-sudo mkarchiso -v -w /tmp/archiso-work -o out/ archiso/
-```
-
-Or just push to `main` - GitHub Actions builds the ISO automatically.
-
----
-
-## Project Structure
-
-```
-jumpdev-os/
-├── archiso/           # Archiso build configuration
-│   ├── airootfs/      # Files copied to live system
-│   ├── packages.x86_64 # Package list
-│   └── profiledef.sh  # Build profile
-├── configs/           # Application configs
-│   ├── hypr/          # Hyprland
-│   ├── waybar/        # Status bar
-│   ├── nvim/          # Neovim
-│   └── ...
-└── .github/workflows/ # CI/CD
-```
-
----
-
-## Contributing
-
-Contributions welcome! Read these first:
-
-- `CLAUDE.md` - Guide for AI-assisted development sessions
-- `COMPREHENSIVE_PLAN.md` - Full project roadmap and gates
-- `DECISIONS.md` - Architectural decisions and rationale
-- `BUILD_LOG.md` - Build history and known issues
+### Roadmap
+- ARM64 support
 
 ---
 
 ## License
 
-MIT License - see [LICENSE](LICENSE)
-
----
-
-## Acknowledgements
-
-Built on the shoulders of giants:
-
-- [Arch Linux](https://archlinux.org/) & [Archiso](https://wiki.archlinux.org/title/Archiso)
-- [Hyprland](https://hyprland.org/) & [hyprland-plugins](https://github.com/hyprwm/hyprland-plugins)
-- [Catppuccin](https://github.com/catppuccin/catppuccin)
-- [Chaotic-AUR](https://aur.chaotic.cx/)
-- [Neovim](https://neovim.io/)
-
----
-
-<p align="center">
-  <strong>Your dev environment, on a USB stick.</strong><br>
-  Plug in. Boot up. Code.
-</p>
+MIT
