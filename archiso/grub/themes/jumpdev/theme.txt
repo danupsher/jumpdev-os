@@ -1,0 +1,37 @@
+# JumpDev OS GRUB Theme
+
+# Background
+desktop-image: "background.png"
+desktop-color: "#1e1e2e"
+
+# Title
+title-text: ""
+title-font: "DejaVu Sans Bold 16"
+title-color: "#cdd6f4"
+
+# Boot menu
++ boot_menu {
+    left = 35%
+    top = 60%
+    width = 30%
+    height = 30%
+    item_font = "DejaVu Sans 14"
+    item_color = "#cdd6f4"
+    selected_item_color = "#1e1e2e"
+    selected_item_pixmap_style = "select_*.png"
+    item_height = 32
+    item_padding = 8
+    item_spacing = 4
+}
+
+# Countdown label
++ label {
+    left = 35%
+    top = 92%
+    width = 30%
+    align = "center"
+    id = "__timeout__"
+    text = "Booting in %d seconds..."
+    color = "#6c7086"
+    font = "DejaVu Sans 12"
+}

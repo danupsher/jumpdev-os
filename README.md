@@ -1,6 +1,11 @@
-# JumpDev OS
+<p align="center">
+  <img src="assets/logo.svg" alt="JumpDev OS" width="400">
+</p>
 
-A portable Linux development environment with AI coding tools pre-installed. Runs from USB on any x86_64 machine.
+<p align="center">
+  A portable Linux development environment with AI coding tools pre-installed.<br>
+  Runs from USB on any x86_64 machine.
+</p>
 
 ---
 
