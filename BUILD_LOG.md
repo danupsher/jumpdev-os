@@ -80,10 +80,23 @@
 **Gate 2 Status**: COMPLETE
 - AI tools: Claude Code ✅, Ollama ✅, Aider (post-persistence)
 - Docker: ✅ Working
+- jumpdev helper: ✅ Added
 - All other requirements met
 
+**Build 90**: Gate 3 - Persistence system
+
+**Gate 3 additions**:
+| Component | Description |
+|-----------|-------------|
+| jumpdev helper | CLI tool for common tasks (jumpdev help) |
+| jumpdev-persistence | Create/mount persistence.img |
+| jumpdev-first-boot | GUI wizard on first login |
+| systemd service | Auto-mount persistence at boot |
+| XDG autostart | Run wizard on first desktop login |
+
 **Next Steps**:
-1. Gate 3: Persistence (enables Aider install + file saving)
+1. Test Build 90 - verify persistence wizard works
+2. Test persistence survives reboot
 
 ---
 

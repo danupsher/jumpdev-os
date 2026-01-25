@@ -1,0 +1,133 @@
+#!/usr/bin/env bash
+# JumpDev OS First Boot Wizard
+# Runs on first login to set up persistence and API keys
+
+set -e
+
+FLAG_FILE="/tmp/.jumpdev_first_boot_done"
+PERSIST_FLAG="/persistence/.jumpdev_persist"
+
+# Check if we've already run this session
+if [[ -f "$FLAG_FILE" ]]; then
+    exit 0
+fi
+
+# Check if persistence is already set up
+if [[ -f "$PERSIST_FLAG" ]]; then
+    # Persistence exists, just show welcome back message briefly
+    touch "$FLAG_FILE"
+    exit 0
+fi
+
+# Show welcome dialog
+zenity --info \
+    --title="Welcome to JumpDev OS" \
+    --text="Welcome to JumpDev OS!\n\nYour portable development environment is ready.\n\nLet's set up a few things to get you started." \
+    --width=400 \
+    --ok-label="Let's Go" \
+    2>/dev/null || true
+
+# Ask about persistence
+if zenity --question \
+    --title="Save Your Work" \
+    --text="Would you like to save files and settings between reboots?\n\nThis will create an 8GB storage area on your USB drive.\n\nYou need at least 10GB of free space on the USB." \
+    --width=400 \
+    --ok-label="Yes, Set Up Persistence" \
+    --cancel-label="No, Demo Mode" \
+    2>/dev/null; then
+
+    # User wants persistence
+    (
+        echo "10"
+        echo "# Finding USB device..."
+        sleep 1
+
+        echo "30"
+        echo "# Checking free space..."
+        sleep 1
+
+        echo "50"
+        echo "# Creating persistence file (this takes a moment)..."
+
+        # Run persistence setup
+        if sudo jumpdev-persistence create 2>&1; then
+            echo "80"
+            echo "# Setting up overlay..."
+            sudo jumpdev-persistence overlay 2>&1 || true
+
+            echo "100"
+            echo "# Done!"
+        else
+            echo "100"
+            echo "# Setup failed - check disk space"
+        fi
+    ) | zenity --progress \
+        --title="Setting Up Persistence" \
+        --text="Preparing..." \
+        --percentage=0 \
+        --auto-close \
+        --width=400 \
+        2>/dev/null
+
+    # Check if it worked
+    if [[ -f "$PERSIST_FLAG" ]]; then
+        zenity --info \
+            --title="Persistence Ready" \
+            --text="Persistence is now active!\n\nYour files and settings will be saved between reboots.\n\nYou can now install additional tools like Aider:\n  jumpdev install-aider" \
+            --width=400 \
+            2>/dev/null || true
+    else
+        zenity --warning \
+            --title="Setup Issue" \
+            --text="Persistence setup may have failed.\n\nYou can try again later with:\n  sudo jumpdev-persistence create\n\nFor now, you're in demo mode - files won't be saved." \
+            --width=400 \
+            2>/dev/null || true
+    fi
+else
+    # User chose demo mode
+    zenity --info \
+        --title="Demo Mode" \
+        --text="Running in demo mode.\n\nYour files won't be saved between reboots.\n\nYou can set up persistence later with:\n  jumpdev setup" \
+        --width=400 \
+        2>/dev/null || true
+fi
+
+# Ask about API keys
+if zenity --question \
+    --title="API Keys" \
+    --text="Would you like to set up API keys for AI tools now?\n\nYou'll need an Anthropic API key for Claude Code." \
+    --width=400 \
+    --ok-label="Set Up Keys" \
+    --cancel-label="Skip for Now" \
+    2>/dev/null; then
+
+    # Get Anthropic key
+    api_key=$(zenity --entry \
+        --title="Anthropic API Key" \
+        --text="Enter your Anthropic API key:\n\n(Get one at console.anthropic.com)" \
+        --width=500 \
+        --hide-text \
+        2>/dev/null) || true
+
+    if [[ -n "$api_key" ]]; then
+        # Save to shell config
+        echo "export ANTHROPIC_API_KEY='$api_key'" >> ~/.zshrc
+        echo "export ANTHROPIC_API_KEY='$api_key'" >> ~/.bashrc
+
+        zenity --info \
+            --title="API Key Saved" \
+            --text="API key saved!\n\nRestart your terminal or run:\n  source ~/.zshrc\n\nThen start coding with:\n  claude" \
+            --width=400 \
+            2>/dev/null || true
+    fi
+fi
+
+# Final message
+zenity --info \
+    --title="You're All Set!" \
+    --text="JumpDev OS is ready!\n\nQuick Start:\n• Terminal: Super + Return\n• Apps: Super + D\n• Claude: Type 'claude' in terminal\n\nRun 'jumpdev help' for more commands.\n\nHappy coding!" \
+    --width=400 \
+    2>/dev/null || true
+
+# Mark as done for this session
+touch "$FLAG_FILE"

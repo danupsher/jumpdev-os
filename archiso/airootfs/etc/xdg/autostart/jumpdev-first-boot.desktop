@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=JumpDev First Boot
+Comment=First boot setup wizard
+Exec=/usr/local/bin/jumpdev-first-boot
+Terminal=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true

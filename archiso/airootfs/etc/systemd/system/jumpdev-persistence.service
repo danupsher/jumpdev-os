@@ -1,0 +1,16 @@
+[Unit]
+Description=JumpDev OS Persistence Mount
+DefaultDependencies=no
+After=local-fs.target
+Before=systemd-user-sessions.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/jumpdev-persistence mount
+ExecStartPost=/usr/local/bin/jumpdev-persistence overlay
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
