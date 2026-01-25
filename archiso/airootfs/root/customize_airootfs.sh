@@ -14,13 +14,8 @@ locale-gen
 echo "Installing Claude Code..."
 npm install -g @anthropic-ai/claude-code || echo "Claude Code install failed, will retry on first boot"
 
-# Install Aider via pipx (for the jump user)
-echo "Installing Aider..."
-# pipx needs to run as the user, not root
-# Set up pipx for the jump user
-export PIPX_HOME=/opt/pipx
-export PIPX_BIN_DIR=/usr/local/bin
-pipx install aider-chat || echo "Aider install failed, will retry on first boot"
+# Aider requires persistence (too large for live tmpfs)
+# Users can install via: jumpdev install-aider (after setting up persistence)
 
 # Install Ollama
 echo "Installing Ollama..."

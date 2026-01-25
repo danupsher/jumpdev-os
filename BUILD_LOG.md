@@ -67,24 +67,23 @@
 **Build 86**: Fix flickering (no borders) + increase menu font
 **Build 87**: Add AI tools (Claude Code, Aider, Ollama)
 **Build 88**: Fix Docker + fix Aider install
+**Build 89**: Remove Aider from base (requires persistence)
 
-**Build 87 Test Results**:
+**Build 88 Test Results**:
 | Tool | Status |
 |------|--------|
-| Claude Code | ✅ Working (v2.1.19) |
-| Ollama | ✅ Working (v0.15.0) |
-| Aider | ❌ Failed (numpy build issue) |
-| Docker | ❌ Needed vfs storage driver |
+| Claude Code | ✅ Working |
+| Ollama | ✅ Working |
+| Docker | ✅ Working (vfs driver) |
+| Aider | ❌ Requires persistence (too large for live tmpfs) |
 
-**Fixes in Build 88**:
-| Fix | Method |
-|-----|--------|
-| Docker overlay conflict | Add /etc/docker/daemon.json with vfs driver |
-| Aider numpy issue | Add python-numpy package (precompiled) |
+**Gate 2 Status**: COMPLETE
+- AI tools: Claude Code ✅, Ollama ✅, Aider (post-persistence)
+- Docker: ✅ Working
+- All other requirements met
 
 **Next Steps**:
-1. Test Build 88 - verify Docker and Aider work
-2. Gate 2 complete → move to Gate 3 (persistence)
+1. Gate 3: Persistence (enables Aider install + file saving)
 
 ---
 
