@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=JumpDev OS
+Description=JumpDev OS boot splash
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/jumpdev
+ScriptFile=/usr/share/plymouth/themes/jumpdev/jumpdev.script
